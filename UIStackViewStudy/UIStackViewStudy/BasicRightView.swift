@@ -93,7 +93,7 @@ struct TwoHstackLabel {
         
         let stackView = UIStackView(arrangedSubviews: [firstLabel, secondLabel])
         stackView.axis = .horizontal
-        stackView.spacing = 2
+        stackView.spacing = 3
         
         return stackView
     }

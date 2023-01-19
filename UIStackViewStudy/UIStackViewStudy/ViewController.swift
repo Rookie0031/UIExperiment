@@ -29,7 +29,7 @@ final class ViewController: UIViewController {
         return label
     }()
     
-    private let secondConsecutiveLabel = TwoHstackLabel.basicLabel(firstLabelText: "밴드 소개", firstTextColor: .white, firstFontStyle: .title1, firstFontWeight: .bold, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .headline, secondFontWeight: .light)
+    private let secondConsecutiveLabel = TwoHstackLabel.basicLabel(firstLabelText: "밴드 소개", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .light, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .light)
     
     private let testTextView = UITextView.makeBasicTextView("우리 밴드를 더 잘 보여줄 수 있는 소개를 간단히 적어주세요", textColor: .systemBlue, lineSpacing: 5)
     
@@ -44,17 +44,32 @@ final class ViewController: UIViewController {
     }()
     
     private lazy var firstVStack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [secondConsecutiveLabel, firstTextField, checkLabel, testTextView])
+        let stackView = UIStackView(arrangedSubviews: [secondConsecutiveLabel, firstTextField, checkLabel])
         stackView.axis = .vertical
         stackView.spacing = 10
         return stackView
     }()
     
-    private lazy var secondVStack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [secondConsecutiveLabel, firstTextField, checkLabel, testTextView])
+    
+    private lazy var titleVstack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
         stackView.axis = .vertical
         stackView.spacing = 10
         return stackView
+    }()
+    
+    private lazy var contentView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [titleVstack, firstVStack, testTextView])
+        stackView.axis = .vertical
+        stackView.spacing = 40
+        return stackView
+    }()
+    
+    private let mainScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = true
+        scrollView.backgroundColor = .systemGray
+        return scrollView
     }()
     
     
@@ -67,15 +82,17 @@ final class ViewController: UIViewController {
     }
     
     private func addSubviews() {
-        view.addSubviews(titleLabel, subTitleLabel, firstVStack)
+        view.addSubviews(mainScrollView)
+        mainScrollView.addSubview(contentView)
     }
     
     private func render() {
-        titleLabel.constraint(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, padding: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0))
         
-        subTitleLabel.constraint(top: titleLabel.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, padding: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0))
-
-        firstVStack.constraint(top: subTitleLabel.bottomAnchor, centerX: view.centerXAnchor, padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
+        mainScrollView.constraint(centerX: view.centerXAnchor, centerY: view.centerYAnchor)
+        mainScrollView.constraint(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
+        contentView.constraint(top: mainScrollView.topAnchor, leading: mainScrollView.leadingAnchor, bottom: mainScrollView.bottomAnchor, trailing: mainScrollView.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
+        
+        testTextView.constraint(.heightAnchor, constant: 350)
     }
     
     private func setNotificaiton() {
