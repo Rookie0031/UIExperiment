@@ -22,6 +22,7 @@
 		9A9996ED2979202D00C207E0 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996EC2979202D00C207E0 /* DummyData.swift */; };
 		9A9996EF297927DB00C207E0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996EE297927DB00C207E0 /* NetworkManager.swift */; };
 		9A9996F1297929B000C207E0 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996F0297929B000C207E0 /* NetworkError.swift */; };
+		9AE796BB29795F50008D6976 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE796BA29795F50008D6976 /* UITextViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		9A9996EC2979202D00C207E0 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		9A9996EE297927DB00C207E0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9A9996F0297929B000C207E0 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		9AE796BA29795F50008D6976 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				9A2F6A36297810E900DECE9F /* UIFontExtension.swift */,
 				9A9996E62978D72800C207E0 /* ConstraintExtension.swift */,
 				9A9996EA2978FD4C00C207E0 /* UIViewExtension.swift */,
+				9AE796BA29795F50008D6976 /* UITextViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				9A9996EB2978FD4C00C207E0 /* UIViewExtension.swift in Sources */,
 				9A2F6A202978088C00DECE9F /* AppDelegate.swift in Sources */,
 				9A9996F1297929B000C207E0 /* NetworkError.swift in Sources */,
+				9AE796BB29795F50008D6976 /* UITextViewExtension.swift in Sources */,
 				9A9996ED2979202D00C207E0 /* DummyData.swift in Sources */,
 				9A2F6A222978088C00DECE9F /* SceneDelegate.swift in Sources */,
 			);

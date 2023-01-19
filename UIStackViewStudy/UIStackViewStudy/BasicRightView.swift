@@ -63,7 +63,7 @@ class EmptyView: UIView {
     }
 }
 
-struct CheckDuplication {
+struct TwoHstackLabel {
     
     static var checkLabel: UIStackView = {
         let imageView: UIImageView = {
@@ -82,4 +82,16 @@ struct CheckDuplication {
         stackView.spacing = 5
         return stackView
     }()
+    
+    static func basicLabel(firstLabelText: String, firstTextColor: UIColor, firstFontStyle: UIFont.TextStyle, firstFontWeight: UIFont.Weight, secondLabelText: String, secondTextColor: UIColor, secondFontStyle: UIFont.TextStyle, secondFontWeight: UIFont.Weight) -> UIStackView {
+        
+        let firstLabel = UILabel.makeBasicLabel(labelText: firstLabelText, textColor: firstTextColor, fontStyle: firstFontStyle, fontWeight: firstFontWeight)
+        let secondLabel = UILabel.makeBasicLabel(labelText: secondLabelText, textColor: secondTextColor, fontStyle: secondFontStyle, fontWeight: secondFontWeight)
+        
+        let stackView = UIStackView(arrangedSubviews: [firstLabel, secondLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = 2
+        
+        return stackView
+    }
 }

@@ -24,13 +24,15 @@ final class ViewController: UIViewController {
         return textField
     }()
     
-    private lazy var checkLabel: UIStackView = CheckDuplication.checkLabel
+    private lazy var checkLabel: UIStackView = TwoHstackLabel.checkLabel
     
     private let firstLabel: UILabel = {
         let label = UILabel.makeBasicLabel(labelText: "This is Text", textColor: .black, fontStyle: .headline, fontWeight: .bold)
         label.layoutMargins = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 0)
         return label
     }()
+    
+    private let secondConsecutiveLabel
     
     private lazy var firstVStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [firstTextField, checkLabel, firstLabel])
