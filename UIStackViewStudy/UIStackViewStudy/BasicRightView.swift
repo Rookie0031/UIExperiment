@@ -86,6 +86,9 @@ struct TwoHstackLabel {
     static func basicLabel(firstLabelText: String, firstTextColor: UIColor, firstFontStyle: UIFont.TextStyle, firstFontWeight: UIFont.Weight, secondLabelText: String, secondTextColor: UIColor, secondFontStyle: UIFont.TextStyle, secondFontWeight: UIFont.Weight) -> UIStackView {
         
         let firstLabel = UILabel.makeBasicLabel(labelText: firstLabelText, textColor: firstTextColor, fontStyle: firstFontStyle, fontWeight: firstFontWeight)
+        // 두 레이블을 연속적으로 붙여놓기 위해서 앞쪽 레이블의 contentHuggingPriorty를 높게 설정해 추후 여유 공간이 생길 경우 firstLabel의 공간을 압축(hug) 시킴.
+        firstLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
+        
         let secondLabel = UILabel.makeBasicLabel(labelText: secondLabelText, textColor: secondTextColor, fontStyle: secondFontStyle, fontWeight: secondFontWeight)
         
         let stackView = UIStackView(arrangedSubviews: [firstLabel, secondLabel])

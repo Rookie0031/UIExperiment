@@ -9,8 +9,6 @@ import UIKit
 
 final class ViewController: UIViewController {
     
-    private var isChecked = true
-    
     private lazy var firstTextField: UITextField = {
         //MARK: 텍스트 필드 공통 컴퍼넌트 이용 - 플레이스홀더와 글자수 제한 입력
         let textField = UITextField.makeBasicTextField(placeHolder: "밴드 이름을 입력해주세요", characterLimit: 5)
@@ -27,19 +25,38 @@ final class ViewController: UIViewController {
     private lazy var checkLabel: UIStackView = TwoHstackLabel.checkLabel
     
     private let firstLabel: UILabel = {
-        let label = UILabel.makeBasicLabel(labelText: "This is Text", textColor: .black, fontStyle: .headline, fontWeight: .bold)
-        label.layoutMargins = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 0)
+        let label = UILabel.makeBasicLabel(labelText: "This is Text", textColor: .white, fontStyle: .headline, fontWeight: .bold)
         return label
     }()
     
-    private let secondConsecutiveLabel
+    private let secondConsecutiveLabel = TwoHstackLabel.basicLabel(firstLabelText: "밴드 소개", firstTextColor: .white, firstFontStyle: .title1, firstFontWeight: .bold, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .headline, secondFontWeight: .light)
+    
+    private let testTextView = UITextView.makeBasicTextView("우리 밴드를 더 잘 보여줄 수 있는 소개를 간단히 적어주세요", textColor: .systemBlue, lineSpacing: 5)
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel.makeBasicLabel(labelText: "밴드에 대해\n간단히 알려주세요", textColor: .white, fontStyle: .largeTitle, fontWeight: .heavy, numberOfLines: 2)
+        return label
+    }()
+    
+    private let subTitleLabel: UILabel = {
+        let label = UILabel.makeBasicLabel(labelText: "작성해주신 정보는 내 프로필로 만들어지고\n프로필은 다른 사용자들이 볼 수 있어요", textColor: .white, fontStyle: .title3, fontWeight: .regular, numberOfLines: 2)
+        return label
+    }()
     
     private lazy var firstVStack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [firstTextField, checkLabel, firstLabel])
+        let stackView = UIStackView(arrangedSubviews: [secondConsecutiveLabel, firstTextField, checkLabel, testTextView])
         stackView.axis = .vertical
         stackView.spacing = 10
         return stackView
     }()
+    
+    private lazy var secondVStack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [secondConsecutiveLabel, firstTextField, checkLabel, testTextView])
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        return stackView
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +67,15 @@ final class ViewController: UIViewController {
     }
     
     private func addSubviews() {
-        view.addSubviews(firstVStack)
+        view.addSubviews(titleLabel, subTitleLabel, firstVStack)
     }
     
     private func render() {
-        firstVStack.constraint(top: view.safeAreaLayoutGuide.topAnchor, centerX: view.centerXAnchor, padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
+        titleLabel.constraint(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, padding: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0))
+        
+        subTitleLabel.constraint(top: titleLabel.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, padding: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0))
+
+        firstVStack.constraint(top: subTitleLabel.bottomAnchor, centerX: view.centerXAnchor, padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
     }
     
     private func setNotificaiton() {
@@ -62,6 +83,7 @@ final class ViewController: UIViewController {
     }
     
     private func setConfiguration() {
+        view.backgroundColor = .systemGray
         checkLabel.isHidden = true
     }
 }
@@ -86,9 +108,9 @@ extension ViewController {
     @objc func didTapCheckButton() {
         Task {
             do {
-                isChecked = try await NetworkManager.shared.checkDuplication(with: firstTextField.text ?? "")
+                let isChecked = try await NetworkManager.shared.checkDuplication(with: firstTextField.text ?? "")
                 
-                showDuplicationCheckLabel()
+                showDuplicationCheckLabel(with: isChecked)
                 
             } catch {
                 throw FetchError.unknown
@@ -96,7 +118,7 @@ extension ViewController {
         }
     }
     
-    private func showDuplicationCheckLabel() {
+    private func showDuplicationCheckLabel(with isChecked: Bool) {
         checkLabel.isHidden = false
         let imageView = checkLabel.arrangedSubviews.first! as! UIImageView
         imageView.image = isChecked ? UIImage(systemName: "checkmark.circle")! : UIImage(systemName: "x.circle")!
