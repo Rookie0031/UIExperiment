@@ -12,8 +12,11 @@ final class ViewController: UIViewController {
     private var isChecked = true
     
     private lazy var firstTextField: UITextField = {
+        //MARK: 텍스트 필드 공통 컴퍼넌트 이용 - 플레이스홀더와 글자수 제한 입력
         let textField = UITextField.makeBasicTextField(placeHolder: "밴드 이름을 입력해주세요", characterLimit: 5)
         
+        //MARK: 중복 확인이 필요한 텍스트 필드인 경우 아래 로직대로 진행
+        // 중복확인은 개별 텍스트 필드의 글자가 필요하니 일일이 이렇게 구현해주어야한다
         let rightView = BasicRightView()
         rightView.testButton.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
         textField.rightView = rightView
@@ -83,29 +86,21 @@ extension ViewController {
             do {
                 isChecked = try await NetworkManager.shared.checkDuplication(with: firstTextField.text ?? "")
                 
-                if isChecked {
-                    print("가능합니다")
-                    checkLabel.isHidden = false
-                    let imageView = checkLabel.arrangedSubviews.first! as! UIImageView
-                    imageView.image = UIImage(systemName: "checkmark.circle")!
-                    imageView.tintColor = .systemBlue
-                    let label = checkLabel.arrangedSubviews.last! as! UILabel
-                    label.text = "가능합니다"
-                    label.textColor = .systemBlue
-                } else {
-                    print("불가능합니다")
-                    checkLabel.isHidden = false
-                    let imageView = checkLabel.arrangedSubviews.first! as! UIImageView
-                    imageView.image = UIImage(systemName: "x.circle")!
-                    imageView.tintColor = .systemRed
-                    let label = checkLabel.arrangedSubviews.last! as! UILabel
-                    label.text = "불가능합니다"
-                    label.textColor = .systemRed
-                }
+                showDuplicationCheckLabel()
                 
             } catch {
                 throw FetchError.unknown
             }
         }
+    }
+    
+    private func showDuplicationCheckLabel() {
+        checkLabel.isHidden = false
+        let imageView = checkLabel.arrangedSubviews.first! as! UIImageView
+        imageView.image = isChecked ? UIImage(systemName: "checkmark.circle")! : UIImage(systemName: "x.circle")!
+        imageView.tintColor = isChecked ? .systemBlue : .systemRed
+        let label = checkLabel.arrangedSubviews.last! as! UILabel
+        label.text = isChecked ? "가능합니다" : "불가능합니다"
+        label.textColor = isChecked ? .systemBlue : .systemRed
     }
 }
