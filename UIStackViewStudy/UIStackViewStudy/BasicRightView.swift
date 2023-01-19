@@ -63,25 +63,19 @@ class EmptyView: UIView {
     }
 }
 
-class CheckDuplicationLabel {
+struct CheckDuplication {
     
-    init(isChecked: Bool) {
-        self.isChecked = isChecked
-    }
-    
-    let isChecked: Bool
-    
-    lazy var text: UIStackView = {
+    static var checkLabel: UIStackView = {
         let imageView: UIImageView = {
             let imageView = UIImageView()
-            imageView.image = isChecked ? UIImage(systemName: "checkmark.circle")! : UIImage(systemName: "x.circle")!
-            imageView.tintColor = isChecked ? .systemBlue : .systemRed
+            imageView.image = UIImage(systemName: "checkmark.circle")!
+            imageView.tintColor = .systemBlue
             imageView.constraint(.widthAnchor, constant: 20)
             imageView.constraint(.heightAnchor, constant: 20)
             return imageView
         }()
         
-        let label = isChecked ? UILabel.makeBasicLabel(labelText: "사용 가능해요", textColor: .systemBlue, fontStyle: .caption1, fontWeight: .regular) : UILabel.makeBasicLabel(labelText: "이미 사용하고 있어요", textColor: .systemRed, fontStyle: .caption1, fontWeight: .regular)
+        let label = UILabel.makeBasicLabel(labelText: "사용 가능해요", textColor: .systemBlue, fontStyle: .caption1, fontWeight: .regular)
         
         let stackView = UIStackView(arrangedSubviews: [imageView, label])
         stackView.axis = .horizontal

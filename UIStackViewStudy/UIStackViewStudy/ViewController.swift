@@ -21,7 +21,7 @@ final class ViewController: UIViewController {
         return textField
     }()
     
-    private lazy var checkLabel: UIStackView = CheckDuplicationLabel(isChecked: isChecked).text
+    private lazy var checkLabel: UIStackView = CheckDuplication.checkLabel
     
     private let firstLabel: UILabel = {
         let label = UILabel.makeBasicLabel(labelText: "This is Text", textColor: .black, fontStyle: .headline, fontWeight: .bold)
@@ -86,10 +86,21 @@ extension ViewController {
                 if isChecked {
                     print("가능합니다")
                     checkLabel.isHidden = false
+                    let imageView = checkLabel.arrangedSubviews.first! as! UIImageView
+                    imageView.image = UIImage(systemName: "checkmark.circle")!
+                    imageView.tintColor = .systemBlue
+                    let label = checkLabel.arrangedSubviews.last! as! UILabel
+                    label.text = "가능합니다"
+                    label.textColor = .systemBlue
                 } else {
                     print("불가능합니다")
                     checkLabel.isHidden = false
-                    checkLabel.arrangedSubviews.last!.tintColor = .black
+                    let imageView = checkLabel.arrangedSubviews.first! as! UIImageView
+                    imageView.image = UIImage(systemName: "x.circle")!
+                    imageView.tintColor = .systemRed
+                    let label = checkLabel.arrangedSubviews.last! as! UILabel
+                    label.text = "불가능합니다"
+                    label.textColor = .systemRed
                 }
                 
             } catch {
