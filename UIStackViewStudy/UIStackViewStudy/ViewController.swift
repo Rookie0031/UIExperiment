@@ -31,7 +31,7 @@ final class ViewController: UIViewController {
     
     private let secondConsecutiveLabel = TwoHstackLabel.basicLabel(firstLabelText: "밴드 소개", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .light, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .light)
     
-    private let testTextView = UITextView.makeBasicTextView("우리 밴드를 더 잘 보여줄 수 있는 소개를 간단히 적어주세요", textColor: .systemBlue, lineSpacing: 5)
+    private let testTextView = UITextView.makeBasicTextView("우리 밴드를 더 잘 보여줄 수 있는 소개를 간단히 적어주세요", textColor: .white, lineSpacing: 5)
     
     private let titleLabel: UILabel = {
         let label = UILabel.makeBasicLabel(labelText: "밴드에 대해\n간단히 알려주세요", textColor: .white, fontStyle: .largeTitle, fontWeight: .heavy, numberOfLines: 2)
@@ -49,7 +49,6 @@ final class ViewController: UIViewController {
         stackView.spacing = 10
         return stackView
     }()
-    
     
     private lazy var titleVstack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
@@ -72,7 +71,6 @@ final class ViewController: UIViewController {
         return scrollView
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
@@ -89,10 +87,12 @@ final class ViewController: UIViewController {
     private func render() {
         
         mainScrollView.constraint(centerX: view.centerXAnchor, centerY: view.centerYAnchor)
+        
         mainScrollView.constraint(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
+        
         contentView.constraint(top: mainScrollView.topAnchor, leading: mainScrollView.leadingAnchor, bottom: mainScrollView.bottomAnchor, trailing: mainScrollView.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
         
-        testTextView.constraint(.heightAnchor, constant: 350)
+        testTextView.constraint(.heightAnchor, constant: 200)
     }
     
     private func setNotificaiton() {
