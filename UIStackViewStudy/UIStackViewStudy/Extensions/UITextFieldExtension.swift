@@ -8,17 +8,14 @@
 import UIKit
 
 extension UITextField {
-    static func makeBasicTextField(placeHolder: String, characterLimit: Int) -> UITextField {
+    static func makeBasicTextField(placeholder: String, characterLimit: Int) -> UITextField {
         let textField: UITextField = {
             
-            let width = UIScreen.main.bounds.width * 0.85
-            let height = width * 0.15
-            
             let textField = UITextField(frame: .zero)
-            textField.constraint(.widthAnchor, constant: width)
-            textField.constraint(.heightAnchor, constant: height)
+            textField.constraint(.widthAnchor, constant: DeviceSize.width * 0.9)
+            textField.constraint(.heightAnchor, constant: DeviceSize.width * 0.9 * 0.15)
             
-            textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14, weight: .light)])
+            textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14, weight: .light)])
             
             textField.maxCount = characterLimit
             textField.layer.borderWidth = 2

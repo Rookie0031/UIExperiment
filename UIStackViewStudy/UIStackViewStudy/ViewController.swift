@@ -9,9 +9,21 @@ import UIKit
 
 final class ViewController: UIViewController {
     
+    private let titleLabel: UILabel = {
+        let label = UILabel.makeBasicLabel(labelText: "밴드에 대해\n간단히 알려주세요", textColor: .white, fontStyle: .largeTitle, fontWeight: .heavy, numberOfLines: 2)
+        return label
+    }()
+    
+    private let subTitleLabel: UILabel = {
+        let label = UILabel.makeBasicLabel(labelText: "작성해주신 정보는 내 프로필로 만들어지고\n프로필은 다른 사용자들이 볼 수 있어요", textColor: .white, fontStyle: .title3, fontWeight: .regular, numberOfLines: 2)
+        return label
+    }()
+    
+    private let bandIntroductionLabel = TwoHstackLabel.basicLabel(firstLabelText: "밴드 소개", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .light, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .light)
+    
     private lazy var firstTextField: UITextField = {
         //MARK: 텍스트 필드 공통 컴퍼넌트 이용 - 플레이스홀더와 글자수 제한 입력
-        let textField = UITextField.makeBasicTextField(placeHolder: "밴드 이름을 입력해주세요", characterLimit: 5)
+        let textField = UITextField.makeBasicTextField(placeholder: "밴드 이름을 입력해주세요", characterLimit: 5)
         
         //MARK: 중복 확인이 필요한 텍스트 필드인 경우 아래 로직대로 진행
         // 중복확인은 개별 텍스트 필드의 글자가 필요하니 일일이 이렇게 구현해주어야한다
@@ -24,31 +36,8 @@ final class ViewController: UIViewController {
     
     private lazy var checkLabel: UIStackView = TwoHstackLabel.checkLabel
     
-    private let firstLabel: UILabel = {
-        let label = UILabel.makeBasicLabel(labelText: "This is Text", textColor: .white, fontStyle: .headline, fontWeight: .bold)
-        return label
-    }()
+    private let testTextView = BasicTextView()
     
-    private let secondConsecutiveLabel = TwoHstackLabel.basicLabel(firstLabelText: "밴드 소개", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .light, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .light)
-    
-    private let testTextView = UITextView.makeBasicTextView("우리 밴드를 더 잘 보여줄 수 있는 소개를 간단히 적어주세요", textColor: .white, lineSpacing: 5)
-    
-    private let titleLabel: UILabel = {
-        let label = UILabel.makeBasicLabel(labelText: "밴드에 대해\n간단히 알려주세요", textColor: .white, fontStyle: .largeTitle, fontWeight: .heavy, numberOfLines: 2)
-        return label
-    }()
-    
-    private let subTitleLabel: UILabel = {
-        let label = UILabel.makeBasicLabel(labelText: "작성해주신 정보는 내 프로필로 만들어지고\n프로필은 다른 사용자들이 볼 수 있어요", textColor: .white, fontStyle: .title3, fontWeight: .regular, numberOfLines: 2)
-        return label
-    }()
-    
-    private lazy var firstVStack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [secondConsecutiveLabel, firstTextField, checkLabel])
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        return stackView
-    }()
     
     private lazy var titleVstack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
@@ -57,9 +46,18 @@ final class ViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var contentView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleVstack, firstVStack, testTextView])
+    private lazy var textFieldVstack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [bandIntroductionLabel, firstTextField, checkLabel])
         stackView.axis = .vertical
+        stackView.spacing = 10
+        return stackView
+    }()
+    
+    private lazy var contentView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, testTextView])
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .center
         stackView.spacing = 40
         return stackView
     }()
@@ -86,13 +84,13 @@ final class ViewController: UIViewController {
     
     private func render() {
         
+        titleVstack.constraint(leading: view.safeAreaLayoutGuide.leadingAnchor, padding: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0))
+        
         mainScrollView.constraint(centerX: view.centerXAnchor, centerY: view.centerYAnchor)
         
         mainScrollView.constraint(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
         
         contentView.constraint(top: mainScrollView.topAnchor, leading: mainScrollView.leadingAnchor, bottom: mainScrollView.bottomAnchor, trailing: mainScrollView.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
-        
-        testTextView.constraint(.heightAnchor, constant: 200)
     }
     
     private func setNotificaiton() {
