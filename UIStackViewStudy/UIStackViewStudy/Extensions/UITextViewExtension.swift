@@ -18,12 +18,10 @@ extension UITextView {
         attributedString.addAttribute(NSAttributedString.Key.kern, value: CGFloat(0), range: NSRange(location: 0, length: attributedString.length))
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: NSRange(location: 0, length: attributedString.length))
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: textColor, range: NSRange(location: 0, length: placeholder.count) )
+        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14, weight: .bold), range: NSRange(location: 0, length: placeholder.count))
         textView.attributedText = attributedString
         
         textView.backgroundColor = .systemGray
-        textView.layer.borderWidth = 2
-        textView.layer.cornerRadius = 10
-        textView.layer.borderColor = UIColor.orange.cgColor
         
         return textView
     }

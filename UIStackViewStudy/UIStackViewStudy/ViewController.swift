@@ -19,25 +19,19 @@ final class ViewController: UIViewController {
         return label
     }()
     
+    private let bandNameLabel = TwoHstackLabel.basicLabel(firstLabelText: "밴드 이름", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .light, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .light)
+    
     private let bandIntroductionLabel = TwoHstackLabel.basicLabel(firstLabelText: "밴드 소개", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .light, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .light)
     
-    private lazy var firstTextField: UITextField = {
+    private lazy var firstTextField: UIView = {
         //MARK: 텍스트 필드 공통 컴퍼넌트 이용 - 플레이스홀더와 글자수 제한 입력
-        let textField = UITextField.makeBasicTextField(placeholder: "밴드 이름을 입력해주세요", characterLimit: 5)
-        
-        //MARK: 중복 확인이 필요한 텍스트 필드인 경우 아래 로직대로 진행
-        // 중복확인은 개별 텍스트 필드의 글자가 필요하니 일일이 이렇게 구현해주어야한다
-        let rightView = BasicRightView()
-        rightView.testButton.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
-        textField.rightView = rightView
-        textField.rightViewMode = .always
+        let textField = BasicTextField()
         return textField
     }()
     
     private lazy var checkLabel: UIStackView = TwoHstackLabel.checkLabel
     
-    private let testTextView = BasicTextView()
-    
+    private let bandIntroTextView = BasicTextView()
     
     private lazy var titleVstack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
@@ -47,14 +41,21 @@ final class ViewController: UIViewController {
     }()
     
     private lazy var textFieldVstack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [bandIntroductionLabel, firstTextField, checkLabel])
+        let stackView = UIStackView(arrangedSubviews: [bandNameLabel, firstTextField, checkLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        return stackView
+    }()
+    
+    private lazy var textViewVstack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [bandIntroductionLabel, bandIntroTextView])
         stackView.axis = .vertical
         stackView.spacing = 10
         return stackView
     }()
     
     private lazy var contentView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, testTextView])
+        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, textViewVstack])
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.alignment = .center
@@ -73,7 +74,6 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         addSubviews()
         render()
-        setNotificaiton()
         setConfiguration()
     }
     
@@ -93,10 +93,6 @@ final class ViewController: UIViewController {
         contentView.constraint(top: mainScrollView.topAnchor, leading: mainScrollView.leadingAnchor, bottom: mainScrollView.bottomAnchor, trailing: mainScrollView.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
     }
     
-    private func setNotificaiton() {
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
-    }
-    
     private func setConfiguration() {
         view.backgroundColor = .systemGray
         checkLabel.isHidden = true
@@ -104,34 +100,6 @@ final class ViewController: UIViewController {
 }
 
 extension ViewController {
-    @objc func textDidChange(noti: NSNotification) {
-        let maxCount = firstTextField.maxCount
-            if let text = firstTextField.text {
-                if text.count >= maxCount {
-                    let maxCountIndex = text.index(text.startIndex, offsetBy: maxCount)
-                    let fixedText = String(text[text.startIndex..<maxCountIndex])
-                    firstTextField.text = fixedText + " "
-                    
-                    let when = DispatchTime.now() + 0.01
-                    DispatchQueue.main.asyncAfter(deadline: when) {
-                        self.firstTextField.text = fixedText
-                    }
-                }
-            }
-        }
-    
-    @objc func didTapCheckButton() {
-        Task {
-            do {
-                let isChecked = try await NetworkManager.shared.checkDuplication(with: firstTextField.text ?? "")
-                
-                showDuplicationCheckLabel(with: isChecked)
-                
-            } catch {
-                throw FetchError.unknown
-            }
-        }
-    }
     
     private func showDuplicationCheckLabel(with isChecked: Bool) {
         checkLabel.isHidden = false
