@@ -24,9 +24,10 @@
 		9A9996F1297929B000C207E0 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996F0297929B000C207E0 /* NetworkError.swift */; };
 		9AB153EA297A693E00AD220A /* BasicTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB153E9297A693E00AD220A /* BasicTextView.swift */; };
 		9AB153EC297A77F000AD220A /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB153EB297A77F000AD220A /* GlobalData.swift */; };
-		9AD0BFB1297BAF43004B8F78 /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD0BFB0297BAF43004B8F78 /* BasicTextField.swift */; };
+		9AD0BFB1297BAF43004B8F78 /* TextLimitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD0BFB0297BAF43004B8F78 /* TextLimitTextField.swift */; };
 		9AE796BB29795F50008D6976 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE796BA29795F50008D6976 /* UITextViewExtension.swift */; };
 		A9553BFE297C2C93001644DB /* BasicBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFD297C2C93001644DB /* BasicBoxView.swift */; };
+		A9553C00297C30C7001644DB /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFF297C30C7001644DB /* BasicTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,9 +50,10 @@
 		9A9996F0297929B000C207E0 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		9AB153E9297A693E00AD220A /* BasicTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextView.swift; sourceTree = "<group>"; };
 		9AB153EB297A77F000AD220A /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
-		9AD0BFB0297BAF43004B8F78 /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
+		9AD0BFB0297BAF43004B8F78 /* TextLimitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLimitTextField.swift; sourceTree = "<group>"; };
 		9AE796BA29795F50008D6976 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		A9553BFD297C2C93001644DB /* BasicBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBoxView.swift; sourceTree = "<group>"; };
+		A9553BFF297C30C7001644DB /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,9 +112,10 @@
 				9A9996E62978D72800C207E0 /* ConstraintExtension.swift */,
 				9A9996EA2978FD4C00C207E0 /* UIViewExtension.swift */,
 				9AB153E9297A693E00AD220A /* BasicTextView.swift */,
-				9AD0BFB0297BAF43004B8F78 /* BasicTextField.swift */,
+				9AD0BFB0297BAF43004B8F78 /* TextLimitTextField.swift */,
 				9AE796BA29795F50008D6976 /* UITextViewExtension.swift */,
 				A9553BFD297C2C93001644DB /* BasicBoxView.swift */,
+				A9553BFF297C30C7001644DB /* BasicTextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -198,8 +201,9 @@
 				9AB153EC297A77F000AD220A /* GlobalData.swift in Sources */,
 				9A9996E92978FAE600C207E0 /* BasicRightView.swift in Sources */,
 				9A9996EB2978FD4C00C207E0 /* UIViewExtension.swift in Sources */,
+				A9553C00297C30C7001644DB /* BasicTextField.swift in Sources */,
 				9A2F6A202978088C00DECE9F /* AppDelegate.swift in Sources */,
-				9AD0BFB1297BAF43004B8F78 /* BasicTextField.swift in Sources */,
+				9AD0BFB1297BAF43004B8F78 /* TextLimitTextField.swift in Sources */,
 				9AB153EA297A693E00AD220A /* BasicTextView.swift in Sources */,
 				9A9996F1297929B000C207E0 /* NetworkError.swift in Sources */,
 				9AE796BB29795F50008D6976 /* UITextViewExtension.swift in Sources */,

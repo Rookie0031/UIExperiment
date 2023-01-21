@@ -24,7 +24,7 @@ final class ViewController: UIViewController {
     private let bandIntroductionLabel = TwoHstackLabel.basicLabel(firstLabelText: "밴드 소개", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .light, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .light)
     
     private lazy var bandNamingTextFieldView: UIView = {
-        let textField = BasicTextField(maxCount: 10)
+        let textField = TextLimitTextField(maxCount: 10)
         return textField
     }()
     
@@ -62,9 +62,22 @@ final class ViewController: UIViewController {
         boxView.basicRightView.isHidden = false
         return boxView
     }()
+
+    private var detailPracticePlace = BasicBoxView(text: "상세주소를  입력해주세요(선택)")
+
+    private var practiceLabel = TwoHstackLabel.basicLabel(firstLabelText: "합주곡", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .regular, secondLabelText: "선택", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .regular)
+
+    private var practiceSubLabel = UILabel.makeBasicLabel(labelText: "* 지도에서 우리밴드가 보여질 위치입니다.", textColor: .white, fontStyle: .footnote, fontWeight: .regular)
+
+    private lazy var practicePlaceStack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [practiceLabel, practiceSubLabel, practicePlace, detailPracticePlace])
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        return stackView
+    }()
     
     private lazy var contentView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, textViewVstack, practicePlace])
+        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, textViewVstack, practicePlaceStack])
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.alignment = .center
@@ -76,6 +89,7 @@ final class ViewController: UIViewController {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
         scrollView.backgroundColor = .systemGray
+        scrollView.bounces = false
         return scrollView
     }()
     
