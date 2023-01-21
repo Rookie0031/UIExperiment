@@ -23,15 +23,23 @@ final class ViewController: UIViewController {
     
     private let bandIntroductionLabel = TwoHstackLabel.basicLabel(firstLabelText: "밴드 소개", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .light, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .light)
     
-    private lazy var firstTextField: UIView = {
-        //MARK: 텍스트 필드 공통 컴퍼넌트 이용 - 플레이스홀더와 글자수 제한 입력
-        let textField = BasicTextField()
+    private lazy var bandNamingTextFieldView: UIView = {
+        let textField = BasicTextField(maxCount: 10)
+        return textField
+    }()
+    
+    private lazy var testTextField: UIView = {
+        let textField = BasicTextField(maxCount: 20)
         return textField
     }()
     
     private lazy var checkLabel: UIStackView = TwoHstackLabel.checkLabel
     
-    private let bandIntroTextView = BasicTextView()
+    private let bandIntroTextView = {
+        BasicTextView.maxCount = 30
+        let textView = BasicTextView()
+        return textView
+    }()
     
     private lazy var titleVstack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
@@ -41,7 +49,7 @@ final class ViewController: UIViewController {
     }()
     
     private lazy var textFieldVstack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [bandNameLabel, firstTextField, checkLabel])
+        let stackView = UIStackView(arrangedSubviews: [bandNameLabel, bandNamingTextFieldView, checkLabel])
         stackView.axis = .vertical
         stackView.spacing = 10
         return stackView
@@ -55,7 +63,7 @@ final class ViewController: UIViewController {
     }()
     
     private lazy var contentView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, textViewVstack])
+        let stackView = UIStackView(arrangedSubviews: [testTextField, titleVstack, textFieldVstack, textViewVstack])
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.alignment = .center

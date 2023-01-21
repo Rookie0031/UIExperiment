@@ -45,9 +45,3 @@ extension UITextField {
         }
     }
 }
-
-extension UITextField {
-    static func checkDuplication() -> Bool {
-        return true
-    }
-}

@@ -77,14 +77,14 @@ extension BasicTextView: UITextViewDelegate {
 extension BasicTextView {
     @objc func textViewTextDidChange(noti: NSNotification) {
         print("textViewTextDidChange")
-        let maxCount = MaxCount.number
+        let maxCount = BasicTextView.maxCount
         if let text = textView.text {
             if text.count >= maxCount {
                 let maxCountIndex = text.index(text.startIndex, offsetBy: maxCount)
                 let fixedText = String(text[text.startIndex..<maxCountIndex])
                 textView.text = fixedText + " "
                 countLabel.text = "\(maxCount)/\(maxCount)"
-
+                
                 let when = DispatchTime.now() + 0.01
                 DispatchQueue.main.asyncAfter(deadline: when) {
                     self.textView.attributedText = NSAttributedString(string: fixedText)
@@ -95,15 +95,14 @@ extension BasicTextView {
 }
 
 extension BasicTextView {
-    struct MaxCount {
-        static var number: Int = 300
-    }
+    static var maxCount: Int = 300
+    
     var maxCount: Int {
         get {
-            MaxCount.number
+            BasicTextView.maxCount
         }
         set(newValue) {
-            MaxCount.number = newValue
+            BasicTextView.maxCount = newValue
         }
     }
     
