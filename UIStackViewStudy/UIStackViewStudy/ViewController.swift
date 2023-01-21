@@ -28,11 +28,6 @@ final class ViewController: UIViewController {
         return textField
     }()
     
-    private lazy var testTextField: UIView = {
-        let textField = BasicTextField(maxCount: 20)
-        return textField
-    }()
-    
     private lazy var checkLabel: UIStackView = TwoHstackLabel.checkLabel
     
     private let bandIntroTextView = {
@@ -61,9 +56,15 @@ final class ViewController: UIViewController {
         stackView.spacing = 10
         return stackView
     }()
+
+    private var practicePlace = {
+        let boxView = BasicBoxView(text: "합주실 위치")
+        boxView.basicRightView.isHidden = false
+        return boxView
+    }()
     
     private lazy var contentView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [testTextField, titleVstack, textFieldVstack, textViewVstack])
+        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, textViewVstack, practicePlace])
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.alignment = .center

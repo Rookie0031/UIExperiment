@@ -12,7 +12,7 @@ final class BasicTextField: UIView {
     var maximumCount: Int
     
     //MARK: 여기 characterLimit을 조져야함 
-    lazy var textField: UITextField = UITextField.makeBasicTextField(placeholder: "밴드 이름을 입력해주세요", characterLimit: 15)
+    lazy var textField: UITextField = UITextField.makeBasicTextField(placeholder: "밴드 이름을 입력해주세요", characterLimit: maximumCount)
     
         //MARK: 중복 확인이 필요한 텍스트 필드인 경우 아래 로직대로 진행
         // 중복확인은 개별 텍스트 필드의 글자가 필요하니 일일이 이렇게 구현해주어야한다
