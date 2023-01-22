@@ -23,11 +23,11 @@ final class BasicTextField: UIView {
         self.placeholder = placeholder
         super.init(frame: .zero)
 
-        constraint(.widthAnchor, constant: DeviceSize.width * 0.9)
-        constraint(.heightAnchor, constant: DeviceSize.width * 0.9 * 0.15)
+//        constraint(.widthAnchor, constant: DeviceSize.width * 0.9)
+//        constraint(.heightAnchor, constant: DeviceSize.width * 0.9 * 0.15)
 
         addSubview(textField)
-        textField.constraint(top: self.topAnchor, leading: self.leadingAnchor)
+        textField.constraint(leading: self.leadingAnchor, centerY: self.centerYAnchor)
     }
 
     required init(coder: NSCoder) {

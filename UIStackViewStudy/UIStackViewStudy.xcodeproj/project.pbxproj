@@ -28,6 +28,7 @@
 		9AE796BB29795F50008D6976 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE796BA29795F50008D6976 /* UITextViewExtension.swift */; };
 		A9553BFE297C2C93001644DB /* BasicBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFD297C2C93001644DB /* BasicBoxView.swift */; };
 		A9553C00297C30C7001644DB /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFF297C30C7001644DB /* BasicTextField.swift */; };
+		A9553C02297CF382001644DB /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553C01297CF382001644DB /* MapSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		9AE796BA29795F50008D6976 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		A9553BFD297C2C93001644DB /* BasicBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBoxView.swift; sourceTree = "<group>"; };
 		A9553BFF297C30C7001644DB /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
+		A9553C01297CF382001644DB /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				9A2F6A3529780F9700DECE9F /* Extensions */,
 				9A9996EC2979202D00C207E0 /* DummyData.swift */,
 				9AB153EB297A77F000AD220A /* GlobalData.swift */,
+				A9553C01297CF382001644DB /* MapSearchViewController.swift */,
 			);
 			path = UIStackViewStudy;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				9A2F6A202978088C00DECE9F /* AppDelegate.swift in Sources */,
 				9AD0BFB1297BAF43004B8F78 /* TextLimitTextField.swift in Sources */,
 				9AB153EA297A693E00AD220A /* BasicTextView.swift in Sources */,
+				A9553C02297CF382001644DB /* MapSearchViewController.swift in Sources */,
 				9A9996F1297929B000C207E0 /* NetworkError.swift in Sources */,
 				9AE796BB29795F50008D6976 /* UITextViewExtension.swift in Sources */,
 				9A9996ED2979202D00C207E0 /* DummyData.swift in Sources */,

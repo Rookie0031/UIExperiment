@@ -18,20 +18,24 @@ final class TextLimitTextField: UIView {
         // 중복확인은 개별 텍스트 필드의 글자가 필요하니 일일이 이렇게 구현해주어야한다
     
     private lazy var checkLabel: UIStackView = TwoHstackLabel.checkLabel
+
+    private lazy var checkButton = {
+        let button = DuplicationCheckButton()
+        button.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
+        return button
+    }()
     
     init(maxCount: Int) {
         self.maximumCount = maxCount
         super.init(frame: .zero)
-        let rightView = BasicRightView()
-        rightView.testButton.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
-        textField.rightView = rightView
-        textField.rightViewMode = .always
         
         constraint(.widthAnchor, constant: DeviceSize.width * 0.9)
         constraint(.heightAnchor, constant: DeviceSize.width * 0.9 * 0.15)
         
-        addSubview(textField)
+        addSubviews(textField, checkButton)
         textField.constraint(top: self.topAnchor, leading: self.leadingAnchor)
+
+        checkButton.constraint(trailing: self.trailingAnchor, centerY: self.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10))
         
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidChange), name: UITextField.textDidChangeNotification, object: nil)
     }
