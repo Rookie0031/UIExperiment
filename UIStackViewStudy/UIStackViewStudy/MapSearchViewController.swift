@@ -1,137 +1,137 @@
+////
+////  MapSearchViewController.swift
+////  UIStackViewStudy
+////
+////  Created by Jisu Jang on 2023/01/22.
+////
+//import MapKit
+//import UIKit
 //
-//  MapSearchViewController.swift
-//  UIStackViewStudy
+//class MapSearchViewController: UIViewController {
+//    var completion: (_ mapItem: MKMapItem) -> Void = { mapItem in }
 //
-//  Created by Jisu Jang on 2023/01/22.
+//    private var searchCompleter = MKLocalSearchCompleter()
+//    private var searchResults = [MKLocalSearchCompletion]()
 //
-import MapKit
-import UIKit
-
-class MapSearchViewController: UIViewController {
-    var completion: (_ mapItem: MKMapItem) -> Void = { mapItem in }
-
-    private var searchCompleter = MKLocalSearchCompleter()
-    private var searchResults = [MKLocalSearchCompletion]()
-
-    private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.delegate = self
-        searchBar.showsCancelButton = true
-        searchBar.becomeFirstResponder()
-
-        return searchBar
-    }()
-
-    private lazy var searchResultTable: UITableView = {
-        let tableView = UITableView()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(MapSearchResultTableViewCell.self, forCellReuseIdentifier: MapSearchResultTableViewCell.identifier)
-
-        return tableView
-    }()
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = .systemBackground
-        self.addSubViews()
-        self.configureConstraints()
-        self.configureSearchCompleter()
-    }
-
-    private func addSubViews() {
-        view.addSubview(searchBar)
-        view.addSubview(searchResultTable)
-    }
-
-    private func configureConstraints() {
-        searchBar.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(Layout.mapSearchViewSearchBarTopPadding)
-        }
-        searchResultTable.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom)
-            make.horizontalEdges.bottom.equalToSuperview()
-        }
-    }
-
-    private func configureSearchCompleter() {
-        self.searchCompleter.delegate = self
-        self.searchCompleter.resultTypes = .query
-    }
-}
-
-extension MapSearchViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
-            searchResults.removeAll()
-            searchResultTable.reloadData()
-        }
-      // 사용자가 search bar 에 입력한 text를 자동완성 대상에 넣는다
-        searchCompleter.queryFragment = searchText
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.dismiss(animated: true, completion: nil)
-    }
-}
-
-extension MapSearchViewController: MKLocalSearchCompleterDelegate {
-  // 자동완성 완료시 결과를 받는 method
-  func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        searchResults = completer.results
-        searchResultTable.reloadData()
-    }
-    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-        // 에러 처리
-    }
-}
-
-extension MapSearchViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MapSearchResultTableViewCell.identifier, for: indexPath) as? MapSearchResultTableViewCell else { return UITableViewCell()}
-
-        let searchResult = searchResults[indexPath.row]
-        cell.setUI(mapSearchResult: searchResult)
-
-        return cell
-    }
-}
-
-extension MapSearchViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Layout.mapSearchTableViewCellHeight
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedResult = searchResults[indexPath.row]
-        let searchRequest = MKLocalSearch.Request(completion: selectedResult)
-        let search = MKLocalSearch(request: searchRequest)
-        search.start { (response, error) in
-            guard error == nil else {
-                return
-            }
-            guard let mapItem = response?.mapItems.first else { return }
-            self.dismiss(animated: true){
-                self.completion(mapItem)
-            }
-        }
-    }
-}
-
-extension MapSearchViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.searchBar.resignFirstResponder()
-    }
-}
-
+//    private lazy var searchBar: UISearchBar = {
+//        let searchBar = UISearchBar()
+//        searchBar.delegate = self
+//        searchBar.showsCancelButton = true
+//        searchBar.becomeFirstResponder()
+//
+//        return searchBar
+//    }()
+//
+//    private lazy var searchResultTable: UITableView = {
+//        let tableView = UITableView()
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.register(MapSearchResultTableViewCell.self, forCellReuseIdentifier: MapSearchResultTableViewCell.identifier)
+//
+//        return tableView
+//    }()
+//
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        view.backgroundColor = .systemBackground
+//        self.addSubViews()
+//        self.configureConstraints()
+//        self.configureSearchCompleter()
+//    }
+//
+//    private func addSubViews() {
+//        view.addSubview(searchBar)
+//        view.addSubview(searchResultTable)
+//    }
+//
+//    private func configureConstraints() {
+//        searchBar.snp.makeConstraints { make in
+//            make.horizontalEdges.equalToSuperview()
+//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(Layout.mapSearchViewSearchBarTopPadding)
+//        }
+//        searchResultTable.snp.makeConstraints { make in
+//            make.top.equalTo(searchBar.snp.bottom)
+//            make.horizontalEdges.bottom.equalToSuperview()
+//        }
+//    }
+//
+//    private func configureSearchCompleter() {
+//        self.searchCompleter.delegate = self
+//        self.searchCompleter.resultTypes = .query
+//    }
+//}
+//
+//extension MapSearchViewController: UISearchBarDelegate {
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchText == "" {
+//            searchResults.removeAll()
+//            searchResultTable.reloadData()
+//        }
+//      // 사용자가 search bar 에 입력한 text를 자동완성 대상에 넣는다
+//        searchCompleter.queryFragment = searchText
+//    }
+//
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        self.dismiss(animated: true, completion: nil)
+//    }
+//}
+//
+//extension MapSearchViewController: MKLocalSearchCompleterDelegate {
+//  // 자동완성 완료시 결과를 받는 method
+//  func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+//        searchResults = completer.results
+//        searchResultTable.reloadData()
+//    }
+//    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+//        // 에러 처리
+//    }
+//}
+//
+//extension MapSearchViewController: UITableViewDataSource {
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return searchResults.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: MapSearchResultTableViewCell.identifier, for: indexPath) as? MapSearchResultTableViewCell else { return UITableViewCell()}
+//
+//        let searchResult = searchResults[indexPath.row]
+//        cell.setUI(mapSearchResult: searchResult)
+//
+//        return cell
+//    }
+//}
+//
+//extension MapSearchViewController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return Layout.mapSearchTableViewCellHeight
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let selectedResult = searchResults[indexPath.row]
+//        let searchRequest = MKLocalSearch.Request(completion: selectedResult)
+//        let search = MKLocalSearch(request: searchRequest)
+//        search.start { (response, error) in
+//            guard error == nil else {
+//                return
+//            }
+//            guard let mapItem = response?.mapItems.first else { return }
+//            self.dismiss(animated: true){
+//                self.completion(mapItem)
+//            }
+//        }
+//    }
+//}
+//
+//extension MapSearchViewController: UIScrollViewDelegate {
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        self.searchBar.resignFirstResponder()
+//    }
+//}
+//

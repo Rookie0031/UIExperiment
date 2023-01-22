@@ -24,7 +24,7 @@ final class ViewController: UIViewController {
     private let bandIntroductionLabel = TwoHstackLabel.basicLabel(firstLabelText: "밴드 소개", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .light, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .light)
     
     private lazy var bandNamingTextFieldView: UIView = {
-        let textField = TextLimitTextField(maxCount: 10)
+        let textField = TextLimitTextField(placeholer: "밴드 이름을 입력해주세요", maxCount: 10)
         return textField
     }()
     
@@ -63,7 +63,7 @@ final class ViewController: UIViewController {
         return boxView
     }()
 
-    private var detailPracticePlace = BasicBoxView(text: "상세주소를  입력해주세요(선택)")
+    private var detailPracticePlace = BasicTextField(placeholder: "상세 주소를 입력해주세요 (선택)")
 
     private var practiceLabel = TwoHstackLabel.basicLabel(firstLabelText: "합주곡", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .regular, secondLabelText: "선택", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .regular)
 
@@ -77,7 +77,7 @@ final class ViewController: UIViewController {
     }()
     
     private lazy var contentView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, textViewVstack, practicePlaceStack])
+        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, practicePlaceStack, textViewVstack])
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.alignment = .center

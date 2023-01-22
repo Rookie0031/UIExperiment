@@ -8,16 +8,13 @@
 import UIKit
 
 final class TextLimitTextField: UIView {
+
+    private let placeholder: String
+    private let maximumCount: Int
+
+    private lazy var textField: UITextField = UITextField.makeBasicTextField(placeholder: placeholder, characterLimit: maximumCount)
     
-    var maximumCount: Int
-    
-    //MARK: 여기 characterLimit을 조져야함 
-    lazy var textField: UITextField = UITextField.makeBasicTextField(placeholder: "밴드 이름을 입력해주세요", characterLimit: maximumCount)
-    
-        //MARK: 중복 확인이 필요한 텍스트 필드인 경우 아래 로직대로 진행
-        // 중복확인은 개별 텍스트 필드의 글자가 필요하니 일일이 이렇게 구현해주어야한다
-    
-    private lazy var checkLabel: UIStackView = TwoHstackLabel.checkLabel
+    private let checkLabel: UIStackView = TwoHstackLabel.checkLabel
 
     private lazy var checkButton = {
         let button = DuplicationCheckButton()
@@ -25,8 +22,9 @@ final class TextLimitTextField: UIView {
         return button
     }()
     
-    init(maxCount: Int) {
+    init(placeholer: String, maxCount: Int) {
         self.maximumCount = maxCount
+        self.placeholder = placeholer
         super.init(frame: .zero)
         
         constraint(.widthAnchor, constant: DeviceSize.width * 0.9)
@@ -81,6 +79,7 @@ extension TextLimitTextField {
         let imageView = checkLabel.arrangedSubviews.first! as! UIImageView
         imageView.image = isChecked ? UIImage(systemName: "checkmark.circle")! : UIImage(systemName: "x.circle")!
         imageView.tintColor = isChecked ? .systemBlue : .systemRed
+
         let label = checkLabel.arrangedSubviews.last! as! UILabel
         label.text = isChecked ? "가능합니다" : "불가능합니다"
         label.textColor = isChecked ? .systemBlue : .systemRed
