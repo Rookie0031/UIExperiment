@@ -9,9 +9,9 @@ import UIKit
 
 class BasicBoxView: UIView {
 
-    var text: String
+    var text: String = ""
 
-    private lazy var basicLabel = UILabel.makeBasicLabel(labelText: text, textColor: .white, fontStyle: .body, fontWeight: .bold)
+    lazy var basicLabel = UILabel.makeBasicLabel(labelText: text, textColor: .white, fontStyle: .body, fontWeight: .bold)
 
     var basicRightView: UIImageView = {
         let imageView = UIImageView()
@@ -20,19 +20,20 @@ class BasicBoxView: UIView {
         return imageView
     }()
 
-    init(text: String) {
-        self.text = text
+    init(text: String? = nil) {
+        if let text = text { self.text = text }
         super.init(frame: .zero)
 
         addSubviews(basicLabel, basicRightView)
         basicRightView.isHidden = true
 
         constraint(.widthAnchor, constant: DeviceSize.width * 0.9)
-        constraint(.heightAnchor, constant: DeviceSize.width * 0.9 * 0.15)
+        constraint(.heightAnchor, constant: 55)
 
-        self.layer.borderWidth = 2
+        self.layer.borderWidth = 1
         self.layer.cornerRadius = 10
-        self.layer.borderColor = UIColor.orange.cgColor
+        self.backgroundColor = .dark02
+        self.layer.borderColor = UIColor.white.cgColor
 
         basicLabel.constraint(leading: self.leadingAnchor, centerY: self.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0))
 

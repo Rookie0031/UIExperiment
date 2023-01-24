@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A29E6E2297E0F6200D4A433 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29E6E1297E0F6200D4A433 /* UIColor+Extensions.swift */; };
+		9A29E6E4297E0F7900D4A433 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29E6E3297E0F7900D4A433 /* UIFont+Extensions.swift */; };
 		9A2F6A202978088C00DECE9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F6A1F2978088C00DECE9F /* AppDelegate.swift */; };
 		9A2F6A222978088C00DECE9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F6A212978088C00DECE9F /* SceneDelegate.swift */; };
 		9A2F6A242978088C00DECE9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F6A232978088C00DECE9F /* ViewController.swift */; };
@@ -22,6 +24,8 @@
 		9A9996ED2979202D00C207E0 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996EC2979202D00C207E0 /* DummyData.swift */; };
 		9A9996EF297927DB00C207E0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996EE297927DB00C207E0 /* NetworkManager.swift */; };
 		9A9996F1297929B000C207E0 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996F0297929B000C207E0 /* NetworkError.swift */; };
+		9AAD0CCA297F808E008DC808 /* MapSearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAD0CC9297F808E008DC808 /* MapSearchResultTableViewCell.swift */; };
+		9AAD0CCC297F97A2008DC808 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAD0CCB297F97A2008DC808 /* SearchTextField.swift */; };
 		9AB153EA297A693E00AD220A /* BasicTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB153E9297A693E00AD220A /* BasicTextView.swift */; };
 		9AB153EC297A77F000AD220A /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB153EB297A77F000AD220A /* GlobalData.swift */; };
 		9AD0BFB1297BAF43004B8F78 /* TextLimitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD0BFB0297BAF43004B8F78 /* TextLimitTextField.swift */; };
@@ -32,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A29E6E1297E0F6200D4A433 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		9A29E6E3297E0F7900D4A433 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		9A2F6A1C2978088C00DECE9F /* UIStackViewStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIStackViewStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A2F6A1F2978088C00DECE9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A2F6A212978088C00DECE9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +55,8 @@
 		9A9996EC2979202D00C207E0 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		9A9996EE297927DB00C207E0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9A9996F0297929B000C207E0 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		9AAD0CC9297F808E008DC808 /* MapSearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		9AAD0CCB297F97A2008DC808 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		9AB153E9297A693E00AD220A /* BasicTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextView.swift; sourceTree = "<group>"; };
 		9AB153EB297A77F000AD220A /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
 		9AD0BFB0297BAF43004B8F78 /* TextLimitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLimitTextField.swift; sourceTree = "<group>"; };
@@ -90,7 +98,6 @@
 			children = (
 				9A9996F0297929B000C207E0 /* NetworkError.swift */,
 				9A9996EE297927DB00C207E0 /* NetworkManager.swift */,
-				9A9996E82978FAE600C207E0 /* BasicRightView.swift */,
 				9A2F6A1F2978088C00DECE9F /* AppDelegate.swift */,
 				9A2F6A212978088C00DECE9F /* SceneDelegate.swift */,
 				9A2F6A232978088C00DECE9F /* ViewController.swift */,
@@ -102,6 +109,7 @@
 				9A9996EC2979202D00C207E0 /* DummyData.swift */,
 				9AB153EB297A77F000AD220A /* GlobalData.swift */,
 				A9553C01297CF382001644DB /* MapSearchViewController.swift */,
+				9AAD0CC9297F808E008DC808 /* MapSearchResultTableViewCell.swift */,
 			);
 			path = UIStackViewStudy;
 			sourceTree = "<group>";
@@ -117,8 +125,12 @@
 				9AB153E9297A693E00AD220A /* BasicTextView.swift */,
 				9AE796BA29795F50008D6976 /* UITextViewExtension.swift */,
 				A9553BFD297C2C93001644DB /* BasicBoxView.swift */,
+				9A9996E82978FAE600C207E0 /* BasicRightView.swift */,
 				9AD0BFB0297BAF43004B8F78 /* TextLimitTextField.swift */,
+				9AAD0CCB297F97A2008DC808 /* SearchTextField.swift */,
 				A9553BFF297C30C7001644DB /* BasicTextField.swift */,
+				9A29E6E1297E0F6200D4A433 /* UIColor+Extensions.swift */,
+				9A29E6E3297E0F7900D4A433 /* UIFont+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -201,11 +213,15 @@
 				9A2F6A37297810E900DECE9F /* UIFontExtension.swift in Sources */,
 				9A2F6A242978088C00DECE9F /* ViewController.swift in Sources */,
 				9A9996E72978D72800C207E0 /* ConstraintExtension.swift in Sources */,
+				9AAD0CCA297F808E008DC808 /* MapSearchResultTableViewCell.swift in Sources */,
 				9AB153EC297A77F000AD220A /* GlobalData.swift in Sources */,
+				9AAD0CCC297F97A2008DC808 /* SearchTextField.swift in Sources */,
 				9A9996E92978FAE600C207E0 /* BasicRightView.swift in Sources */,
 				9A9996EB2978FD4C00C207E0 /* UIViewExtension.swift in Sources */,
 				A9553C00297C30C7001644DB /* BasicTextField.swift in Sources */,
+				9A29E6E2297E0F6200D4A433 /* UIColor+Extensions.swift in Sources */,
 				9A2F6A202978088C00DECE9F /* AppDelegate.swift in Sources */,
+				9A29E6E4297E0F7900D4A433 /* UIFont+Extensions.swift in Sources */,
 				9AD0BFB1297BAF43004B8F78 /* TextLimitTextField.swift in Sources */,
 				9AB153EA297A693E00AD220A /* BasicTextView.swift in Sources */,
 				A9553C02297CF382001644DB /* MapSearchViewController.swift in Sources */,

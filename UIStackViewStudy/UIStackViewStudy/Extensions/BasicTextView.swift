@@ -36,9 +36,10 @@ class BasicTextView: UIView {
         
         placeholder.constraint(top: self.topAnchor, leading: self.leadingAnchor, padding: UIEdgeInsets(top: 15, left: 10, bottom: 0, right: 0))
         
-        self.layer.borderWidth = 2
+        self.layer.borderWidth = 1
         self.layer.cornerRadius = 10
-        self.layer.borderColor = UIColor.orange.cgColor
+        self.layer.borderColor = UIColor.white.cgColor
+        self.backgroundColor = .dark02
         
         NotificationCenter.default.addObserver(self, selector: #selector(textViewTextDidChange), name: UITextView.textDidChangeNotification, object: nil)
         
@@ -60,7 +61,6 @@ extension BasicTextView: UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        print("textViewDidBeginEditing")
         placeholder.isHidden = true
         guard textView.textColor == .placeholderText else { return }
         textView.textColor = .label

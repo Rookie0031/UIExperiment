@@ -56,19 +56,24 @@ final class ViewController: UIViewController {
         stackView.spacing = 10
         return stackView
     }()
-
-    private var practicePlace = {
+    
+    private lazy var practicePlace = {
         let boxView = BasicBoxView(text: "합주실 위치")
         boxView.basicRightView.isHidden = false
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(presentLocationSearchView))
+        boxView.addGestureRecognizer(tapGesture)
         return boxView
     }()
-
-    private var detailPracticePlace = BasicTextField(placeholder: "상세 주소를 입력해주세요 (선택)")
-
+    
+    private var detailPracticePlace = {
+        let view = BasicTextField(placeholder: "상세 주소를 입력해주세요 (선택)")
+        return view
+    }()
+    
     private var practiceLabel = TwoHstackLabel.basicLabel(firstLabelText: "합주곡", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .regular, secondLabelText: "선택", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .regular)
-
+    
     private var practiceSubLabel = UILabel.makeBasicLabel(labelText: "* 지도에서 우리밴드가 보여질 위치입니다.", textColor: .white, fontStyle: .footnote, fontWeight: .regular)
-
+    
     private lazy var practicePlaceStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [practiceLabel, practiceSubLabel, practicePlace, detailPracticePlace])
         stackView.axis = .vertical
@@ -76,20 +81,23 @@ final class ViewController: UIViewController {
         return stackView
     }()
     
+    private let testText = BasicTextView()
+    
     private lazy var contentView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, practicePlaceStack, textViewVstack])
+        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, practicePlaceStack, textViewVstack, testText])
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.alignment = .center
         stackView.spacing = 40
+        stackView.backgroundColor = .systemBlue
         return stackView
     }()
     
-    private let mainScrollView: UIScrollView = {
+    private lazy var mainScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
-        scrollView.backgroundColor = .systemGray
-        scrollView.bounces = false
+        scrollView.backgroundColor = .orange
+        scrollView.delegate = self
         return scrollView
     }()
     
@@ -98,6 +106,11 @@ final class ViewController: UIViewController {
         addSubviews()
         render()
         setConfiguration()
+        attribute()
+    }
+    
+    private func attribute() {
+        self.view.backgroundColor = .dark01
     }
     
     private func addSubviews() {
@@ -109,11 +122,9 @@ final class ViewController: UIViewController {
         
         titleVstack.constraint(leading: view.safeAreaLayoutGuide.leadingAnchor, padding: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0))
         
-        mainScrollView.constraint(centerX: view.centerXAnchor, centerY: view.centerYAnchor)
-        
         mainScrollView.constraint(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
         
-        contentView.constraint(top: mainScrollView.topAnchor, leading: mainScrollView.leadingAnchor, bottom: mainScrollView.bottomAnchor, trailing: mainScrollView.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
+        contentView.constraint(top: mainScrollView.topAnchor, leading: mainScrollView.leadingAnchor, bottom: mainScrollView.bottomAnchor, trailing: mainScrollView.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 25, bottom: 10, right: 25))
     }
     
     private func setConfiguration() {
@@ -133,4 +144,22 @@ extension ViewController {
         label.text = isChecked ? "가능합니다" : "불가능합니다"
         label.textColor = isChecked ? .systemBlue : .systemRed
     }
+    
+    @objc func presentLocationSearchView() {
+        let mapSearchView = MapSearchViewController()
+        mapSearchView.completion = { mapItem in
+            self.practicePlace.basicLabel.text = mapItem.name ?? ""
+            self.practicePlace.basicRightView.isHidden = true
+        }
+        present(mapSearchView, animated: true)
+    }
+}
+
+// ScrollView 가로 스크롤 막기 
+extension ViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+           if scrollView.contentOffset.x != 0 {
+               scrollView.contentOffset.x = 0
+           }
+       }
 }

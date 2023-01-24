@@ -21,7 +21,7 @@ extension UITextView {
         attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14, weight: .bold), range: NSRange(location: 0, length: placeholder.count))
         textView.attributedText = attributedString
         
-        textView.backgroundColor = .systemGray
+        textView.backgroundColor = .dark02
         
         return textView
     }

@@ -27,25 +27,29 @@ final class TextLimitTextField: UIView {
         self.placeholder = placeholer
         super.init(frame: .zero)
         
-        constraint(.widthAnchor, constant: DeviceSize.width * 0.9)
-        constraint(.heightAnchor, constant: DeviceSize.width * 0.9 * 0.15)
+        setupLayout()
         
-        addSubviews(textField, checkButton)
-        textField.constraint(top: self.topAnchor, leading: self.leadingAnchor)
-
-        checkButton.constraint(trailing: self.trailingAnchor, centerY: self.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10))
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidChange), name: UITextField.textDidChangeNotification, object: nil)
+        // 텍스트 필드 글자수 제한을 위한 observer추가
+        textField.addTarget(self, action: #selector(textFieldTextDidChange), for: .editingChanged)
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupLayout() {
+        self.constraint(.widthAnchor, constant: DeviceSize.width * 0.9)
+        self.constraint(.heightAnchor, constant: 55)
+        
+        addSubviews(textField, checkButton)
+        textField.constraint(top: self.topAnchor, leading: self.leadingAnchor)
+
+        checkButton.constraint(trailing: textField.trailingAnchor, centerY: textField.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10))
+    }
 }
 
 extension TextLimitTextField {
-    @objc func textFieldTextDidChange(noti: NSNotification) {
-        print("text Field Text change")
+    @objc func textFieldTextDidChange() {
         let maxCount = textField.maxCount
             if let text = textField.text {
                 if text.count >= maxCount {
@@ -83,5 +87,30 @@ extension TextLimitTextField {
         let label = checkLabel.arrangedSubviews.last! as! UILabel
         label.text = isChecked ? "가능합니다" : "불가능합니다"
         label.textColor = isChecked ? .systemBlue : .systemRed
+    }
+}
+
+class DuplicationCheckButton : UIButton {
+    
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+        
+        setTitle("중복 확인", for: .normal)
+        titleLabel?.font = UIFont.setFont(.contentBold)
+        backgroundColor = .systemPurple
+        layer.cornerRadius = 10
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // 중복 확인 버튼의 패딩값 조절
+    override var intrinsicContentSize: CGSize {
+        get {
+            let baseSize = super.intrinsicContentSize
+            return CGSize(width: baseSize.width + 24, height: baseSize.height + 10)
+        }
     }
 }
