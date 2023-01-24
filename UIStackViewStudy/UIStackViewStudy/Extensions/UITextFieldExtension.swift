@@ -11,8 +11,8 @@ extension UITextField {
         let textField: UITextField = {
             
             let textField = UITextField(frame: .zero)
-            textField.constraint(.widthAnchor, constant: DeviceSize.width * 0.9)
-            textField.constraint(.heightAnchor, constant: DeviceSize.width * 0.9 * 0.15)
+            textField.constraint(.widthAnchor, constant: BasicComponentSize.width)
+            textField.constraint(.heightAnchor, constant: 55)
             
             textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.gray02, .font: UIFont.setFont(.content)])
             

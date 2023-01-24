@@ -87,9 +87,9 @@ final class ViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, practicePlaceStack, textViewVstack, testText])
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.alignment = .center
         stackView.spacing = 40
         stackView.backgroundColor = .systemBlue
+        stackView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
         return stackView
     }()
     
@@ -124,7 +124,9 @@ final class ViewController: UIViewController {
         
         mainScrollView.constraint(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
         
+        contentView.contentCompressionResistancePriority(for: .horizontal)
         contentView.constraint(top: mainScrollView.topAnchor, leading: mainScrollView.leadingAnchor, bottom: mainScrollView.bottomAnchor, trailing: mainScrollView.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 25, bottom: 10, right: 25))
+        contentView.constraint(.widthAnchor, constant: UIScreen.main.bounds.width - 50)
     }
     
     private func setConfiguration() {
@@ -155,7 +157,7 @@ extension ViewController {
     }
 }
 
-// ScrollView 가로 스크롤 막기 
+// ScrollView 가로 스크롤 막기
 extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
            if scrollView.contentOffset.x != 0 {

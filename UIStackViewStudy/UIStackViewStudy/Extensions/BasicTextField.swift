@@ -21,7 +21,7 @@ final class BasicTextField: UIView {
     }
     
     private func setupLayout() {
-        self.constraint(.widthAnchor, constant: DeviceSize.width * 0.9)
+        self.constraint(.widthAnchor, constant: BasicComponentSize.width)
         self.constraint(.heightAnchor, constant: 55)
 
         self.addSubview(textField)
@@ -40,6 +40,7 @@ class EmptyView: UIView {
         
         constraint(.widthAnchor, constant: 20)
         constraint(.heightAnchor, constant: 20)
+        constraint(centerX: superview?.centerXAnchor, centerY: superview?.centerYAnchor)
     }
     
     required init?(coder: NSCoder) {

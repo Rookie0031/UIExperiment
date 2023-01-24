@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct DeviceSize {
-    static var width = UIScreen.main.bounds.width
+struct BasicComponentSize {
+    static var width = UIScreen.main.bounds.width * 0.7
     static var height = UIScreen.main.bounds.height
 }

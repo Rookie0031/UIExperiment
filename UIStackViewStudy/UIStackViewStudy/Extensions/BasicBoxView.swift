@@ -27,7 +27,7 @@ class BasicBoxView: UIView {
         addSubviews(basicLabel, basicRightView)
         basicRightView.isHidden = true
 
-        constraint(.widthAnchor, constant: DeviceSize.width * 0.9)
+        constraint(.widthAnchor, constant: BasicComponentSize.width)
         constraint(.heightAnchor, constant: 55)
 
         self.layer.borderWidth = 1

@@ -24,7 +24,8 @@ class BasicTextView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        constraint(.widthAnchor, constant: DeviceSize.width * 0.9)
+//        constraint(leading: superview?.leadingAnchor, trailing: superview?.trailingAnchor)
+        constraint(.widthAnchor, constant: BasicComponentSize.width)
         constraint(.heightAnchor, constant: 250)
         
         addSubviews(textView, countLabel, placeholder)

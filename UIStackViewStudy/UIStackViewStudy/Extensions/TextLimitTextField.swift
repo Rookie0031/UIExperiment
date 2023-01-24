@@ -38,7 +38,7 @@ final class TextLimitTextField: UIView {
     }
     
     private func setupLayout() {
-        self.constraint(.widthAnchor, constant: DeviceSize.width * 0.9)
+        self.constraint(.widthAnchor, constant: BasicComponentSize.width)
         self.constraint(.heightAnchor, constant: 55)
         
         addSubviews(textField, checkButton)
