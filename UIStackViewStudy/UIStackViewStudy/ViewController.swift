@@ -88,7 +88,7 @@ final class ViewController: UIViewController {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.spacing = 40
-        stackView.backgroundColor = .systemBlue
+        stackView.backgroundColor = .dark01
         stackView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
         return stackView
     }()
@@ -96,7 +96,7 @@ final class ViewController: UIViewController {
     private lazy var mainScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
-        scrollView.backgroundColor = .orange
+        scrollView.backgroundColor = .dark01
         scrollView.delegate = self
         return scrollView
     }()

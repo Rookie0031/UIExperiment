@@ -17,7 +17,7 @@ final class TextLimitTextField: UIView {
     private let checkLabel: UIStackView = TwoHstackLabel.checkLabel
 
     private lazy var checkButton = {
-        let button = DuplicationCheckButton()
+        let button = BasicButton(widthPadding: 24, heightPadding: 10)
         button.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
         return button
     }()
@@ -87,30 +87,5 @@ extension TextLimitTextField {
         let label = checkLabel.arrangedSubviews.last! as! UILabel
         label.text = isChecked ? "가능합니다" : "불가능합니다"
         label.textColor = isChecked ? .systemBlue : .systemRed
-    }
-}
-
-class DuplicationCheckButton : UIButton {
-    
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        
-        setTitle("중복 확인", for: .normal)
-        titleLabel?.font = UIFont.setFont(.contentBold)
-        backgroundColor = .systemPurple
-        layer.cornerRadius = 10
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // 중복 확인 버튼의 패딩값 조절
-    override var intrinsicContentSize: CGSize {
-        get {
-            let baseSize = super.intrinsicContentSize
-            return CGSize(width: baseSize.width + 24, height: baseSize.height + 10)
-        }
     }
 }

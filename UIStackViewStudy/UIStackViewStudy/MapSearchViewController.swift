@@ -28,6 +28,17 @@ class MapSearchViewController: UIViewController {
 
         return tableView
     }()
+    
+    //MARK: Google Map으로 현재 위치 바꿔야함...
+    private let currentLocationButton = {
+        let button = BasicButton(widthPadding: 20, heightPadding: 10)
+        button.setImage(UIImage(systemName: "scope"), for: .normal)
+        button.setTitle("현재 위치", for: .normal)
+        button.backgroundColor = .systemPurple
+        button.tintColor = . white
+        button.layer.cornerRadius = 8
+        return button
+    }()
 
 
     override func viewDidLoad() {
@@ -42,12 +53,15 @@ class MapSearchViewController: UIViewController {
     private func addSubViews() {
         view.addSubview(searchBar)
         view.addSubview(searchResultTable)
+        view.addSubview(currentLocationButton)
     }
 
     private func configureConstraints() {
         searchBar.constraint(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 25, bottom: 0, right: 25))
         
-        searchResultTable.constraint(top: searchBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 25, bottom: 10, right: 25))
+        currentLocationButton.constraint(top: searchBar.bottomAnchor, leading: searchBar.leadingAnchor, padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0))
+        
+        searchResultTable.constraint(top: currentLocationButton.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 25, bottom: 10, right: 25))
     }
 
     private func configureSearchCompleter() {
