@@ -15,11 +15,9 @@ final class BasicButton : UIButton {
         if let widthPadding = widthPadding { self.widthPadding = widthPadding }
         if let heightPadding = heightPadding { self.heightPadding = heightPadding }
         super.init(frame: .zero)
-        setTitle("중복 확인", for: .normal)
         titleLabel?.font = UIFont.setFont(.contentBold)
         backgroundColor = .systemPurple
         layer.cornerRadius = 10
-        
     }
     
     required init?(coder: NSCoder) {

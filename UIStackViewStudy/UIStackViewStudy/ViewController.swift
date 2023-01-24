@@ -70,7 +70,7 @@ final class ViewController: UIViewController {
         return view
     }()
     
-    private var practiceLabel = TwoHstackLabel.basicLabel(firstLabelText: "합주곡", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .regular, secondLabelText: "선택", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .regular)
+    private var practiceLabel = TwoHstackLabel.basicLabel(firstLabelText: "합주실 위치", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .regular, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .regular)
     
     private var practiceSubLabel = UILabel.makeBasicLabel(labelText: "* 지도에서 우리밴드가 보여질 위치입니다.", textColor: .white, fontStyle: .footnote, fontWeight: .regular)
     
@@ -81,10 +81,37 @@ final class ViewController: UIViewController {
         return stackView
     }()
     
+    private let practiceSongLabel = TwoHstackLabel.basicLabel(firstLabelText: "합주곡", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .regular, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .regular)
+    
+    private var practiceSongSubLabel = UILabel.makeBasicLabel(labelText: "* 최대 3개까지 등록 가능합니다.", textColor: .white, fontStyle: .footnote, fontWeight: .regular)
+    
+    private lazy var addPracticeSongButton = {
+        var configuration = UIButton.Configuration.filled()
+        var container = AttributeContainer()
+        container.font = UIFont.setFont(.contentBold)
+        configuration.baseBackgroundColor = .systemPurple
+        configuration.attributedTitle = AttributedString("합주곡 추가", attributes: container)
+        configuration.image = UIImage(systemName: "plus")
+        configuration.imagePadding = 10
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 13, leading: 0, bottom: 13, trailing: 0)
+        let button = UIButton(configuration: configuration, primaryAction: nil)
+        button.addTarget(self, action: #selector(didTapAddPracticeSong), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private lazy var practiceSongStack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [practiceSongLabel, practiceSongSubLabel, addPracticeSongButton])
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        return stackView
+    }()
+    
+    
     private let testText = BasicTextView()
     
     private lazy var contentView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, practicePlaceStack, textViewVstack, testText])
+        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, practicePlaceStack, textViewVstack, practiceSongStack, testText])
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.spacing = 40
@@ -127,6 +154,7 @@ final class ViewController: UIViewController {
         contentView.contentCompressionResistancePriority(for: .horizontal)
         contentView.constraint(top: mainScrollView.topAnchor, leading: mainScrollView.leadingAnchor, bottom: mainScrollView.bottomAnchor, trailing: mainScrollView.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 25, bottom: 10, right: 25))
         contentView.constraint(.widthAnchor, constant: UIScreen.main.bounds.width - 50)
+        
     }
     
     private func setConfiguration() {
@@ -154,6 +182,9 @@ extension ViewController {
             self.practicePlace.basicRightView.isHidden = true
         }
         present(mapSearchView, animated: true)
+    }
+    
+    @objc func didTapAddPracticeSong() {
     }
 }
 

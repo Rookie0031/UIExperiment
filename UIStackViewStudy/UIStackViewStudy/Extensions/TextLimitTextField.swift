@@ -18,6 +18,7 @@ final class TextLimitTextField: UIView {
 
     private lazy var checkButton = {
         let button = BasicButton(widthPadding: 24, heightPadding: 10)
+        button.setTitle("중복 확인", for: .normal)
         button.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
         return button
     }()
