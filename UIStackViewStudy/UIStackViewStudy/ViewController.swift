@@ -31,8 +31,7 @@ final class ViewController: UIViewController {
     private lazy var checkLabel: UIStackView = TwoHstackLabel.checkLabel
     
     private let bandIntroTextView = {
-        BasicTextView.maxCount = 30
-        let textView = BasicTextView()
+        let textView = BasicTextView(placeholder: "우리 밴드를 더 잘 보여줄 수 있는 소개를 간단하게 적어주세요\n(ex. 좋아하는 밴드, 밴드 경력 등)")
         return textView
     }()
     
@@ -107,8 +106,7 @@ final class ViewController: UIViewController {
         return stackView
     }()
     
-    
-    private let testText = BasicTextView()
+    private let testText = BasicTextView(placeholder: "테스트용", maxCount: 30)
     
     private lazy var contentView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, practicePlaceStack, textViewVstack, practiceSongStack, testText])

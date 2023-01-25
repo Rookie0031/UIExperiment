@@ -11,6 +11,10 @@ class BasicTextView: UIView {
     
     private var textCount: String = "0"
     
+    private let placeholder: String
+    
+    private var maxCount: Int = 300
+    
     private lazy var textView: UITextView = {
         let textView = UITextView()
         let style = NSMutableParagraphStyle()
@@ -36,17 +40,18 @@ class BasicTextView: UIView {
         return label
     }()
     
-    private lazy var placeholder: UILabel = {
-        let label = UILabel.makeBasicLabel(labelText: Placeholder.text, textColor: .white, fontStyle: .title3, fontWeight: .bold)
+    private lazy var placeholderLabel: UILabel = {
+        let label = UILabel.makeBasicLabel(labelText: placeholder, textColor: .white, fontStyle: .title3, fontWeight: .bold)
         label.font = UIFont.setFont(.content)
         label.textColor = .gray02
         label.numberOfLines = 2
         return label
     }()
     
-    override init(frame: CGRect) {
+    init(placeholder: String, maxCount: Int? = nil) {
+        self.placeholder = placeholder
+        if let maxCount { self.maxCount = maxCount}
         super.init(frame: .zero)
-        
         setupLayout()
         attribute()
     }
@@ -67,13 +72,13 @@ class BasicTextView: UIView {
         self.constraint(.heightAnchor, constant: 250)
         
         addSubview(textView)
-        textView.constraint(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom:50, right: 0))
+        textView.constraint(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom:50, right: 10))
         
         addSubview(countLabel)
         countLabel.constraint(bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: 20, right: 20))
         
-        addSubview(placeholder)
-        placeholder.constraint(top: self.topAnchor, leading: self.leadingAnchor, padding: UIEdgeInsets(top: 15, left: 20, bottom: 0, right: 0))
+        addSubview(placeholderLabel)
+        placeholderLabel.constraint(top: self.topAnchor, leading: self.leadingAnchor, padding: UIEdgeInsets(top: 15, left: 20, bottom: 0, right: 0))
     }
 }
 
@@ -84,7 +89,7 @@ extension BasicTextView: UITextViewDelegate {
         countLabel.text = "\(textView.text.count)/\(maxCount)"
         
         // 최대 글자수 제한 로직
-        let maxCount = BasicTextView.maxCount
+        let maxCount = maxCount
         if let text = textView.text {
             if text.count >= maxCount {
                 let maxCountIndex = text.index(text.startIndex, offsetBy: maxCount)
@@ -97,39 +102,27 @@ extension BasicTextView: UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        placeholder.isHidden = true
+        placeholderLabel.isHidden = true
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            placeholder.isHidden = false
+            placeholderLabel.isHidden = false
         }
     }
 }
 
-extension BasicTextView {
-    static var maxCount: Int = 300
-    
-    var maxCount: Int {
-        get {
-            BasicTextView.maxCount
-        }
-        set(newValue) {
-            BasicTextView.maxCount = newValue
-        }
-    }
-    
-    struct Placeholder {
-        static var text: String = "우리 밴드를 더 잘 보여줄 수 있는 소개를 간단하게 적어주세요\n(ex. 좋아하는 밴드, 밴드 경력 등)"
-    }
-    var placeholderText: String {
-        get {
-            Placeholder.text
-        }
-        set(newValue) {
-            Placeholder.text = newValue
-        }
-    }
-}
+//extension BasicTextView {
+//    static var maxCount: Int = 300
+//
+//    var maxCount: Int {
+//        get {
+//            BasicTextView.maxCount
+//        }
+//        set(newValue) {
+//            BasicTextView.maxCount = newValue
+//        }
+//    }
+//}
 
 
