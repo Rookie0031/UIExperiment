@@ -9,8 +9,6 @@ import UIKit
 
 class BasicTextView: UIView {
     
-    private var textCount: String = "0"
-    
     private let placeholder: String
     
     private var maxCount: Int = 300
@@ -35,7 +33,7 @@ class BasicTextView: UIView {
     }()
     
     private lazy var countLabel = {
-        let label = UILabel.makeBasicLabel(labelText: "\(textCount)/\(maxCount)", textColor: .gray02, fontStyle: .title3, fontWeight: .bold)
+        let label = UILabel.makeBasicLabel(labelText: "\(textView.text.count)/\(maxCount)", textColor: .gray02, fontStyle: .title3, fontWeight: .bold)
         label.font = UIFont.setFont(.headline01)
         return label
     }()
@@ -71,13 +69,13 @@ class BasicTextView: UIView {
         self.constraint(.widthAnchor, constant: BasicComponentSize.width)
         self.constraint(.heightAnchor, constant: 250)
         
-        addSubview(textView)
+        self.addSubview(textView)
         textView.constraint(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom:50, right: 10))
         
-        addSubview(countLabel)
+        self.addSubview(countLabel)
         countLabel.constraint(bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: 20, right: 20))
         
-        addSubview(placeholderLabel)
+        self.addSubview(placeholderLabel)
         placeholderLabel.constraint(top: self.topAnchor, leading: self.leadingAnchor, padding: UIEdgeInsets(top: 15, left: 20, bottom: 0, right: 0))
     }
 }
@@ -89,7 +87,6 @@ extension BasicTextView: UITextViewDelegate {
         countLabel.text = "\(textView.text.count)/\(maxCount)"
         
         // 최대 글자수 제한 로직
-        let maxCount = maxCount
         if let text = textView.text {
             if text.count >= maxCount {
                 let maxCountIndex = text.index(text.startIndex, offsetBy: maxCount)
@@ -111,18 +108,3 @@ extension BasicTextView: UITextViewDelegate {
         }
     }
 }
-
-//extension BasicTextView {
-//    static var maxCount: Int = 300
-//
-//    var maxCount: Int {
-//        get {
-//            BasicTextView.maxCount
-//        }
-//        set(newValue) {
-//            BasicTextView.maxCount = newValue
-//        }
-//    }
-//}
-
-

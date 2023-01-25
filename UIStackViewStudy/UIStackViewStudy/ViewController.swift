@@ -71,7 +71,9 @@ final class ViewController: UIViewController {
     
     private var practiceLabel = TwoHstackLabel.basicLabel(firstLabelText: "합주실 위치", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .regular, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .regular)
     
-    private var practiceSubLabel = UILabel.makeBasicLabel(labelText: "* 지도에서 우리밴드가 보여질 위치입니다.", textColor: .white, fontStyle: .footnote, fontWeight: .regular)
+//    private var practiceSubLabel = UILabel.makeBasicLabel(labelText: "* 지도에서 우리밴드가 보여질 위치입니다.", textColor: .white, fontStyle: .footnote, fontWeight: .regular)
+    
+    private var practiceSubLabel = BasicLabel(contentText: "* 지도에서 우리밴드가 보여질 위치입니다.", fontStyle: .footnote, textColorInfo: .white)
     
     private lazy var practicePlaceStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [practiceLabel, practiceSubLabel, practicePlace, detailPracticePlace])
