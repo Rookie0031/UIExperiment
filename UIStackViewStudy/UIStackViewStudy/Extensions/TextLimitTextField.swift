@@ -10,9 +10,14 @@ import UIKit
 final class TextLimitTextField: UIView {
 
     private let placeholder: String
+    
     private let maximumCount: Int
 
-    private lazy var textField: UITextField = UITextField.makeBasicTextField(placeholder: placeholder, characterLimit: maximumCount)
+    private lazy var textField: UITextField = {
+        let textField = UITextField.makeBasicTextField(placeholder: placeholder, characterLimit: maximumCount)
+        textField.addTarget(self, action: #selector(textFieldTextDidChange), for: .editingChanged)
+        return textField
+    }()
     
     private let checkLabel: UIStackView = TwoHstackLabel.checkLabel
 
@@ -29,9 +34,6 @@ final class TextLimitTextField: UIView {
         super.init(frame: .zero)
         
         setupLayout()
-        
-        // 텍스트 필드 글자수 제한을 위한 observer추가
-        textField.addTarget(self, action: #selector(textFieldTextDidChange), for: .editingChanged)
     }
     
     required init(coder: NSCoder) {
