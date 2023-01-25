@@ -6,7 +6,17 @@
 //
 import UIKit
 
-class PracticeSongCardView: UIStackView {
+class PracticeSongCardView: UIStackView, Identifiable {
+
+    let id: String
+
+    lazy var cancelButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
+        return button
+    }()
     
     private let practiceSongName = TwoHstackLabel.basicClassLabel(firstLabelText: "합주곡 제목", inputType: .required)
     
@@ -43,8 +53,8 @@ class PracticeSongCardView: UIStackView {
         return stackView
     }()
     
-    
-    override init(frame: CGRect) {
+    init(identifier: String) {
+        self.id = identifier
         super.init(frame: .zero)
         setupLayout()
         attribute()
@@ -58,6 +68,9 @@ class PracticeSongCardView: UIStackView {
         self.spacing = 40
         self.layoutMargins = UIEdgeInsets(top: 30, left: 10, bottom: 30, right: 10)
         self.isLayoutMarginsRelativeArrangement = true
+
+        self.addSubview(cancelButton)
+        cancelButton.constraint(top: self.topAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 10))
     }
     
     private func attribute() {
@@ -65,9 +78,18 @@ class PracticeSongCardView: UIStackView {
         self.layer.cornerRadius = 10
         self.layer.borderColor = UIColor.white.cgColor
         self.backgroundColor = .dark02
+        cancelButton.isHidden = true
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension PracticeSongCardView {
+    @objc func didTapCancelButton() {
+        self.removeFromSuperview()
+        print("class Identifier \(self.id)")
+        NotificationCenter.default.post(name: Notification.Name("PracticeCardView"), object: self.id)
     }
 }

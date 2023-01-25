@@ -31,7 +31,7 @@ final class ViewController: UIViewController {
     private lazy var checkLabel: UIStackView = TwoHstackLabel.checkLabel
     
     private let bandIntroTextView = {
-        let textView = BasicTextView(placeholder: "우리 밴드를 더 잘 보여줄 수 있는 소개를 간단하게 적어주세요\n(ex. 좋아하는 밴드, 밴드 경력 등)")
+        let textView = BasicTextView(placeholder: "우리 밴드를 더 잘 보여줄 수 있는 소개를 간단하게\n적어주세요(ex. 좋아하는 밴드, 밴드 경력 등)")
         return textView
     }()
     

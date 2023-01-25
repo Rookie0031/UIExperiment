@@ -31,7 +31,7 @@
 		9AB153EC297A77F000AD220A /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB153EB297A77F000AD220A /* GlobalData.swift */; };
 		9AD0BFB1297BAF43004B8F78 /* TextLimitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD0BFB0297BAF43004B8F78 /* TextLimitTextField.swift */; };
 		9AD74E22298013AB00C4D522 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD74E21298013AB00C4D522 /* BasicButton.swift */; };
-		9AD74E2429801B3400C4D522 /* AddPracticeSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD74E2329801B3400C4D522 /* AddPracticeSongView.swift */; };
+		9AD74E2429801B3400C4D522 /* AddPracticeSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD74E2329801B3400C4D522 /* AddPracticeSongViewController.swift */; };
 		9AE796BB29795F50008D6976 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE796BA29795F50008D6976 /* UITextViewExtension.swift */; };
 		A9553BFE297C2C93001644DB /* BasicBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFD297C2C93001644DB /* BasicBoxView.swift */; };
 		A9553C00297C30C7001644DB /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFF297C30C7001644DB /* BasicTextField.swift */; };
@@ -65,7 +65,7 @@
 		9AB153EB297A77F000AD220A /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
 		9AD0BFB0297BAF43004B8F78 /* TextLimitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLimitTextField.swift; sourceTree = "<group>"; };
 		9AD74E21298013AB00C4D522 /* BasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
-		9AD74E2329801B3400C4D522 /* AddPracticeSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPracticeSongView.swift; sourceTree = "<group>"; };
+		9AD74E2329801B3400C4D522 /* AddPracticeSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPracticeSongViewController.swift; sourceTree = "<group>"; };
 		9AE796BA29795F50008D6976 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		A9553BFD297C2C93001644DB /* BasicBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBoxView.swift; sourceTree = "<group>"; };
 		A9553BFF297C30C7001644DB /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 				9AB153EB297A77F000AD220A /* GlobalData.swift */,
 				A9553C01297CF382001644DB /* MapSearchViewController.swift */,
 				9AAD0CC9297F808E008DC808 /* MapSearchResultTableViewCell.swift */,
-				9AD74E2329801B3400C4D522 /* AddPracticeSongView.swift */,
+				9AD74E2329801B3400C4D522 /* AddPracticeSongViewController.swift */,
 			);
 			path = UIStackViewStudy;
 			sourceTree = "<group>";
@@ -228,7 +228,7 @@
 				9AAD0CCC297F97A2008DC808 /* SearchTextField.swift in Sources */,
 				9A9996E92978FAE600C207E0 /* TwoHstackLabel.swift in Sources */,
 				9A9996EB2978FD4C00C207E0 /* UIViewExtension.swift in Sources */,
-				9AD74E2429801B3400C4D522 /* AddPracticeSongView.swift in Sources */,
+				9AD74E2429801B3400C4D522 /* AddPracticeSongViewController.swift in Sources */,
 				A9553C00297C30C7001644DB /* BasicTextField.swift in Sources */,
 				9A29E6E2297E0F6200D4A433 /* UIColor+Extensions.swift in Sources */,
 				9A2F6A202978088C00DECE9F /* AppDelegate.swift in Sources */,
