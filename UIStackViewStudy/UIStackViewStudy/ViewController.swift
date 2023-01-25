@@ -73,7 +73,7 @@ final class ViewController: UIViewController {
     
 //    private var practiceSubLabel = UILabel.makeBasicLabel(labelText: "* 지도에서 우리밴드가 보여질 위치입니다.", textColor: .white, fontStyle: .footnote, fontWeight: .regular)
     
-    private var practiceSubLabel = BasicLabel(contentText: "* 지도에서 우리밴드가 보여질 위치입니다.", fontStyle: .footnote, textColorInfo: .white)
+    private var practiceSubLabel = BasicLabel(contentText: "* 지도에서 우리밴드가 보여질 위치입니다.", fontStyle: .content, textColorInfo: .white)
     
     private lazy var practicePlaceStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [practiceLabel, practiceSubLabel, practicePlace, detailPracticePlace])
@@ -151,7 +151,6 @@ final class ViewController: UIViewController {
         
         mainScrollView.constraint(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
         
-        contentView.contentCompressionResistancePriority(for: .horizontal)
         contentView.constraint(top: mainScrollView.topAnchor, leading: mainScrollView.leadingAnchor, bottom: mainScrollView.bottomAnchor, trailing: mainScrollView.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 25, bottom: 10, right: 25))
         contentView.constraint(.widthAnchor, constant: UIScreen.main.bounds.width - 50)
         
@@ -185,6 +184,7 @@ extension ViewController {
     }
     
     @objc func didTapAddPracticeSong() {
+        present(AddPracticeSongViewController(), animated: true)
     }
 }
 

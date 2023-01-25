@@ -27,17 +27,17 @@ extension UILabel {
 class BasicLabel: UILabel {
     
     private let contentText: String
-    private let fontStyle: UIFont.TextStyle
+    private let fontStyle: FontType
     private let textColorInfo: UIColor
     
-    init(contentText: String, fontStyle: UIFont.TextStyle, textColorInfo: UIColor) {
+    init(contentText: String, fontStyle: FontType, textColorInfo: UIColor) {
         self.contentText = contentText
         self.fontStyle = fontStyle
         self.textColorInfo = textColorInfo
         super.init(frame: .zero)
         
         self.text = contentText
-//        self.font = UIFont.setFont(fontStyle)
+        self.font = UIFont.setFont(fontStyle)
         self.textColor = textColorInfo
     }
     

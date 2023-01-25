@@ -19,7 +19,7 @@ extension UITextField {
             if let characterLimit {
                 textField.maxCount = characterLimit
             }
-            textField.layer.borderWidth = 2
+            textField.layer.borderWidth = 1
             textField.layer.cornerRadius = 10
             textField.layer.borderColor = UIColor.white.cgColor
             textField.backgroundColor = .dark02

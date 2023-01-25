@@ -11,3 +11,7 @@ struct BasicComponentSize {
     static var width = UIScreen.main.bounds.width * 0.9
     static var height = UIScreen.main.bounds.height
 }
+
+struct PracticeSongCardSize {
+    
+}
