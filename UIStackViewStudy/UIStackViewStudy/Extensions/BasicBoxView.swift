@@ -19,13 +19,21 @@ class BasicBoxView: UIView {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
+    
+    var basicleftView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "chevron.right")
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
 
     init(text: String? = nil) {
         if let text = text { self.text = text }
         super.init(frame: .zero)
 
-        addSubviews(basicLabel, basicRightView)
+        addSubviews(basicLabel, basicRightView, basicleftView)
         basicRightView.isHidden = true
+        basicleftView.isHidden = true
 
         constraint(.widthAnchor, constant: BasicComponentSize.width)
         constraint(.heightAnchor, constant: 55)

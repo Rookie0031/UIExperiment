@@ -24,7 +24,7 @@ final class ViewController: UIViewController {
     private let bandIntroductionLabel = TwoHstackLabel.basicLabel(firstLabelText: "밴드 소개", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .light, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .light)
     
     private lazy var bandNamingTextFieldView: UIView = {
-        let textField = TextLimitTextField(placeholer: "밴드 이름을 입력해주세요", maxCount: 10)
+        let textField = TextLimitTextField(placeholer: "밴드 이름을 입력해주세요", maxCount: 10, checkCase: .bandName)
         return textField
     }()
     
@@ -108,10 +108,22 @@ final class ViewController: UIViewController {
         return stackView
     }()
     
-    private let testText = BasicTextView(placeholder: "테스트용", maxCount: 30)
+    private let snsTitleLabel = TwoHstackLabel.basicClassLabel(firstLabelText: "SNS", inputType: .optional)
+    
+    private var snsSubTitleLabel = BasicLabel(contentText: "* 밴드의 SNS 계정을 입력해주세요 ", fontStyle: .content, textColorInfo: .gray02)
+    
+    private var snsSecondSubTitleLabel = BasicLabel(contentText: "* 본인계정이 아닌 계정 등록 시 책임은 본인에게 있습니다?", fontStyle: .content, textColorInfo: .gray02)
+    
+    
+    private lazy var snsStack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [snsTitleLabel, snsSubTitleLabel, snsSecondSubTitleLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        return stackView
+    }()
     
     private lazy var contentView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, practicePlaceStack, textViewVstack, practiceSongStack, testText])
+        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, practicePlaceStack, practiceSongStack, textViewVstack, snsStack])
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.spacing = 40

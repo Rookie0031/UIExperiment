@@ -12,6 +12,8 @@ final class TextLimitTextField: UIView {
     private let placeholder: String
     
     private let maximumCount: Int
+    
+    private let duplicationCheckType: CheckDuplicationCase
 
     private lazy var textField: UITextField = {
         let textField = UITextField.makeBasicTextField(placeholder: placeholder, characterLimit: maximumCount)
@@ -28,9 +30,10 @@ final class TextLimitTextField: UIView {
         return button
     }()
     
-    init(placeholer: String, maxCount: Int) {
+    init(placeholer: String, maxCount: Int, checkCase: CheckDuplicationCase) {
         self.maximumCount = maxCount
         self.placeholder = placeholer
+        self.duplicationCheckType = checkCase
         super.init(frame: .zero)
         
         setupLayout()
@@ -59,25 +62,26 @@ extension TextLimitTextField {
                     let maxCountIndex = text.index(text.startIndex, offsetBy: maxCount)
                     let fixedText = String(text[text.startIndex..<maxCountIndex])
                     textField.text = fixedText + " "
-                    
-                    let when = DispatchTime.now() + 0.01
-                    DispatchQueue.main.asyncAfter(deadline: when) {
-                        self.textField.text = fixedText
-                    }
+                    self.textField.text = fixedText
                 }
             }
         }
     
     @objc func didTapCheckButton() {
-        Task {
-            do {
-                let isChecked = try await NetworkManager.shared.checkDuplication(with: textField.text ?? "")
-                
-                showDuplicationCheckLabel(with: isChecked)
-                
-            } catch {
-                throw FetchError.unknown
-            }
+        print("button Tapped")
+        switch duplicationCheckType {
+        case .bandName: Task { try await updateResult() }
+        case .userNickName: print("" )
+        }
+    }
+    
+    private func updateResult() async throws {
+        do {
+            print("update result")
+            let isChecked = try await NetworkManager.shared.checkBandNameDuplication(with: textField.text ?? "")
+            showDuplicationCheckLabel(with: isChecked)
+        } catch {
+            throw FetchError.unknown
         }
     }
     
@@ -91,4 +95,10 @@ extension TextLimitTextField {
         label.text = isChecked ? "가능합니다" : "불가능합니다"
         label.textColor = isChecked ? .systemBlue : .systemRed
     }
+}
+
+
+enum CheckDuplicationCase {
+    case userNickName
+    case bandName
 }

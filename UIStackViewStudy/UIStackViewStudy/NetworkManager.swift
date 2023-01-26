@@ -4,17 +4,37 @@
 //
 //  Created by 장지수 on 2023/01/19.
 //
+import Foundation
+
 final class NetworkManager {
 
     static let shared = NetworkManager()
     
-    func checkDuplication(with word: String) async throws -> Bool {
-        //MARK: 백엔드 API 확인 후 서버 통신 로직을 추가할 계획임
-        if word == "모여락" {
-            return false
-        } else {
-            return true
+    func checkBandNameDuplication(with word: String) async throws -> Bool {
+        var result = false
+        
+        let baseURL = "http://43.201.55.66:8080/member/validate"
+        var queryURLComponent = URLComponents(string: baseURL)
+        let nameQuery = URLQueryItem(name: "name", value: word)
+        queryURLComponent?.queryItems = [nameQuery]
+        guard let url = queryURLComponent?.url else { throw FetchError.unknown }
+        
+        do {
+            let (_, response) = try await URLSession.shared.data(from: url)
+            let httpResponse = response as! HTTPURLResponse
+            
+            if (200..<300).contains(httpResponse.statusCode) { result = true }
+            print(httpResponse)
+            
+        } catch {
+            print(error)
         }
+        
+        return result
+    }
+    
+    func checkUserNameDuplication() {
+        
     }
 }
 
