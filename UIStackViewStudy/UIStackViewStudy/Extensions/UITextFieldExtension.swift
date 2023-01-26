@@ -48,3 +48,45 @@ extension UITextField {
         }
     }
 }
+
+extension UITextField {
+    static func makeBasicTextFieldBasicOption(placeholder: String, characterLimit: Int? = nil) -> UITextField {
+        let textField: UITextField = {
+            $0.attributedPlaceholder = NSAttributedString(
+                string: placeholder,
+                attributes: [.foregroundColor: UIColor.gray02, .font: UIFont.setFont(.content)]
+            )
+
+            if let characterLimit { $0.maxCount = characterLimit }
+
+            $0.layer.borderWidth = 1
+            $0.layer.cornerRadius = 10
+            $0.layer.borderColor = UIColor.white.cgColor
+            $0.backgroundColor = .dark02
+            $0.textColor = .white
+
+            $0.leftView = TextFieldPaddingView()
+            $0.leftViewMode = .always
+
+            $0.rightViewMode = .never
+
+            return $0
+        }(UITextField(frame: .zero))
+        return textField
+    }
+}
+
+final class TextFieldPaddingView: UIView {
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+
+        constraint(.widthAnchor, constant: 20)
+        constraint(.heightAnchor, constant: 20)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+

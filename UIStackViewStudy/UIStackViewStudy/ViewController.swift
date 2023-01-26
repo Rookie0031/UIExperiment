@@ -71,8 +71,6 @@ final class ViewController: UIViewController {
     
     private var practiceLabel = TwoHstackLabel.basicLabel(firstLabelText: "합주실 위치", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .regular, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .regular)
     
-//    private var practiceSubLabel = UILabel.makeBasicLabel(labelText: "* 지도에서 우리밴드가 보여질 위치입니다.", textColor: .white, fontStyle: .footnote, fontWeight: .regular)
-    
     private var practiceSubLabel = BasicLabel(contentText: "* 지도에서 우리밴드가 보여질 위치입니다.", fontStyle: .content, textColorInfo: .white)
     
     private lazy var practicePlaceStack: UIStackView = {
@@ -110,13 +108,18 @@ final class ViewController: UIViewController {
     
     private let snsTitleLabel = TwoHstackLabel.basicClassLabel(firstLabelText: "SNS", inputType: .optional)
     
-    private var snsSubTitleLabel = BasicLabel(contentText: "* 밴드의 SNS 계정을 입력해주세요 ", fontStyle: .content, textColorInfo: .gray02)
+    private let snsSubTitleLabel = BasicLabel(contentText: "* 밴드의 SNS 계정을 입력해주세요 ", fontStyle: .content, textColorInfo: .gray02)
     
-    private var snsSecondSubTitleLabel = BasicLabel(contentText: "* 본인계정이 아닌 계정 등록 시 책임은 본인에게 있습니다?", fontStyle: .content, textColorInfo: .gray02)
-    
+    private let snsSecondSubTitleLabel = BasicLabel(contentText: "* 본인계정이 아닌 계정 등록 시 책임은 본인에게 있습니다?", fontStyle: .content, textColorInfo: .gray02)
+
+    private let youtubeTextField = SNSBoxView(type: .youTube, placeholder: "채널명")
+
+    private let instagramTextField = SNSBoxView(type: .instagram, placeholder: "사용자 계정")
+
+    private let soundCloundTextField = SNSBoxView(type: .soundCloud, placeholder: "사용자 계정")
     
     private lazy var snsStack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [snsTitleLabel, snsSubTitleLabel, snsSecondSubTitleLabel])
+        let stackView = UIStackView(arrangedSubviews: [snsTitleLabel, snsSubTitleLabel, snsSecondSubTitleLabel, youtubeTextField, instagramTextField, soundCloundTextField])
         stackView.axis = .vertical
         stackView.spacing = 10
         return stackView
