@@ -8,14 +8,17 @@ import UIKit
 
 final class BasicButton : UIButton {
     
+    var contentText: String
     var widthPadding: Double?
     var heightPadding: Double?
     
-    init(widthPadding: Double? = nil, heightPadding: Double? = nil) {
+    init(text: String, widthPadding: Double? = nil, heightPadding: Double? = nil) {
+        self.contentText = text
         if let widthPadding = widthPadding { self.widthPadding = widthPadding }
         if let heightPadding = heightPadding { self.heightPadding = heightPadding }
         super.init(frame: .zero)
         titleLabel?.font = UIFont.setFont(.contentBold)
+        self.setTitle(contentText, for: .normal)
         backgroundColor = .systemPurple
         layer.cornerRadius = 10
     }

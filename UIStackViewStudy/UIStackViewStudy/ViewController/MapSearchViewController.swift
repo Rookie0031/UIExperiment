@@ -31,9 +31,8 @@ class MapSearchViewController: UIViewController {
     
     //MARK: Google Map으로 현재 위치 바꿔야함...
     private let currentLocationButton = {
-        let button = BasicButton(widthPadding: 20, heightPadding: 10)
+        let button = BasicButton(text: "현재 위치", widthPadding: 20, heightPadding: 10)
         button.setImage(UIImage(systemName: "scope"), for: .normal)
-        button.setTitle("현재 위치", for: .normal)
         button.backgroundColor = .systemPurple
         button.tintColor = . white
         button.layer.cornerRadius = 8

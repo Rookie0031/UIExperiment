@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A03B40C2983C830000A10EC /* BandLeaderPositionSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A03B40B2983C830000A10EC /* BandLeaderPositionSelectVC.swift */; };
+		9A03B40E2983CA11000A10EC /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A03B40D2983CA11000A10EC /* DataModel.swift */; };
+		9A03B4102983CAC6000A10EC /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A03B40F2983CAC6000A10EC /* NSObject+Extension.swift */; };
 		9A29E6E2297E0F6200D4A433 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29E6E1297E0F6200D4A433 /* UIColor+Extensions.swift */; };
 		9A29E6E4297E0F7900D4A433 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29E6E3297E0F7900D4A433 /* UIFont+Extensions.swift */; };
 		9A2D53B7298100D500EBB5F9 /* PracticeSongCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D53B6298100D500EBB5F9 /* PracticeSongCardView.swift */; };
@@ -19,6 +22,10 @@
 		9A2F6A3429780F9000DECE9F /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F6A3329780F9000DECE9F /* UILabelExtension.swift */; };
 		9A2F6A37297810E900DECE9F /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F6A36297810E900DECE9F /* UIFontExtension.swift */; };
 		9A2F6A392978156F00DECE9F /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F6A382978156F00DECE9F /* UITextFieldExtension.swift */; };
+		9A32B7A82983C4E100D0C488 /* PositionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A32B7A72983C4E100D0C488 /* PositionCollectionView.swift */; };
+		9A32B7AA2983C4F400D0C488 /* PositionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A32B7A92983C4F400D0C488 /* PositionCollectionViewCell.swift */; };
+		9A32B7AC2983C56200D0C488 /* BnadMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A32B7AB2983C56200D0C488 /* BnadMemberCollectionViewCell.swift */; };
+		9A32B7AE2983C57F00D0C488 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A32B7AD2983C57F00D0C488 /* Util.swift */; };
 		9A9996E72978D72800C207E0 /* ConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996E62978D72800C207E0 /* ConstraintExtension.swift */; };
 		9A9996E92978FAE600C207E0 /* TwoHstackLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996E82978FAE600C207E0 /* TwoHstackLabel.swift */; };
 		9A9996EB2978FD4C00C207E0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996EA2978FD4C00C207E0 /* UIViewExtension.swift */; };
@@ -41,6 +48,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A03B40B2983C830000A10EC /* BandLeaderPositionSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandLeaderPositionSelectVC.swift; sourceTree = "<group>"; };
+		9A03B40D2983CA11000A10EC /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		9A03B40F2983CAC6000A10EC /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		9A29E6E1297E0F6200D4A433 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		9A29E6E3297E0F7900D4A433 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		9A2D53B6298100D500EBB5F9 /* PracticeSongCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeSongCardView.swift; sourceTree = "<group>"; };
@@ -55,6 +65,10 @@
 		9A2F6A3329780F9000DECE9F /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		9A2F6A36297810E900DECE9F /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		9A2F6A382978156F00DECE9F /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		9A32B7A72983C4E100D0C488 /* PositionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCollectionView.swift; sourceTree = "<group>"; };
+		9A32B7A92983C4F400D0C488 /* PositionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCollectionViewCell.swift; sourceTree = "<group>"; };
+		9A32B7AB2983C56200D0C488 /* BnadMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BnadMemberCollectionViewCell.swift; sourceTree = "<group>"; };
+		9A32B7AD2983C57F00D0C488 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		9A9996E62978D72800C207E0 /* ConstraintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintExtension.swift; sourceTree = "<group>"; };
 		9A9996E82978FAE600C207E0 /* TwoHstackLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoHstackLabel.swift; sourceTree = "<group>"; };
 		9A9996EA2978FD4C00C207E0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -106,12 +120,11 @@
 		9A2F6A1E2978088C00DECE9F /* UIStackViewStudy */ = {
 			isa = PBXGroup;
 			children = (
-				9A9996F0297929B000C207E0 /* NetworkError.swift */,
-				A913B8552982C3EE001504FB /* HTTPCase.swift */,
-				9A9996EE297927DB00C207E0 /* NetworkManager.swift */,
+				9A32B7B12983C5AD00D0C488 /* BasicUIViews */,
+				9A32B7B22983C5C200D0C488 /* Network */,
 				9A2F6A1F2978088C00DECE9F /* AppDelegate.swift */,
 				9A2F6A212978088C00DECE9F /* SceneDelegate.swift */,
-				9A2F6A232978088C00DECE9F /* ViewController.swift */,
+				9A32B7B32983C5CD00D0C488 /* ViewController */,
 				9A2F6A252978088C00DECE9F /* Main.storyboard */,
 				9A2F6A282978088D00DECE9F /* Assets.xcassets */,
 				9A2F6A2A2978088D00DECE9F /* LaunchScreen.storyboard */,
@@ -119,9 +132,11 @@
 				9A2F6A3529780F9700DECE9F /* Extensions */,
 				9A9996EC2979202D00C207E0 /* DummyData.swift */,
 				9AB153EB297A77F000AD220A /* GlobalData.swift */,
-				A9553C01297CF382001644DB /* MapSearchViewController.swift */,
 				9AAD0CC9297F808E008DC808 /* MapSearchResultTableViewCell.swift */,
 				9AD74E2329801B3400C4D522 /* AddPracticeSongViewController.swift */,
+				9A32B7B02983C58C00D0C488 /* PositionCollectionView */,
+				9A32B7AF2983C58400D0C488 /* Util */,
+				9A03B40D2983CA11000A10EC /* DataModel.swift */,
 			);
 			path = UIStackViewStudy;
 			sourceTree = "<group>";
@@ -134,20 +149,66 @@
 				9A2F6A36297810E900DECE9F /* UIFontExtension.swift */,
 				9A9996E62978D72800C207E0 /* ConstraintExtension.swift */,
 				9A9996EA2978FD4C00C207E0 /* UIViewExtension.swift */,
-				9AB153E9297A693E00AD220A /* BasicTextView.swift */,
 				9AE796BA29795F50008D6976 /* UITextViewExtension.swift */,
-				A9553BFD297C2C93001644DB /* BasicBoxView.swift */,
-				9A9996E82978FAE600C207E0 /* TwoHstackLabel.swift */,
+				9A29E6E1297E0F6200D4A433 /* UIColor+Extensions.swift */,
+				9A29E6E3297E0F7900D4A433 /* UIFont+Extensions.swift */,
+				9A03B40F2983CAC6000A10EC /* NSObject+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9A32B7AF2983C58400D0C488 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				9A32B7AD2983C57F00D0C488 /* Util.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		9A32B7B02983C58C00D0C488 /* PositionCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				9A32B7A72983C4E100D0C488 /* PositionCollectionView.swift */,
+				9A32B7A92983C4F400D0C488 /* PositionCollectionViewCell.swift */,
+				9A32B7AB2983C56200D0C488 /* BnadMemberCollectionViewCell.swift */,
+			);
+			path = PositionCollectionView;
+			sourceTree = "<group>";
+		};
+		9A32B7B12983C5AD00D0C488 /* BasicUIViews */ = {
+			isa = PBXGroup;
+			children = (
 				9AD0BFB0297BAF43004B8F78 /* TextLimitTextField.swift */,
 				9AAD0CCB297F97A2008DC808 /* SearchTextField.swift */,
 				A9553BFF297C30C7001644DB /* BasicTextField.swift */,
-				9A29E6E1297E0F6200D4A433 /* UIColor+Extensions.swift */,
-				9A29E6E3297E0F7900D4A433 /* UIFont+Extensions.swift */,
-				9AD74E21298013AB00C4D522 /* BasicButton.swift */,
 				9A2D53B6298100D500EBB5F9 /* PracticeSongCardView.swift */,
+				9AB153E9297A693E00AD220A /* BasicTextView.swift */,
+				9A9996E82978FAE600C207E0 /* TwoHstackLabel.swift */,
+				A9553BFD297C2C93001644DB /* BasicBoxView.swift */,
+				9AD74E21298013AB00C4D522 /* BasicButton.swift */,
 				A913B8532982BA64001504FB /* SNSBoxView.swift */,
 			);
-			path = Extensions;
+			path = BasicUIViews;
+			sourceTree = "<group>";
+		};
+		9A32B7B22983C5C200D0C488 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9A9996F0297929B000C207E0 /* NetworkError.swift */,
+				A913B8552982C3EE001504FB /* HTTPCase.swift */,
+				9A9996EE297927DB00C207E0 /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9A32B7B32983C5CD00D0C488 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A9553C01297CF382001644DB /* MapSearchViewController.swift */,
+				9A2F6A232978088C00DECE9F /* ViewController.swift */,
+				9A03B40B2983C830000A10EC /* BandLeaderPositionSelectVC.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +285,7 @@
 				9A2D53B7298100D500EBB5F9 /* PracticeSongCardView.swift in Sources */,
 				9A2F6A3429780F9000DECE9F /* UILabelExtension.swift in Sources */,
 				A9553BFE297C2C93001644DB /* BasicBoxView.swift in Sources */,
+				9A32B7AE2983C57F00D0C488 /* Util.swift in Sources */,
 				9A2F6A392978156F00DECE9F /* UITextFieldExtension.swift in Sources */,
 				9A9996EF297927DB00C207E0 /* NetworkManager.swift in Sources */,
 				A913B8562982C3EE001504FB /* HTTPCase.swift in Sources */,
@@ -233,12 +295,16 @@
 				9AAD0CCA297F808E008DC808 /* MapSearchResultTableViewCell.swift in Sources */,
 				9AB153EC297A77F000AD220A /* GlobalData.swift in Sources */,
 				9AAD0CCC297F97A2008DC808 /* SearchTextField.swift in Sources */,
+				9A03B40C2983C830000A10EC /* BandLeaderPositionSelectVC.swift in Sources */,
 				9A9996E92978FAE600C207E0 /* TwoHstackLabel.swift in Sources */,
 				9A9996EB2978FD4C00C207E0 /* UIViewExtension.swift in Sources */,
 				9AD74E2429801B3400C4D522 /* AddPracticeSongViewController.swift in Sources */,
 				A913B8542982BA64001504FB /* SNSBoxView.swift in Sources */,
 				A9553C00297C30C7001644DB /* BasicTextField.swift in Sources */,
 				9A29E6E2297E0F6200D4A433 /* UIColor+Extensions.swift in Sources */,
+				9A03B4102983CAC6000A10EC /* NSObject+Extension.swift in Sources */,
+				9A32B7AA2983C4F400D0C488 /* PositionCollectionViewCell.swift in Sources */,
+				9A32B7AC2983C56200D0C488 /* BnadMemberCollectionViewCell.swift in Sources */,
 				9A2F6A202978088C00DECE9F /* AppDelegate.swift in Sources */,
 				9A29E6E4297E0F7900D4A433 /* UIFont+Extensions.swift in Sources */,
 				9AD0BFB1297BAF43004B8F78 /* TextLimitTextField.swift in Sources */,
@@ -248,6 +314,8 @@
 				9A9996F1297929B000C207E0 /* NetworkError.swift in Sources */,
 				9AE796BB29795F50008D6976 /* UITextViewExtension.swift in Sources */,
 				9A9996ED2979202D00C207E0 /* DummyData.swift in Sources */,
+				9A03B40E2983CA11000A10EC /* DataModel.swift in Sources */,
+				9A32B7A82983C4E100D0C488 /* PositionCollectionView.swift in Sources */,
 				9A2F6A222978088C00DECE9F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

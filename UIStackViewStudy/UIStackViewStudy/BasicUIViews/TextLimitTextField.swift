@@ -24,8 +24,7 @@ final class TextLimitTextField: UIView {
     private let checkLabel: UIStackView = TwoHstackLabel.checkLabel
 
     private lazy var checkButton = {
-        let button = BasicButton(widthPadding: 24, heightPadding: 10)
-        button.setTitle("중복 확인", for: .normal)
+        let button = BasicButton(text: "중복 확인", widthPadding: 24, heightPadding: 10)
         button.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
         return button
     }()
