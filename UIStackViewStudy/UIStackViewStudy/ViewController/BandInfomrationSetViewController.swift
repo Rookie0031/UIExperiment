@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class BandInfomrationSetViewController: UIViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel.makeBasicLabel(labelText: "밴드에 대해\n간단히 알려주세요", textColor: .white, fontStyle: .largeTitle, fontWeight: .heavy, numberOfLines: 2)
@@ -177,7 +177,7 @@ final class ViewController: UIViewController {
     }
 }
 
-extension ViewController {
+extension BandInfomrationSetViewController {
     
     private func showDuplicationCheckLabel(with isChecked: Bool) {
         checkLabel.isHidden = false
@@ -204,7 +204,7 @@ extension ViewController {
 }
 
 // ScrollView 가로 스크롤 막기
-extension ViewController: UIScrollViewDelegate {
+extension BandInfomrationSetViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
            if scrollView.contentOffset.x != 0 {
                scrollView.contentOffset.x = 0

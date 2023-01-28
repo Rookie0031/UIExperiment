@@ -38,8 +38,8 @@ final class PositionCollectionView: UIView {
     
     // MARK: - View
     
-    private lazy var collectionView: UICollectionView = {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.45),
+    lazy var collectionView: UICollectionView = {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4),
                                               heightDimension: .absolute(140))
         let item1 = NSCollectionLayoutItem(layoutSize: itemSize)
         let item2 = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -50,7 +50,7 @@ final class PositionCollectionView: UIView {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                        subitems: [item1, item2])
         
-        group.interItemSpacing = .fixed(10)
+        group.interItemSpacing = .fixed(5)
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 10

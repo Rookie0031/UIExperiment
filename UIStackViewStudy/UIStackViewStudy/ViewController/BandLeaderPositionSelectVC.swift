@@ -25,6 +25,13 @@ class BandLeaderPositionSelectVC: UIViewController {
                                            fontStyle: .content,
                                            textColorInfo: .gray02)
     
+    private lazy var titleVstack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [stepLabel, titleLabel, subTitleLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 5
+        return stackView
+    }()
+    
     private let collectionView = PositionCollectionView(
         entryPoint: .position,
         items: [.position(Position(
@@ -34,16 +41,28 @@ class BandLeaderPositionSelectVC: UIViewController {
                 .position(Position(instrumentName: "보컬", instrumentImageName: .vocal, isETC: false)),
                 .position(Position(instrumentName: "드럼", instrumentImageName: .drum, isETC: false)),
                 .position(Position(instrumentName: "기타", instrumentImageName: .guitar, isETC: false)),
+                .position(Position(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true)),
+                .position(Position(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true)),
+                .position(Position(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true)),
+                .position(Position(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true)),
                 .position(Position(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true))
     ])
     // MARK: Button 바꿔야함
-    private let nextButton = BasicButton(text: "다음", widthPadding: 100, heightPadding: 20)
+    private let nextButton = BasicButton(text: "다음", widthPadding: 300, heightPadding: 20)
     
-    private lazy var titleVstack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [stepLabel, titleLabel, subTitleLabel])
-        stackView.axis = .vertical
-        stackView.spacing = 5
-        return stackView
+    private var contentView = {
+        let view = UIView()
+        view.backgroundColor = .systemBlue
+        view.setContentHuggingPriority(.defaultLow, for: .vertical)
+        return view
+    }()
+    
+    private lazy var mainScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = true
+        scrollView.backgroundColor = .orange
+        scrollView.delegate = self
+        return scrollView
     }()
 
     override func viewDidLoad() {
@@ -53,25 +72,38 @@ class BandLeaderPositionSelectVC: UIViewController {
     }
     
     private func setupLayout() {
-        view.addSubview(titleVstack)
-        titleVstack.constraint(top: view.safeAreaLayoutGuide.topAnchor,
-                               leading: view.safeAreaLayoutGuide.leadingAnchor,
-                               padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0))
         
-        view.addSubview(nextButton)
-        nextButton.constraint(bottom: view.safeAreaLayoutGuide.bottomAnchor, centerX: view.centerXAnchor)
+        view.addSubview(mainScrollView)
+        mainScrollView.constraint(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
         
-        view.addSubview(collectionView)
+        mainScrollView.addSubview(contentView)
+        contentView.constraint(top: mainScrollView.contentLayoutGuide.topAnchor, leading: mainScrollView.contentLayoutGuide.leadingAnchor, bottom: mainScrollView.contentLayoutGuide.bottomAnchor, trailing: mainScrollView.contentLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 10, bottom: 160, right: 20))
+        
+        contentView.widthAnchor.constraint(equalTo: mainScrollView.widthAnchor).isActive = true
+        contentView.heightAnchor.constraint(equalToConstant: 2000).isActive = true
+        
+        contentView.addSubview(titleVstack)
+        
+        titleVstack.constraint(top: contentView.safeAreaLayoutGuide.topAnchor,
+                               leading: contentView.safeAreaLayoutGuide.leadingAnchor,
+                               padding: UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 0))
+
+        contentView.addSubview(nextButton)
+        nextButton.constraint(bottom: view.safeAreaLayoutGuide.bottomAnchor, centerX: mainScrollView.centerXAnchor)
+
+        contentView.addSubview(collectionView)
         collectionView.constraint(top: titleVstack.bottomAnchor,
-                                  leading: view.leadingAnchor,
+                                  leading: contentView.leadingAnchor,
                                   bottom: nextButton.bottomAnchor,
-                                  trailing: view.trailingAnchor,
+                                  trailing: contentView.trailingAnchor,
                                   padding: UIEdgeInsets(top: 20, left: 16, bottom: 0, right: 16))
+        
         collectionView.delegate = self
     }
     
     private func attribute() {
-        view.backgroundColor = .gray01
+        view.backgroundColor = .dark01
+        collectionView.collectionView.isScrollEnabled = false
     }
 }
 
@@ -79,4 +111,12 @@ extension BandLeaderPositionSelectVC: PositionCollectionViewDelegate {
    func canSelectPosition(_ collectionView: UICollectionView, indexPath: IndexPath, selectedItemsCount: Int) -> Bool {
        return true
    }
+}
+
+extension BandLeaderPositionSelectVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+           if scrollView.contentOffset.x != 0 {
+               scrollView.contentOffset.x = 0
+           }
+       }
 }

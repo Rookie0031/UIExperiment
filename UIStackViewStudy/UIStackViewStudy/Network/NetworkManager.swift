@@ -17,7 +17,7 @@ final class NetworkManager {
         var queryURLComponent = URLComponents(string: baseURL)
         let nameQuery = URLQueryItem(name: "name", value: word)
         queryURLComponent?.queryItems = [nameQuery]
-        guard let url = queryURLComponent?.url else { throw FetchError.unknown }
+        guard let url = queryURLComponent?.url else { throw NetworkError.badURL }
         
         do {
             let (_, response) = try await URLSession.shared.data(from: url)
@@ -33,6 +33,7 @@ final class NetworkManager {
         return result
     }
     
+    //MARK: UI 작업 마무리 이후 다시 진행
     func checkUserNameDuplication() {
         
     }

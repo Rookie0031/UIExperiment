@@ -6,7 +6,8 @@
 //
 import Foundation
 
-enum FetchError: Error, LocalizedError {
+enum NetworkError: Error, LocalizedError {
+    case badURL
     case badResponse
     case failedRequest(status: Int)
     case badJSON(error: Error)
@@ -14,6 +15,8 @@ enum FetchError: Error, LocalizedError {
     
     public var errorDescription: String? {
         switch self {
+        case.badURL:
+            return "Something related to URL has a problem."
         case .badResponse:
             return "The server returned an unrecognized response."
         case .failedRequest(let status):

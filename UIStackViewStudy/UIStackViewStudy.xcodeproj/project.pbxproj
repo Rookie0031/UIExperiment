@@ -10,12 +10,13 @@
 		9A03B40C2983C830000A10EC /* BandLeaderPositionSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A03B40B2983C830000A10EC /* BandLeaderPositionSelectVC.swift */; };
 		9A03B40E2983CA11000A10EC /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A03B40D2983CA11000A10EC /* DataModel.swift */; };
 		9A03B4102983CAC6000A10EC /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A03B40F2983CAC6000A10EC /* NSObject+Extension.swift */; };
+		9A03B4122983D5B9000A10EC /* BandMemberAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A03B4112983D5B9000A10EC /* BandMemberAddViewController.swift */; };
 		9A29E6E2297E0F6200D4A433 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29E6E1297E0F6200D4A433 /* UIColor+Extensions.swift */; };
 		9A29E6E4297E0F7900D4A433 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A29E6E3297E0F7900D4A433 /* UIFont+Extensions.swift */; };
 		9A2D53B7298100D500EBB5F9 /* PracticeSongCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D53B6298100D500EBB5F9 /* PracticeSongCardView.swift */; };
 		9A2F6A202978088C00DECE9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F6A1F2978088C00DECE9F /* AppDelegate.swift */; };
 		9A2F6A222978088C00DECE9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F6A212978088C00DECE9F /* SceneDelegate.swift */; };
-		9A2F6A242978088C00DECE9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F6A232978088C00DECE9F /* ViewController.swift */; };
+		9A2F6A242978088C00DECE9F /* BandInfomrationSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2F6A232978088C00DECE9F /* BandInfomrationSetViewController.swift */; };
 		9A2F6A272978088C00DECE9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2F6A252978088C00DECE9F /* Main.storyboard */; };
 		9A2F6A292978088D00DECE9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A2F6A282978088D00DECE9F /* Assets.xcassets */; };
 		9A2F6A2C2978088D00DECE9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2F6A2A2978088D00DECE9F /* LaunchScreen.storyboard */; };
@@ -51,13 +52,14 @@
 		9A03B40B2983C830000A10EC /* BandLeaderPositionSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandLeaderPositionSelectVC.swift; sourceTree = "<group>"; };
 		9A03B40D2983CA11000A10EC /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		9A03B40F2983CAC6000A10EC /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		9A03B4112983D5B9000A10EC /* BandMemberAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandMemberAddViewController.swift; sourceTree = "<group>"; };
 		9A29E6E1297E0F6200D4A433 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		9A29E6E3297E0F7900D4A433 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		9A2D53B6298100D500EBB5F9 /* PracticeSongCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeSongCardView.swift; sourceTree = "<group>"; };
 		9A2F6A1C2978088C00DECE9F /* UIStackViewStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIStackViewStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A2F6A1F2978088C00DECE9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A2F6A212978088C00DECE9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9A2F6A232978088C00DECE9F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9A2F6A232978088C00DECE9F /* BandInfomrationSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandInfomrationSetViewController.swift; sourceTree = "<group>"; };
 		9A2F6A262978088C00DECE9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9A2F6A282978088D00DECE9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A2F6A2B2978088D00DECE9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -133,7 +135,6 @@
 				9A9996EC2979202D00C207E0 /* DummyData.swift */,
 				9AB153EB297A77F000AD220A /* GlobalData.swift */,
 				9AAD0CC9297F808E008DC808 /* MapSearchResultTableViewCell.swift */,
-				9AD74E2329801B3400C4D522 /* AddPracticeSongViewController.swift */,
 				9A32B7B02983C58C00D0C488 /* PositionCollectionView */,
 				9A32B7AF2983C58400D0C488 /* Util */,
 				9A03B40D2983CA11000A10EC /* DataModel.swift */,
@@ -205,8 +206,10 @@
 			isa = PBXGroup;
 			children = (
 				A9553C01297CF382001644DB /* MapSearchViewController.swift */,
-				9A2F6A232978088C00DECE9F /* ViewController.swift */,
+				9A2F6A232978088C00DECE9F /* BandInfomrationSetViewController.swift */,
+				9AD74E2329801B3400C4D522 /* AddPracticeSongViewController.swift */,
 				9A03B40B2983C830000A10EC /* BandLeaderPositionSelectVC.swift */,
+				9A03B4112983D5B9000A10EC /* BandMemberAddViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -290,13 +293,14 @@
 				9A9996EF297927DB00C207E0 /* NetworkManager.swift in Sources */,
 				A913B8562982C3EE001504FB /* HTTPCase.swift in Sources */,
 				9A2F6A37297810E900DECE9F /* UIFontExtension.swift in Sources */,
-				9A2F6A242978088C00DECE9F /* ViewController.swift in Sources */,
+				9A2F6A242978088C00DECE9F /* BandInfomrationSetViewController.swift in Sources */,
 				9A9996E72978D72800C207E0 /* ConstraintExtension.swift in Sources */,
 				9AAD0CCA297F808E008DC808 /* MapSearchResultTableViewCell.swift in Sources */,
 				9AB153EC297A77F000AD220A /* GlobalData.swift in Sources */,
 				9AAD0CCC297F97A2008DC808 /* SearchTextField.swift in Sources */,
 				9A03B40C2983C830000A10EC /* BandLeaderPositionSelectVC.swift in Sources */,
 				9A9996E92978FAE600C207E0 /* TwoHstackLabel.swift in Sources */,
+				9A03B4122983D5B9000A10EC /* BandMemberAddViewController.swift in Sources */,
 				9A9996EB2978FD4C00C207E0 /* UIViewExtension.swift in Sources */,
 				9AD74E2429801B3400C4D522 /* AddPracticeSongViewController.swift in Sources */,
 				A913B8542982BA64001504FB /* SNSBoxView.swift in Sources */,
