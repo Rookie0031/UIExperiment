@@ -34,15 +34,15 @@ class BandLeaderPositionSelectVC: UIViewController {
     
     private let collectionView = PositionCollectionView(
         entryPoint: .position,
-        items: [.position(Position(
+        items: [.position(PositionType(
             instrumentName: "기타",
             instrumentImageName: .guitar, isETC: false)),
-                .position(Position(instrumentName: "베이스", instrumentImageName: .bass, isETC: false)),
-                .position(Position(instrumentName: "보컬", instrumentImageName: .vocal, isETC: false)),
-                .position(Position(instrumentName: "드럼", instrumentImageName: .drum, isETC: false)),
-                .position(Position(instrumentName: "기타", instrumentImageName: .guitar, isETC: false)),
-                .position(Position(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true)),
-                .position(Position(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true))
+                .position(PositionType(instrumentName: "베이스", instrumentImageName: .bass, isETC: false)),
+                .position(PositionType(instrumentName: "보컬", instrumentImageName: .vocal, isETC: false)),
+                .position(PositionType(instrumentName: "드럼", instrumentImageName: .drum, isETC: false)),
+                .position(PositionType(instrumentName: "기타", instrumentImageName: .guitar, isETC: false)),
+                .position(PositionType(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true)),
+                .position(PositionType(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true))
     ])
     // MARK: Button 바꿔야함
     private let nextButton = BasicButton(text: "다음", widthPadding: 300, heightPadding: 20)

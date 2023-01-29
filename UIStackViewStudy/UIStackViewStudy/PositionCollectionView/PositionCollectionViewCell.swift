@@ -104,7 +104,7 @@ final class PositionCollectionViewCell: UICollectionViewCell {
         self.containerView.layer.borderColor = isSelected ? UIColor.mainPurple.cgColor : UIColor.gray02.cgColor
     }
     
-    func configure(data: Position) {
+    func configure(data: PositionType) {
         self.positionImageView.image = UIImage(named: data.instrumentImageName.rawValue)
         self.positionNameLabel.text = data.instrumentName
     }

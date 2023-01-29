@@ -17,7 +17,7 @@ enum Section: Int {
 
 enum Item: Hashable {
     case bandMember(BandMember)
-    case position(Position)
+    case position(PositionType)
 }
 
 

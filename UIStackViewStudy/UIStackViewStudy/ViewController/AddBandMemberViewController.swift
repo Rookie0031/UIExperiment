@@ -8,45 +8,72 @@
 import UIKit
 
 
-enum TableViewSection: CaseIterable {
+enum TableViewSection: String {
     case main
+    
+    var title: String {
+        switch self {
+        case .main: return "밴드 멤버 (3인)"
+        }
+    }
 }
 
-struct Person: Hashable {
-    let name: String
+struct CellInformation: Hashable {
     let id = UUID()
+    let nickName: String
+    let instrument: String
 }
 
-extension Person {
+extension CellInformation {
     static var data = [
-        Person(name: "Philip"),
-        Person(name: "Emma"),
-        Person(name: "John"),
-        Person(name: "Micle"),
-        Person(name: "David"),
-        Person(name: "Tom"),
+        CellInformation(nickName: "구엘", instrument: "드럼"),
+        CellInformation(nickName: "루키", instrument: "베이스"),
+        CellInformation(nickName: "노엘", instrument: "기타"),
+        CellInformation(nickName: "데이크", instrument: "보컬"),
+        CellInformation(nickName: "알로라", instrument: "신디사이저"),
+        CellInformation(nickName: "가즈윌", instrument: "바이올린"),
     ]
 }
 
-class TableViewDataSource: UITableViewDiffableDataSource<TableViewSection, Person> {
-    // DataSource 관련 프로토콜을 override할 예정
+final class TableViewDataSource: UITableViewDiffableDataSource<TableViewSection, CellInformation> {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "ddasd"
+    }
 }
 
-class AddBandMemberViewController: UIViewController {
+final class AddBandMemberViewController: UIViewController {
     
-    var people: [Person] = Person.data
-    let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    lazy var dataSource: UITableViewDiffableDataSource<TableViewSection, Person> = self.makeDataSource()
+    var people: [CellInformation] = CellInformation.data
+    
+    let tableView = UITableView(frame: .zero, style: .grouped)
+    
+    lazy var dataSource: UITableViewDiffableDataSource<TableViewSection, CellInformation> = self.makeDataSource()
+    
+    private let nextButton = BasicButton(text: "다음", widthPadding: 300, heightPadding: 20)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
-        view.addSubview(tableView)
-        tableView.frame = view.bounds
-        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableView.register(AddBandMemberTableViewCell.self, forCellReuseIdentifier: AddBandMemberTableViewCell.identifier)
+        tableView.separatorStyle = .none
+        tableView.delegate = self
+        tableView.sectionHeaderHeight = 300
+        tableView.backgroundColor = .dark01
         
-        // dataSource와 tableView 연결
+        tableView.register(AddBandMemberTableHeaderView.self, forHeaderFooterViewReuseIdentifier: AddBandMemberTableHeaderView.classIdentifier)
+        
+        view.addSubview(tableView)
+        tableView.constraint(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 16, bottom: 100, right: 16))
+        
+        view.backgroundColor = .dark01
+        
+        view.addSubview(nextButton)
+        nextButton.constraint(leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 20))
+        
         applySnapShot(with: people)
     }
     
@@ -58,8 +85,8 @@ class AddBandMemberViewController: UIViewController {
         
     }
     
-    func applySnapShot(with items: [Person]) {
-        var snapShot = NSDiffableDataSourceSnapshot<TableViewSection, Person>()
+    func applySnapShot(with items: [CellInformation]) {
+        var snapShot = NSDiffableDataSourceSnapshot<TableViewSection, CellInformation>()
         snapShot.appendSections([.main])
         snapShot.appendItems(items, toSection: .main)
         self.dataSource.apply(snapShot, animatingDifferences: true)
@@ -67,12 +94,38 @@ class AddBandMemberViewController: UIViewController {
 }
 
 extension AddBandMemberViewController {
-    func makeDataSource() -> UITableViewDiffableDataSource<TableViewSection, Person> {
-        return UITableViewDiffableDataSource<TableViewSection, Person>(tableView: self.tableView) { tableView, indexPath, person in
+    func makeDataSource() -> UITableViewDiffableDataSource<TableViewSection, CellInformation> {
+        return UITableViewDiffableDataSource<TableViewSection, CellInformation>(tableView: self.tableView) { tableView, indexPath, person in
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = person.name
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AddBandMemberTableViewCell.identifier, for: indexPath) as? AddBandMemberTableViewCell else { return UITableViewCell() }
+            
+            cell.configure(data: person)
+            
             return cell
         }
     }
 }
+
+extension AddBandMemberViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: AddBandMemberTableHeaderView.classIdentifier) as! AddBandMemberTableHeaderView
+      return headerView
+    }
+}
+
+//MARK: Default Configuration
+//let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+//cell.backgroundColor = .dark01
+//var content = cell.defaultContentConfiguration()
+//content.image = UIImage(systemName: "star")
+//content.text = person.nickName
+//content.textProperties.font = UIFont.setFont(.headline01)
+//content.textProperties.color = .white
+//content.secondaryText = person.instrument
+//content.secondaryTextProperties.font = UIFont.setFont(.content)
+//content.secondaryTextProperties.color = .gray02
+//cell.contentConfiguration = content

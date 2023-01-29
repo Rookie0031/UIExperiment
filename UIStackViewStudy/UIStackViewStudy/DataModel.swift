@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Position: Hashable {
+struct PositionType: Hashable {
     let id = UUID()
     let instrumentName: String
     let instrumentImageName: InstrumentImageName
