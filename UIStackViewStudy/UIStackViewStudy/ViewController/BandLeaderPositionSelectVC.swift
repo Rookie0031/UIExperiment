@@ -42,17 +42,20 @@ class BandLeaderPositionSelectVC: UIViewController {
                 .position(Position(instrumentName: "드럼", instrumentImageName: .drum, isETC: false)),
                 .position(Position(instrumentName: "기타", instrumentImageName: .guitar, isETC: false)),
                 .position(Position(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true)),
-                .position(Position(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true)),
-                .position(Position(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true)),
-                .position(Position(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true)),
                 .position(Position(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true))
     ])
     // MARK: Button 바꿔야함
     private let nextButton = BasicButton(text: "다음", widthPadding: 300, heightPadding: 20)
     
+    private let bottomView = {
+        let UIView = UIView()
+        UIView.backgroundColor = .dark01
+        return UIView
+    }()
+    
     private var contentView = {
         let view = UIView()
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .dark01
         view.setContentHuggingPriority(.defaultLow, for: .vertical)
         return view
     }()
@@ -60,7 +63,7 @@ class BandLeaderPositionSelectVC: UIViewController {
     private lazy var mainScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
-        scrollView.backgroundColor = .orange
+        scrollView.backgroundColor = .dark01
         scrollView.delegate = self
         return scrollView
     }()
@@ -77,26 +80,33 @@ class BandLeaderPositionSelectVC: UIViewController {
         mainScrollView.constraint(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
         
         mainScrollView.addSubview(contentView)
-        contentView.constraint(top: mainScrollView.contentLayoutGuide.topAnchor, leading: mainScrollView.contentLayoutGuide.leadingAnchor, bottom: mainScrollView.contentLayoutGuide.bottomAnchor, trailing: mainScrollView.contentLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 10, bottom: 160, right: 20))
+        contentView.constraint(top: mainScrollView.contentLayoutGuide.topAnchor, leading: mainScrollView.leadingAnchor, bottom: mainScrollView.bottomAnchor, padding: UIEdgeInsets(top: 20, left: 16, bottom: 0, right: 16))
         
         contentView.widthAnchor.constraint(equalTo: mainScrollView.widthAnchor).isActive = true
-        contentView.heightAnchor.constraint(equalToConstant: 2000).isActive = true
+        
+        //MARK: CollectionView 내 뷰 사이즈는 동적지정이 아니라, 정해진 크기 이후로는 컬렉션뷰도 자체 스크롤 기능을 가진다. 따라서 contentView의 높이를 명시할 수 없기 때문에 스크롤뷰는 스크롤할 영역 범위를 인식할 수가 없다. 그래서 이렇게라도 설정해줘여ㅑ한다
+        contentView.heightAnchor.constraint(equalToConstant: 1100).isActive = true
         
         contentView.addSubview(titleVstack)
         
         titleVstack.constraint(top: contentView.safeAreaLayoutGuide.topAnchor,
                                leading: contentView.safeAreaLayoutGuide.leadingAnchor,
                                padding: UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 0))
-
-        contentView.addSubview(nextButton)
-        nextButton.constraint(bottom: view.safeAreaLayoutGuide.bottomAnchor, centerX: mainScrollView.centerXAnchor)
+        
+        contentView.addSubview(bottomView)
 
         contentView.addSubview(collectionView)
         collectionView.constraint(top: titleVstack.bottomAnchor,
                                   leading: contentView.leadingAnchor,
-                                  bottom: nextButton.bottomAnchor,
+                                  bottom: bottomView.topAnchor,
                                   trailing: contentView.trailingAnchor,
                                   padding: UIEdgeInsets(top: 20, left: 16, bottom: 0, right: 16))
+        
+        bottomView.constraint(leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 16, bottom: 10, right: 16))
+        bottomView.constraint(.heightAnchor, constant: 50)
+        
+        bottomView.addSubview(nextButton)
+        nextButton.constraint(to: bottomView)
         
         collectionView.delegate = self
     }

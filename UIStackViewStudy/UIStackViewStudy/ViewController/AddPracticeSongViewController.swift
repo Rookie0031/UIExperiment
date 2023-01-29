@@ -58,8 +58,6 @@ final class AddPracticeSongViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         attribute()
-
-//        NotificationCenter.default.addObserver(self, selector: #selector(removeParticularCard(_:)), name: Notification.Name("PracticeCardView"), object: nil)
     }
 
     override func viewDidLayoutSubviews() {

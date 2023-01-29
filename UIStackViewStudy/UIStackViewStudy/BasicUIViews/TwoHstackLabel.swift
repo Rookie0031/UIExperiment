@@ -35,6 +35,7 @@ struct TwoHstackLabel {
         let firstLabel = BasicLabel(contentText: firstLabelText, fontStyle: .headline01, textColorInfo: .white)
         let secondLabel = BasicLabel(contentText: inputType.rawValue, fontStyle: .content, textColorInfo: .gray02)
         firstLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
+        
         let stackView = UIStackView(arrangedSubviews: [firstLabel, secondLabel])
         stackView.axis = .horizontal
         stackView.spacing = 3
