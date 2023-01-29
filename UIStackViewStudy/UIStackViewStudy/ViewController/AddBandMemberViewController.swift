@@ -36,7 +36,7 @@ class AddBandMemberViewController: UIViewController {
     
     var people: [Person] = Person.data
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    var dataSource: TableViewDataSource!
+    lazy var dataSource: UITableViewDiffableDataSource<TableViewSection, Person> = self.makeDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,17 +47,7 @@ class AddBandMemberViewController: UIViewController {
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         // dataSource와 tableView 연결
-        dataSource = TableViewDataSource(tableView: tableView) { (tableView, indexPath, person) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = person.name
-            return cell
-        }
-        
-        // apply를 사용해서 UI 업데이트
-        var snapshot = dataSource.snapshot()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(people, toSection: .main)
-        dataSource.apply(snapshot, animatingDifferences: false)
+        applySnapShot(with: people)
     }
     
     private func setupLayout() {
@@ -67,10 +57,22 @@ class AddBandMemberViewController: UIViewController {
     private func attribute() {
         
     }
+    
+    func applySnapShot(with items: [Person]) {
+        var snapShot = NSDiffableDataSourceSnapshot<TableViewSection, Person>()
+        snapShot.appendSections([.main])
+        snapShot.appendItems(items, toSection: .main)
+        self.dataSource.apply(snapShot, animatingDifferences: true)
+    }
 }
 
 extension AddBandMemberViewController {
-    func makeDataSource -> UITableViewDiffableDataSource<TableViewSection, Person> {
-        return UITableViewDiffableDataSource<TableViewSection, Person>
+    func makeDataSource() -> UITableViewDiffableDataSource<TableViewSection, Person> {
+        return UITableViewDiffableDataSource<TableViewSection, Person>(tableView: self.tableView) { tableView, indexPath, person in
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.textLabel?.text = person.name
+            return cell
+        }
     }
 }
