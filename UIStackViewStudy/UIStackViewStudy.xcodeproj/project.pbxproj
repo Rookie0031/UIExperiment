@@ -41,6 +41,7 @@
 		9AD74E22298013AB00C4D522 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD74E21298013AB00C4D522 /* BasicButton.swift */; };
 		9AD74E2429801B3400C4D522 /* AddPracticeSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD74E2329801B3400C4D522 /* AddPracticeSongViewController.swift */; };
 		9AE796BB29795F50008D6976 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE796BA29795F50008D6976 /* UITextViewExtension.swift */; };
+		9AF4323C29862B4C00557F9B /* BandLeaderPositionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4323B29862B4C00557F9B /* BandLeaderPositionHeaderView.swift */; };
 		A913B8542982BA64001504FB /* SNSBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913B8532982BA64001504FB /* SNSBoxView.swift */; };
 		A913B8562982C3EE001504FB /* HTTPCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913B8552982C3EE001504FB /* HTTPCase.swift */; };
 		A9553BFE297C2C93001644DB /* BasicBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFD297C2C93001644DB /* BasicBoxView.swift */; };
@@ -85,6 +86,7 @@
 		9AD74E21298013AB00C4D522 /* BasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		9AD74E2329801B3400C4D522 /* AddPracticeSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPracticeSongViewController.swift; sourceTree = "<group>"; };
 		9AE796BA29795F50008D6976 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
+		9AF4323B29862B4C00557F9B /* BandLeaderPositionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandLeaderPositionHeaderView.swift; sourceTree = "<group>"; };
 		A913B8532982BA64001504FB /* SNSBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSBoxView.swift; sourceTree = "<group>"; };
 		A913B8552982C3EE001504FB /* HTTPCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCase.swift; sourceTree = "<group>"; };
 		A9553BFD297C2C93001644DB /* BasicBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBoxView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				9A32B7A72983C4E100D0C488 /* PositionCollectionView.swift */,
 				9A32B7A92983C4F400D0C488 /* PositionCollectionViewCell.swift */,
 				9A32B7AB2983C56200D0C488 /* BnadMemberCollectionViewCell.swift */,
+				9AF4323B29862B4C00557F9B /* BandLeaderPositionHeaderView.swift */,
 			);
 			path = PositionCollectionView;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				9A03B40C2983C830000A10EC /* BandLeaderPositionSelectVC.swift in Sources */,
 				9A9996E92978FAE600C207E0 /* TwoHstackLabel.swift in Sources */,
 				9A03B4122983D5B9000A10EC /* BandMemberAddViewController.swift in Sources */,
+				9AF4323C29862B4C00557F9B /* BandLeaderPositionHeaderView.swift in Sources */,
 				9A9996EB2978FD4C00C207E0 /* UIViewExtension.swift in Sources */,
 				9AD74E2429801B3400C4D522 /* AddPracticeSongViewController.swift in Sources */,
 				A913B8542982BA64001504FB /* SNSBoxView.swift in Sources */,
