@@ -18,8 +18,8 @@ enum TableViewSection: String {
     }
 }
 
-struct CellInformation: Hashable {
-    let id = UUID()
+struct CellInformation: Hashable, Identifiable {
+    let id = UUID().uuidString
     let nickName: String
     let instrument: String
 }
@@ -74,7 +74,7 @@ final class AddBandMemberViewController: UIViewController {
         view.addSubview(nextButton)
         nextButton.constraint(leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 20))
         
-        applySnapShot(with: people)
+        updateSnapShot(with: people)
     }
     
     private func setupLayout() {
@@ -85,7 +85,7 @@ final class AddBandMemberViewController: UIViewController {
         
     }
     
-    func applySnapShot(with items: [CellInformation]) {
+    func updateSnapShot(with items: [CellInformation]) {
         var snapShot = NSDiffableDataSourceSnapshot<TableViewSection, CellInformation>()
         snapShot.appendSections([.main])
         snapShot.appendItems(items, toSection: .main)
@@ -99,7 +99,9 @@ extension AddBandMemberViewController {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: AddBandMemberTableViewCell.identifier, for: indexPath) as? AddBandMemberTableViewCell else { return UITableViewCell() }
             
-            cell.configure(data: person)
+            cell.delegate = self
+            cell.configure(data: person, index: indexPath.item)
+            cell.selectionStyle = .none
             
             return cell
         }
@@ -117,15 +119,17 @@ extension AddBandMemberViewController: UITableViewDelegate {
     }
 }
 
-//MARK: Default Configuration
-//let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//cell.backgroundColor = .dark01
-//var content = cell.defaultContentConfiguration()
-//content.image = UIImage(systemName: "star")
-//content.text = person.nickName
-//content.textProperties.font = UIFont.setFont(.headline01)
-//content.textProperties.color = .white
-//content.secondaryText = person.instrument
-//content.secondaryTextProperties.font = UIFont.setFont(.content)
-//content.secondaryTextProperties.color = .gray02
-//cell.contentConfiguration = content
+extension AddBandMemberViewController: CellDeletable {
+    func deleteCell(id: CellInformation.ID) {
+        let index = people.cellIndex(with: id)
+        people.remove(at: index)
+        updateSnapShot(with: people)
+    }
+}
+// Array.Index is a type alias for Int
+extension Array where Element == CellInformation {
+    func cellIndex(with id: CellInformation.ID) -> Self.Index {
+        guard let index = firstIndex(where: { $0.id == id }) else { fatalError() }
+        return index
+    }
+}

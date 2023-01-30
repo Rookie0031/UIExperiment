@@ -8,6 +8,10 @@ import UIKit
 
 final class AddBandMemberTableViewCell: UITableViewCell {
     
+    private var cellIndex: Int = -1
+    
+    weak var delegate: CellDeletable?
+    
     static let identifier = "TableCell"
     
     private let titleLabel: UILabel = {
@@ -33,17 +37,24 @@ final class AddBandMemberTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    lazy var rightView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "x.circle.fill")
-        imageView.contentMode = .scaleToFill
-        return imageView
-    }()
+    private lazy var deleteButton: UIButton = {
+        $0.setImage(UIImage(
+            systemName: "xmark.circle.fill",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 20)),
+            for: .normal)
+        $0.contentMode = .scaleAspectFit
+        $0.tintColor = .gray02
+        $0.setContentHuggingPriority(UILayoutPriority(rawValue: 500),
+                                     for: .horizontal)
+        $0.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 760),
+                                                   for: .horizontal)
+        return $0
+    }(UIButton(type: .custom))
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLayout()
-        self.backgroundColor = .dark01
+        attribute()
     }
     
     
@@ -54,6 +65,10 @@ final class AddBandMemberTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         self.titleLabel.text = nil
         self.subTitleLabel.text = nil
+    }
+    
+    private func attribute() {
+        self.backgroundColor = .dark01
     }
     
     private func setupLayout() {
@@ -71,16 +86,27 @@ final class AddBandMemberTableViewCell: UITableViewCell {
         contentView.addSubview(subTitleLabel)
         subTitleLabel.constraint(top: titleLabel.bottomAnchor, leading: titleLabel.leadingAnchor, padding: UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 20))
         
-        contentView.addSubview(rightView)
-        rightView.constraint(.widthAnchor, constant: 25)
-        rightView.constraint(.heightAnchor, constant: 25)
-        rightView.constraint(trailing: contentView.trailingAnchor, centerY: contentView.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 10)
+        contentView.addSubview(deleteButton)
+        deleteButton.constraint(.widthAnchor, constant: 25)
+        deleteButton.constraint(.heightAnchor, constant: 25)
+        deleteButton.constraint(trailing: contentView.trailingAnchor, centerY: contentView.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 10)
         )
     
     }
     
-    func configure(data: CellInformation) {
+    func configure(data: CellInformation, index: Int) {
         self.titleLabel.text = data.nickName
         self.subTitleLabel.text = data.instrument
+        self.cellIndex = index
+        
+        let action = UIAction { _ in
+            self.delegate?.deleteCell(id: data.id)
+            print("Button Tapped")
+        }
+        self.deleteButton.addAction(action, for: .touchUpInside)
     }
+}
+
+protocol CellDeletable: AnyObject {
+    func deleteCell(id: CellInformation.ID)
 }
