@@ -28,6 +28,7 @@
 		9A32B7AC2983C56200D0C488 /* BnadMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A32B7AB2983C56200D0C488 /* BnadMemberCollectionViewCell.swift */; };
 		9A32B7AE2983C57F00D0C488 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A32B7AD2983C57F00D0C488 /* Util.swift */; };
 		9A3F07772987FC1D009CD500 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3F07762987FC1D009CD500 /* NetworkAPI.swift */; };
+		9A3F077A29881C25009CD500 /* BandMemberInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3F077929881C25009CD500 /* BandMemberInvitationViewController.swift */; };
 		9A9996E72978D72800C207E0 /* ConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996E62978D72800C207E0 /* ConstraintExtension.swift */; };
 		9A9996E92978FAE600C207E0 /* TwoHstackLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996E82978FAE600C207E0 /* TwoHstackLabel.swift */; };
 		9A9996EB2978FD4C00C207E0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996EA2978FD4C00C207E0 /* UIViewExtension.swift */; };
@@ -75,6 +76,7 @@
 		9A32B7AB2983C56200D0C488 /* BnadMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BnadMemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		9A32B7AD2983C57F00D0C488 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		9A3F07762987FC1D009CD500 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
+		9A3F077929881C25009CD500 /* BandMemberInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandMemberInvitationViewController.swift; sourceTree = "<group>"; };
 		9A9996E62978D72800C207E0 /* ConstraintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintExtension.swift; sourceTree = "<group>"; };
 		9A9996E82978FAE600C207E0 /* TwoHstackLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoHstackLabel.swift; sourceTree = "<group>"; };
 		9A9996EA2978FD4C00C207E0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -216,11 +218,20 @@
 				9A2F6A232978088C00DECE9F /* BandInfomrationSetViewController.swift */,
 				9AD74E2329801B3400C4D522 /* AddPracticeSongViewController.swift */,
 				9A03B40B2983C830000A10EC /* BandLeaderPositionSelectVC.swift */,
+				9A3F077829881C12009CD500 /* AddBandMemberFlow */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9A3F077829881C12009CD500 /* AddBandMemberFlow */ = {
+			isa = PBXGroup;
+			children = (
 				9AF4323D2986486100557F9B /* AddBandMemberViewController.swift */,
 				9AF4323F29864CAC00557F9B /* AddBandMemberTableHeaderView.swift */,
 				9A019B8A29868B6600FAB9D8 /* AddBandMemberTableViewCell.swift */,
+				9A3F077929881C25009CD500 /* BandMemberInvitationViewController.swift */,
 			);
-			path = ViewController;
+			path = AddBandMemberFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +344,7 @@
 				9A32B7A82983C4E100D0C488 /* PositionCollectionView.swift in Sources */,
 				9A2F6A222978088C00DECE9F /* SceneDelegate.swift in Sources */,
 				9A3F07772987FC1D009CD500 /* NetworkAPI.swift in Sources */,
+				9A3F077A29881C25009CD500 /* BandMemberInvitationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
