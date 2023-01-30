@@ -6,14 +6,17 @@
 //
 import Foundation
 
-final class NetworkManager {
-
-    static let shared = NetworkManager()
+final class DuplicationCheckRequest {
     
-    func checkBandNameDuplication(with word: String) async throws -> Bool {
+    //MARK: Authorization 추가 후 header 추가해서 request 필요
+    static func checkDuplication(checkCase: CheckDuplicationCase, word: String) async throws -> Bool {
         var result = false
+        var baseURL = ""
+        switch checkCase {
+        case .userNickName: baseURL = "http://43.201.55.66:8080/member/validate"
+        case .bandName: baseURL = "http://43.201.55.66:8080/band/validate"
+        }
         
-        let baseURL = "http://43.201.55.66:8080/member/validate"
         var queryURLComponent = URLComponents(string: baseURL)
         let nameQuery = URLQueryItem(name: "name", value: word)
         queryURLComponent?.queryItems = [nameQuery]
@@ -31,11 +34,6 @@ final class NetworkManager {
         }
         
         return result
-    }
-    
-    //MARK: UI 작업 마무리 이후 다시 진행
-    func checkUserNameDuplication() {
-        
     }
 }
 

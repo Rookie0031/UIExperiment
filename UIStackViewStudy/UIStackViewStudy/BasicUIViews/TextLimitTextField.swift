@@ -7,12 +7,14 @@
 
 import UIKit
 
+
+enum CheckDuplicationCase {
+    case userNickName
+    case bandName
+}
+
 final class TextLimitTextField: UIView {
     
-    enum CheckDuplicationCase {
-        case userNickName
-        case bandName
-    }
     
     private let placeholder: String
     
@@ -70,20 +72,17 @@ extension TextLimitTextField {
             }
         }
     }
-    
+
     @objc func didTapCheckButton() {
-        switch duplicationCheckType {
-        case .bandName: Task { await updateResult() }
-        case .userNickName: Task { await updateResult() }
-        }
-    }
-    
-    private func updateResult() async {
-        do {
-            let isChecked = try await NetworkManager.shared.checkBandNameDuplication(with: textField.text ?? "")
-            showDuplicationCheckLabel(with: isChecked)
-        } catch {
-            print(error)
+        Task {
+            do {
+                let isChecked = try await DuplicationCheckRequest.checkDuplication(
+                    checkCase: duplicationCheckType,
+                    word: textField.text ?? "")
+                showDuplicationCheckLabel(with: isChecked)
+            } catch {
+                print(error)
+            }
         }
     }
     
