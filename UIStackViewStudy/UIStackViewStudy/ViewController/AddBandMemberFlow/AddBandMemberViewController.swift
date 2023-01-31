@@ -58,7 +58,7 @@ final class AddBandMemberViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(AddBandMemberTableViewCell.self, forCellReuseIdentifier: AddBandMemberTableViewCell.identifier)
+        tableView.register(AddBandMemberTableViewCell.self, forCellReuseIdentifier: AddBandMemberTableViewCell.classIdentifier)
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.sectionHeaderHeight = 300
@@ -97,7 +97,7 @@ extension AddBandMemberViewController {
     func makeDataSource() -> UITableViewDiffableDataSource<TableViewSection, CellInformation> {
         return UITableViewDiffableDataSource<TableViewSection, CellInformation>(tableView: self.tableView) { tableView, indexPath, person in
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: AddBandMemberTableViewCell.identifier, for: indexPath) as? AddBandMemberTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AddBandMemberTableViewCell.classIdentifier, for: indexPath) as? AddBandMemberTableViewCell else { return UITableViewCell() }
             
             cell.delegate = self
             cell.configure(data: person, index: indexPath.item)
@@ -115,6 +115,11 @@ extension AddBandMemberViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: AddBandMemberTableHeaderView.classIdentifier) as! AddBandMemberTableHeaderView
+        let inviteMemberButtonAction = UIAction { _ in
+            self.present(UserSearchViewController(), animated: true)
+        }
+
+        headerView.inviteMemberButton.addAction(inviteMemberButtonAction, for: .touchUpInside)
       return headerView
     }
 }
