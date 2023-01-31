@@ -92,14 +92,12 @@ final class AddBandMemberTableViewCell: UITableViewCell {
     
     }
     
-    func configure(data: CellInformation, index: Int) {
+    func configure(data: CellInformation) {
         self.titleLabel.text = data.nickName
         self.subTitleLabel.text = data.instrument
-        self.cellIndex = index
         
         let action = UIAction { _ in
             self.delegate?.deleteCell(id: data.id)
-            print("Button Tapped")
         }
         self.deleteButton.addAction(action, for: .touchUpInside)
     }

@@ -29,6 +29,7 @@
 		9A32B7AE2983C57F00D0C488 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A32B7AD2983C57F00D0C488 /* Util.swift */; };
 		9A3F07772987FC1D009CD500 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3F07762987FC1D009CD500 /* NetworkAPI.swift */; };
 		9A3F077A29881C25009CD500 /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3F077929881C25009CD500 /* UserSearchViewController.swift */; };
+		9A645C0E2989339100BECA84 /* AddedBandMemberCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A645C0D2989339100BECA84 /* AddedBandMemberCollectionCell.swift */; };
 		9A9996E72978D72800C207E0 /* ConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996E62978D72800C207E0 /* ConstraintExtension.swift */; };
 		9A9996E92978FAE600C207E0 /* TwoHstackLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996E82978FAE600C207E0 /* TwoHstackLabel.swift */; };
 		9A9996EB2978FD4C00C207E0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9996EA2978FD4C00C207E0 /* UIViewExtension.swift */; };
@@ -78,6 +79,7 @@
 		9A32B7AD2983C57F00D0C488 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		9A3F07762987FC1D009CD500 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		9A3F077929881C25009CD500 /* UserSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
+		9A645C0D2989339100BECA84 /* AddedBandMemberCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedBandMemberCollectionCell.swift; sourceTree = "<group>"; };
 		9A9996E62978D72800C207E0 /* ConstraintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintExtension.swift; sourceTree = "<group>"; };
 		9A9996E82978FAE600C207E0 /* TwoHstackLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoHstackLabel.swift; sourceTree = "<group>"; };
 		9A9996EA2978FD4C00C207E0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				9A019B8A29868B6600FAB9D8 /* AddBandMemberTableViewCell.swift */,
 				A90075962988B0C300371EC8 /* BandMemberSearchTableCell.swift */,
 				9AF4323F29864CAC00557F9B /* AddBandMemberTableHeaderView.swift */,
+				9A645C0D2989339100BECA84 /* AddedBandMemberCollectionCell.swift */,
 			);
 			path = AddBandMemberFlow;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				9AAD0CCA297F808E008DC808 /* MapSearchResultTableViewCell.swift in Sources */,
 				9AB153EC297A77F000AD220A /* GlobalData.swift in Sources */,
 				9AAD0CCC297F97A2008DC808 /* SearchTextField.swift in Sources */,
+				9A645C0E2989339100BECA84 /* AddedBandMemberCollectionCell.swift in Sources */,
 				9A03B40C2983C830000A10EC /* BandLeaderPositionSelectVC.swift in Sources */,
 				9A019B8B29868B6700FAB9D8 /* AddBandMemberTableViewCell.swift in Sources */,
 				9A9996E92978FAE600C207E0 /* TwoHstackLabel.swift in Sources */,

@@ -192,6 +192,7 @@ extension BandInfomrationSetViewController {
     @objc func presentLocationSearchView() {
         let mapSearchView = MapSearchViewController()
         mapSearchView.completion = { mapItem in
+            print("completion Handler 작동")
             self.practicePlace.basicLabel.text = mapItem.name ?? ""
             self.practicePlace.basicRightView.isHidden = true
         }

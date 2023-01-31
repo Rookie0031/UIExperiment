@@ -105,7 +105,7 @@ extension AddBandMemberViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: AddBandMemberTableViewCell.classIdentifier, for: indexPath) as? AddBandMemberTableViewCell else { return UITableViewCell() }
             
             cell.delegate = self
-            cell.configure(data: person, index: indexPath.item)
+            cell.configure(data: person)
             cell.selectionStyle = .none
             
             return cell
@@ -113,6 +113,7 @@ extension AddBandMemberViewController {
     }
 }
 
+//MARK: TableView Delegate
 extension AddBandMemberViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
@@ -127,7 +128,7 @@ extension AddBandMemberViewController: UITableViewDelegate {
                 self.people = selectedUsers
                 self.updateSnapShot(with: self.people)
             }
-            self.present(UserSearchViewController(), animated: true)
+            self.present(nextViewController, animated: true)
         }
 
         headerView.inviteMemberButton.addAction(inviteMemberButtonAction, for: .touchUpInside)
@@ -138,6 +139,8 @@ extension AddBandMemberViewController: UITableViewDelegate {
 extension AddBandMemberViewController: CellDeletable {
     func deleteCell(id: CellInformation.ID) {
         let index = people.cellIndex(with: id)
+        print("This is index")
+        print(index)
         people.remove(at: index)
         updateSnapShot(with: people)
     }

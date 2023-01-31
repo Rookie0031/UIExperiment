@@ -8,8 +8,6 @@ import UIKit
 
 final class BandMemberSearchTableCell: UITableViewCell {
 
-    private var cellIndex: Int = -1
-
     var isChecked: Bool = false {
           didSet {
               selectButton.image = UIImage(systemName: isChecked ? "checkmark.circle" : "circle")
@@ -98,10 +96,9 @@ final class BandMemberSearchTableCell: UITableViewCell {
 
     }
 
-    func configure(data: CellInformation, index: Int) {
+    func configure(data: CellInformation) {
         self.titleLabel.text = data.nickName
         self.subTitleLabel.text = data.instrument
-        self.cellIndex = index
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
