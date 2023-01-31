@@ -20,8 +20,6 @@ final class BandMemberSearchTableCell: UITableViewCell {
           }
       }
 
-    weak var delegate: CellSelectable?
-
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.setFont(.headline01)
@@ -60,7 +58,6 @@ final class BandMemberSearchTableCell: UITableViewCell {
         setupLayout()
         attribute()
     }
-
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -102,20 +99,10 @@ final class BandMemberSearchTableCell: UITableViewCell {
         self.titleLabel.text = data.nickName
         self.subTitleLabel.text = data.instrument
         self.cellIndex = index
-
-        let action = UIAction { _ in
-            self.delegate?.deleteCell(id: data.id)
-            print("Button Tapped")
-        }
-        self.selectButton.addAction(action, for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
          super.setSelected(selected, animated: animated)
          isChecked.toggle()
      }
-}
-
-protocol CellSelectable: AnyObject {
-    func deleteCell(id: CellInformation.ID)
 }
