@@ -12,15 +12,12 @@ final class BandMemberSearchTableCell: UITableViewCell {
 
     var isChecked: Bool = false {
           didSet {
-              selectButton.setImage(UIImage(
-                  systemName: isChecked ? "checkmark.circle" : "circle",
-                  withConfiguration: UIImage.SymbolConfiguration(pointSize: 20)),
-                  for: .normal)
+              selectButton.image = UIImage(systemName: isChecked ? "checkmark.circle" : "circle")
               selectButton.tintColor = isChecked ? .systemPurple : .gray02
           }
       }
 
-    private let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.setFont(.headline01)
         label.textColor = .white
@@ -28,7 +25,7 @@ final class BandMemberSearchTableCell: UITableViewCell {
         return label
     }()
 
-    private let subTitleLabel: UILabel = {
+    let subTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.setFont(.content)
         label.textColor = .white.withAlphaComponent(0.5)
@@ -43,15 +40,21 @@ final class BandMemberSearchTableCell: UITableViewCell {
         return imageView
     }()
 
-    private lazy var selectButton: UIButton = {
-        $0.contentMode = .scaleAspectFit
-        $0.tintColor = .gray02
-        $0.setContentHuggingPriority(UILayoutPriority(rawValue: 500),
-                                     for: .horizontal)
-        $0.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 760),
-                                                   for: .horizontal)
-        return $0
-    }(UIButton(type: .custom))
+    lazy var selectButton: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
+        return imageView
+    }()
+
+//    private lazy var selectButton: UIButton = {
+//        $0.contentMode = .scaleAspectFit
+//        $0.tintColor = .gray02
+//        $0.setContentHuggingPriority(UILayoutPriority(rawValue: 500),
+//                                     for: .horizontal)
+//        $0.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 760),
+//                                                   for: .horizontal)
+//        return $0
+//    }(UIButton(type: .custom))
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

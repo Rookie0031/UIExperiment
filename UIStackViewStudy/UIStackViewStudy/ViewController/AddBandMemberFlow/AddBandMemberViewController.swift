@@ -47,7 +47,12 @@ final class TableViewDataSource: UITableViewDiffableDataSource<TableViewSection,
 
 final class AddBandMemberViewController: UIViewController {
     
-    var people: [CellInformation] = CellInformation.data
+    var people: [CellInformation] = []
+//    {
+//        didSet {
+//            updateSnapShot(with: people)
+//        }
+//    }
     
     let tableView = UITableView(frame: .zero, style: .grouped)
     
@@ -116,6 +121,12 @@ extension AddBandMemberViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: AddBandMemberTableHeaderView.classIdentifier) as! AddBandMemberTableHeaderView
         let inviteMemberButtonAction = UIAction { _ in
+            let nextViewController = UserSearchViewController()
+            nextViewController.completion = { selectedUsers in
+                print("completion Handelr 작동")
+                self.people = selectedUsers
+                self.updateSnapShot(with: self.people)
+            }
             self.present(UserSearchViewController(), animated: true)
         }
 

@@ -228,11 +228,11 @@
 		9A3F077829881C12009CD500 /* AddBandMemberFlow */ = {
 			isa = PBXGroup;
 			children = (
-				9AF4323F29864CAC00557F9B /* AddBandMemberTableHeaderView.swift */,
 				9AF4323D2986486100557F9B /* AddBandMemberViewController.swift */,
 				9A3F077929881C25009CD500 /* UserSearchViewController.swift */,
 				9A019B8A29868B6600FAB9D8 /* AddBandMemberTableViewCell.swift */,
 				A90075962988B0C300371EC8 /* BandMemberSearchTableCell.swift */,
+				9AF4323F29864CAC00557F9B /* AddBandMemberTableHeaderView.swift */,
 			);
 			path = AddBandMemberFlow;
 			sourceTree = "<group>";
