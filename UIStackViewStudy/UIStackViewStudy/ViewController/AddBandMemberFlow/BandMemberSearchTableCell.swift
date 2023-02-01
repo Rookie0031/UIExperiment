@@ -6,7 +6,9 @@
 //
 import UIKit
 
-final class BandMemberSearchTableCell: UITableViewCell {
+final class BandMemberSearchTableCell: UITableViewCell, Identifiable {
+    
+    var id: String = ""
 
     var isChecked: Bool = false {
           didSet {
@@ -99,6 +101,7 @@ final class BandMemberSearchTableCell: UITableViewCell {
     func configure(data: CellInformation) {
         self.titleLabel.text = data.nickName
         self.subTitleLabel.text = data.instrument
+        self.id = data.id
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

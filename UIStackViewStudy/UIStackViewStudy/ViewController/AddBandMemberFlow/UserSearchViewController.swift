@@ -72,7 +72,7 @@ class UserSearchViewController: UIViewController {
         view.backgroundColor = .dark01
         setupLayout()
         
-        updateSnapShot(with: CellInformation.data)
+        updateSnapShot(with: selectedUsers)
     }
     
     private func setupLayout() {
@@ -87,13 +87,12 @@ class UserSearchViewController: UIViewController {
         searchResultTable.constraint(top: searchBar.bottomAnchor, leading: view.leadingAnchor, bottom: doneButton.topAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 25, bottom: 10, right: 25))
         
         view.addSubview(bottomScrollView)
-        bottomScrollView.constraint(.widthAnchor, constant: 60)
-        bottomScrollView.constraint(leading: view.leadingAnchor, bottom: doneButton.topAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0))
+        bottomScrollView.constraint(top: searchResultTable.bottomAnchor, leading: view.leadingAnchor, bottom: doneButton.topAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0))
         
     }
 }
 
-//MARK: TableView delegate
+//MARK: TableView datasource
 extension UserSearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,7 +107,7 @@ extension UserSearchViewController: UITableViewDataSource {
         return cell
     }
 }
-
+//MARK: TableView delegate
 extension UserSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65
@@ -118,8 +117,17 @@ extension UserSearchViewController: UITableViewDelegate {
         tableView.cellForRow(at: indexPath)?.isSelected.toggle()
         let selectedCell = tableView.cellForRow(at: indexPath) as! BandMemberSearchTableCell
         let data = CellInformation(nickName: selectedCell.titleLabel.text ?? "", instrument: selectedCell.subTitleLabel.text ?? "")
-        print(data.id)
+        
         selectedUsers.append(data)
+        
+//        if !selectedCell.isSelected {
+//            selectedUsers.append(data)
+//            self.updateSnapShot(with: selectedUsers)
+//        } else {
+//            selectedUsers.removeAll { $0.id == selectedCell.id }
+//            self.updateSnapShot(with: selectedUsers)
+//        }
+        
     }
 }
 
@@ -138,14 +146,14 @@ extension UserSearchViewController: UICollectionViewDelegateFlowLayout {
 }
 
 
-//MARK: general methods
+//MARK: CollectionView DiffableData Source
 extension UserSearchViewController {
     func makeDataSource() -> UICollectionViewDiffableDataSource<BottomScrollSection, CellInformation> {
         return UICollectionViewDiffableDataSource<BottomScrollSection, CellInformation>(collectionView: self.bottomScrollView, cellProvider: { collectionView, indexPath, item in
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddedBandMemberCollectionCell.classIdentifier, for: indexPath) as? AddedBandMemberCollectionCell else { return UICollectionViewCell() }
             
-            // Configure
+            cell.configure(data: item)
             
             return cell
         })

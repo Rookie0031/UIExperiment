@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class AddedBandMemberCollectionCell: UICollectionViewCell {
+final class AddedBandMemberCollectionCell: UICollectionViewCell, Identifiable {
     
     // MARK: - properties
     
-    weak var delegate: CellDeletable?
+    var id: String = ""
     
     private let backgroundContentView: UIView = {
         let view = UIView()
@@ -64,16 +64,8 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell {
         deleteButton.constraint(trailing: contentView.safeAreaLayoutGuide.trailingAnchor, centerY: contentView.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20))
     }
     
-    func configure(data: CellInformation, index: Int) {
-        itemLabel.text = data.nickName
-        
-        let action = UIAction { _ in
-            self.delegate?.deleteCell(id: data.id)
-        }
-        self.deleteButton.addAction(action, for: .touchUpInside)
+    func configure(data: CellInformation) {
+        self.itemLabel.text = data.nickName
+        self.id = data.id
     }
-}
-
-protocol CellDeletable: AnyObject {
-    func deleteCell(id: CellInformation.ID)
 }
