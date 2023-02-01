@@ -99,12 +99,15 @@ extension AddBandMemberViewController {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: AddBandMemberTableViewCell.classIdentifier, for: indexPath) as? AddBandMemberTableViewCell else { return UITableViewCell() }
             
-            print("Function has been called")
-            cell.delegate = self
             cell.configure(data: person)
-            print("Configured Cell ID: \(person.id)")
+            
+            let deleteAction = UIAction { _ in
+                self.people.removeAll { $0.id == cell.id }
+                self.updateSnapShot(with: self.people)
+            }
+            
+            cell.deleteButton.addAction(deleteAction, for: .touchUpInside)
             cell.selectionStyle = .none
-            print("This is people Array")
             print(self.people)
             
             return cell
@@ -126,6 +129,8 @@ extension AddBandMemberViewController: UITableViewDelegate {
             nextViewController.completion = { selectedUsers in
                 print("completion Handelr 작동")
                 self.people = selectedUsers
+                print("completion Handelr 작동 후 People")
+                print(self.people)
                 self.updateSnapShot(with: self.people)
             }
             self.present(nextViewController, animated: true)
@@ -136,27 +141,11 @@ extension AddBandMemberViewController: UITableViewDelegate {
     }
 }
 
-extension AddBandMemberViewController: CellDeletable {
-    func deleteCell(id: CellInformation.ID) {
-        let index = self.people.cellIndex(with: id)
-        print("This is index")
-        print(index)
-        //위에 있는 people과 여기있는 people이 다르다?? 왜 다르지??
-        if self.people.count == 1 {
-            print("Test Point")
-            people.removeFirst()
-        } else {
-            self.people.remove(at: index)
-        }
-        updateSnapShot(with: people)
-        print("This is poeple Array on Delete")
-        print(self.people)
-    }
-}
-// Array.Index is a type alias for Int
-extension Array where Element == CellInformation {
-    func cellIndex(with id: CellInformation.ID) -> Self.Index {
-        guard let index = firstIndex(where: { $0.id == id }) else { return 0 }
-        return index
-    }
-}
+//
+////MARK: Identifier에 따른 정수형 index 추출 extension
+//extension Array where Element == CellInformation {
+//    func cellIndex(with id: CellInformation.ID) -> Self.Index {
+//        guard let index = firstIndex(where: { $0.id == id }) else { return 0 }
+//        return index
+//    }
+//}

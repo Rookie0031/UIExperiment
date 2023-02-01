@@ -6,9 +6,9 @@
 //
 import UIKit
 
-final class AddBandMemberTableViewCell: UITableViewCell {
+final class AddBandMemberTableViewCell: UITableViewCell, Identifiable {
     
-    weak var delegate: CellDeletable?
+    var id: String = ""
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -33,7 +33,7 @@ final class AddBandMemberTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    private lazy var deleteButton: UIButton = {
+    lazy var deleteButton: UIButton = {
         $0.setImage(UIImage(
             systemName: "xmark.circle.fill",
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 20)),
@@ -93,14 +93,6 @@ final class AddBandMemberTableViewCell: UITableViewCell {
     func configure(data: CellInformation) {
         self.titleLabel.text = data.nickName
         self.subTitleLabel.text = data.instrument
-        
-        let action = UIAction { _ in
-            self.delegate?.deleteCell(id: data.id)
-        }
-        self.deleteButton.addAction(action, for: .touchUpInside)
+        self.id = data.id
     }
-}
-
-protocol CellDeletable: AnyObject {
-    func deleteCell(id: CellInformation.ID)
 }

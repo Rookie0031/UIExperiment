@@ -73,3 +73,7 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell {
         self.deleteButton.addAction(action, for: .touchUpInside)
     }
 }
+
+protocol CellDeletable: AnyObject {
+    func deleteCell(id: CellInformation.ID)
+}
