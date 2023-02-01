@@ -8,8 +8,6 @@ import UIKit
 
 final class AddBandMemberTableViewCell: UITableViewCell {
     
-    private var cellIndex: Int = -1
-    
     weak var delegate: CellDeletable?
     
     private let titleLabel: UILabel = {

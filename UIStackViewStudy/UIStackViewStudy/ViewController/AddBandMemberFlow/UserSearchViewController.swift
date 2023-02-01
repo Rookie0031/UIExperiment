@@ -15,7 +15,7 @@ class UserSearchViewController: UIViewController {
     
     var completion: (_ selectedUsers: [CellInformation]) -> Void = { selectedUsers in }
     
-    private var selectedUsers: [CellInformation] = []
+    var selectedUsers: [CellInformation] = []
     
     private lazy var searchBar = {
         let searchBar = SearchTextField(placeholder: "합주실 주소 검색")
