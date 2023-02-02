@@ -11,11 +11,16 @@ enum BottomScrollSection: Int {
     case main
 }
 
-class UserSearchViewController: UIViewController {
+class UserSearchViewController: UIViewController, UICollectionViewDelegate {
+
+    private enum Size {
+        static let cellHeight: CGFloat = 36
+        static let cellContentInset: CGFloat = 28
+    }
     
     var completion: (_ selectedUsers: [CellInformation]) -> Void = { selectedUsers in }
     
-    var selectedUsers: [CellInformation] = []
+    var selectedUsers: [CellInformation] = CellInformation.data
     
     private lazy var searchBar = {
         let searchBar = SearchTextField(placeholder: "합주실 주소 검색")
@@ -55,15 +60,18 @@ class UserSearchViewController: UIViewController {
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 8
         layout.sectionInset = UIEdgeInsets(top: 12, left: 20, bottom: 12, right: 20)
-        
+
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .purple
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
-        collectionView.register(AddedBandMemberCollectionCell.self, forCellWithReuseIdentifier: AddedBandMemberCollectionCell.classIdentifier)
+        collectionView.register(
+            AddedBandMemberCollectionCell.self,
+            forCellWithReuseIdentifier: AddedBandMemberCollectionCell.classIdentifier)
         return collectionView
     }()
-    
+
+    //MARK: Bottom CollectionView
     lazy var bottomScrollViewDataSource: UICollectionViewDiffableDataSource<BottomScrollSection, CellInformation> = self.makeDataSource()
     
     override func viewDidLoad() {
@@ -82,12 +90,13 @@ class UserSearchViewController: UIViewController {
         
         view.addSubview(doneButton)
         doneButton.constraint(bottom: view.safeAreaLayoutGuide.bottomAnchor, centerX: view.centerXAnchor, padding: UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0))
-        
-        view.addSubview(searchResultTable)
-        searchResultTable.constraint(top: searchBar.bottomAnchor, leading: view.leadingAnchor, bottom: doneButton.topAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 25, bottom: 10, right: 25))
-        
+
         view.addSubview(bottomScrollView)
-        bottomScrollView.constraint(top: searchResultTable.bottomAnchor, leading: view.leadingAnchor, bottom: doneButton.topAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0))
+        bottomScrollView.constraint(.heightAnchor, constant: 60)
+        bottomScrollView.constraint(leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: doneButton.topAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
+
+        view.addSubview(searchResultTable)
+        searchResultTable.constraint(top: searchBar.bottomAnchor, leading: view.leadingAnchor, bottom: bottomScrollView.topAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 25, bottom: 10, right: 25))
         
     }
 }
@@ -101,6 +110,7 @@ extension UserSearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BandMemberSearchTableCell.classIdentifier, for: indexPath) as? BandMemberSearchTableCell else { return UITableViewCell()}
+        print("Configure TableView Cell")
         cell.configure(data: CellInformation.data[indexPath.row])
         cell.selectionStyle = .none
         
@@ -131,13 +141,6 @@ extension UserSearchViewController: UITableViewDelegate {
     }
 }
 
-extension UserSearchViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.searchBar.textField.becomeFirstResponder()
-    }
-}
-
-//MARK: CollectionView (Bottom Scroll view)
 
 extension UserSearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -145,24 +148,34 @@ extension UserSearchViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension UserSearchViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.searchBar.textField.becomeFirstResponder()
+    }
+}
+
 
 //MARK: CollectionView DiffableData Source
 extension UserSearchViewController {
-    func makeDataSource() -> UICollectionViewDiffableDataSource<BottomScrollSection, CellInformation> {
-        return UICollectionViewDiffableDataSource<BottomScrollSection, CellInformation>(collectionView: self.bottomScrollView, cellProvider: { collectionView, indexPath, item in
-            
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddedBandMemberCollectionCell.classIdentifier, for: indexPath) as? AddedBandMemberCollectionCell else { return UICollectionViewCell() }
-            
-            cell.configure(data: item)
-            
-            return cell
-        })
-    }
-    
+
     func updateSnapShot(with items: [CellInformation]) {
         var snapShot = NSDiffableDataSourceSnapshot<BottomScrollSection, CellInformation>()
         snapShot.appendSections([.main])
         snapShot.appendItems(items, toSection: .main)
         self.bottomScrollViewDataSource.apply(snapShot, animatingDifferences: true)
     }
+
+    func makeDataSource() -> UICollectionViewDiffableDataSource<BottomScrollSection, CellInformation> {
+        return UICollectionViewDiffableDataSource<BottomScrollSection, CellInformation>(collectionView: self.bottomScrollView, cellProvider: { collectionView, indexPath, person in
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddedBandMemberCollectionCell.classIdentifier, for: indexPath) as? AddedBandMemberCollectionCell else { return UICollectionViewCell() }
+
+            print("Item print")
+            print(person)
+            cell.configure(data: person)
+            
+            return cell
+        })
+    }
+
 }

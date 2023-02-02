@@ -52,6 +52,8 @@
 		A9553BFE297C2C93001644DB /* BasicBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFD297C2C93001644DB /* BasicBoxView.swift */; };
 		A9553C00297C30C7001644DB /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFF297C30C7001644DB /* BasicTextField.swift */; };
 		A9553C02297CF382001644DB /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553C01297CF382001644DB /* MapSearchViewController.swift */; };
+		A99A29BA298A8C7F000B9CA6 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99A29B9298A8C7F000B9CA6 /* CategoryView.swift */; };
+		A99A29BC298A8C9F000B9CA6 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99A29BB298A8C9F000B9CA6 /* CategoryCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +104,8 @@
 		A9553BFD297C2C93001644DB /* BasicBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBoxView.swift; sourceTree = "<group>"; };
 		A9553BFF297C30C7001644DB /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		A9553C01297CF382001644DB /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
+		A99A29B9298A8C7F000B9CA6 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		A99A29BB298A8C9F000B9CA6 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,8 +240,18 @@
 				A90075962988B0C300371EC8 /* BandMemberSearchTableCell.swift */,
 				9AF4323F29864CAC00557F9B /* AddBandMemberTableHeaderView.swift */,
 				9A645C0D2989339100BECA84 /* AddedBandMemberCollectionCell.swift */,
+				A99A29BD298A8D9B000B9CA6 /* TestCategoryScroll */,
 			);
 			path = AddBandMemberFlow;
+			sourceTree = "<group>";
+		};
+		A99A29BD298A8D9B000B9CA6 /* TestCategoryScroll */ = {
+			isa = PBXGroup;
+			children = (
+				A99A29B9298A8C7F000B9CA6 /* CategoryView.swift */,
+				A99A29BB298A8C9F000B9CA6 /* CategoryCollectionViewCell.swift */,
+			);
+			path = TestCategoryScroll;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +333,7 @@
 				9A9996EF297927DB00C207E0 /* DuplicationCheckRequest.swift in Sources */,
 				A913B8562982C3EE001504FB /* HTTPCase.swift in Sources */,
 				9A2F6A37297810E900DECE9F /* UIFontExtension.swift in Sources */,
+				A99A29BC298A8C9F000B9CA6 /* CategoryCollectionViewCell.swift in Sources */,
 				9A2F6A242978088C00DECE9F /* BandInfomrationSetViewController.swift in Sources */,
 				9A9996E72978D72800C207E0 /* ConstraintExtension.swift in Sources */,
 				9AAD0CCA297F808E008DC808 /* MapSearchResultTableViewCell.swift in Sources */,
@@ -346,6 +361,7 @@
 				9AD74E22298013AB00C4D522 /* BasicButton.swift in Sources */,
 				A9553C02297CF382001644DB /* MapSearchViewController.swift in Sources */,
 				9A9996F1297929B000C207E0 /* NetworkError.swift in Sources */,
+				A99A29BA298A8C7F000B9CA6 /* CategoryView.swift in Sources */,
 				9AE796BB29795F50008D6976 /* UITextViewExtension.swift in Sources */,
 				9A9996ED2979202D00C207E0 /* DummyData.swift in Sources */,
 				9A03B40E2983CA11000A10EC /* DataModel.swift in Sources */,

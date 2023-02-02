@@ -98,7 +98,8 @@ extension AddBandMemberViewController {
         return UITableViewDiffableDataSource<TableViewSection, CellInformation>(tableView: self.tableView) { tableView, indexPath, person in
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: AddBandMemberTableViewCell.classIdentifier, for: indexPath) as? AddBandMemberTableViewCell else { return UITableViewCell() }
-            
+            print("Person print")
+            print(person)
             cell.configure(data: person)
             
             let deleteAction = UIAction { _ in

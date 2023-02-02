@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AddedBandMemberCollectionCell: UICollectionViewCell {
+final class CategoryCollectionViewCell: UICollectionViewCell {
 
     // MARK: - properties
 
@@ -65,8 +65,15 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell {
         backgroundContentView.layer.cornerRadius = cellCornerRadius
     }
 
+    func applySelectedState(_ isSelected: Bool) {
+        backgroundContentView.backgroundColor = isSelected ? .orange : .white
+        itemLabel.textColor = isSelected ? .white : .black
+        itemLabel.font = isSelected ? .preferredFont(forTextStyle: .subheadline, compatibleWith: .init(legibilityWeight: .bold))
+                                    : .preferredFont(forTextStyle: .subheadline)
+        isSelectedCell = isSelected
+    }
 
-    func configure(data: CellInformation) {
-        itemLabel.text = data.nickName
+    func configure(with data: String) {
+        itemLabel.text = data
     }
 }

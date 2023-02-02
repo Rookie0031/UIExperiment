@@ -212,3 +212,10 @@ extension BandInfomrationSetViewController: UIScrollViewDelegate {
            }
        }
 }
+
+
+private let contentStackView: UIStackView = {
+    $0.axis = .vertical
+    $0.spacing = 10
+    return $0
+}(UIStackView(frame: .zero))
