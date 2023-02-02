@@ -25,7 +25,7 @@ class UserSearchViewController: UIViewController {
     var selectedUsers: [CellInformation] = []
     
     private lazy var searchBar = {
-        let searchBar = SearchTextField(placeholder: "합주실 주소 검색")
+        let searchBar = SearchTextField(placeholder: "닉네임으로 검색")
         let action = UIAction { _ in
             if searchBar.textField.text == "" {
                 self.searchResultTable.reloadData()
