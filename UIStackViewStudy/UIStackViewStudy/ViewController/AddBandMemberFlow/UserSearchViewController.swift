@@ -11,16 +11,18 @@ enum BottomScrollSection: Int {
     case main
 }
 
-class UserSearchViewController: UIViewController, UICollectionViewDelegate {
+class UserSearchViewController: UIViewController {
 
     private enum Size {
         static let cellHeight: CGFloat = 36
-        static let cellContentInset: CGFloat = 28
+        static let cellContentInset: CGFloat = 50
     }
+
+    private var tempWidth: CGFloat = 0
     
     var completion: (_ selectedUsers: [CellInformation]) -> Void = { selectedUsers in }
     
-    var selectedUsers: [CellInformation] = CellInformation.data
+    var selectedUsers: [CellInformation] = []
     
     private lazy var searchBar = {
         let searchBar = SearchTextField(placeholder: "합주실 주소 검색")
@@ -58,11 +60,8 @@ class UserSearchViewController: UIViewController, UICollectionViewDelegate {
     private lazy var bottomScrollView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = 8
-        layout.sectionInset = UIEdgeInsets(top: 12, left: 20, bottom: 12, right: 20)
-
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .purple
+        collectionView.backgroundColor = .dark01
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.register(
@@ -110,7 +109,6 @@ extension UserSearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BandMemberSearchTableCell.classIdentifier, for: indexPath) as? BandMemberSearchTableCell else { return UITableViewCell()}
-        print("Configure TableView Cell")
         cell.configure(data: CellInformation.data[indexPath.row])
         cell.selectionStyle = .none
         
@@ -124,27 +122,37 @@ extension UserSearchViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.isSelected.toggle()
+
         let selectedCell = tableView.cellForRow(at: indexPath) as! BandMemberSearchTableCell
-        let data = CellInformation(nickName: selectedCell.titleLabel.text ?? "", instrument: selectedCell.subTitleLabel.text ?? "")
-        
+
+        var data = CellInformation(nickName: selectedCell.titleLabel.text ?? "", instrument: selectedCell.subTitleLabel.text ?? "")
+        // 선택될 때 Cell의 아이디 그대로 데이터에 넣기
+        data.id = selectedCell.id
+
+        // collectionView Cell 크기 업데이트하기
+        tempWidth = data.nickName.size(withAttributes: [
+            .font : UIFont.preferredFont(forTextStyle: .subheadline)
+        ]).width + Size.cellContentInset
+
+        //MARK: 이미 배열에 들어가있는 셀 없애기
         selectedUsers.append(data)
-        
-//        if !selectedCell.isSelected {
-//            selectedUsers.append(data)
-//            self.updateSnapShot(with: selectedUsers)
-//        } else {
-//            selectedUsers.removeAll { $0.id == selectedCell.id }
-//            self.updateSnapShot(with: selectedUsers)
-//        }
-        
+        self.updateSnapShot(with: selectedUsers)
+    }
+
+    //MARK: Deselect Function
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let selectedCell = tableView.cellForRow(at: indexPath) as! BandMemberSearchTableCell
+        selectedUsers.removeAll { $0.id == selectedCell.id }
+        self.updateSnapShot(with: selectedUsers)
     }
 }
 
-
 extension UserSearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 300, height: 50)
+
+        //MARK: 동적 셀 크기 배정 코드 추후 추가 필요
+        var cellSize = CGSize(width: 300, height: 50)
+        return cellSize
     }
 }
 
@@ -170,8 +178,6 @@ extension UserSearchViewController {
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddedBandMemberCollectionCell.classIdentifier, for: indexPath) as? AddedBandMemberCollectionCell else { return UICollectionViewCell() }
 
-            print("Item print")
-            print(person)
             cell.configure(data: person)
             
             return cell

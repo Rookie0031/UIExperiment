@@ -19,7 +19,7 @@ enum TableViewSection: String {
 }
 
 struct CellInformation: Hashable, Identifiable {
-    let id = UUID().uuidString
+    var id = UUID().uuidString
     let nickName: String
     let instrument: String
 }
@@ -32,6 +32,7 @@ extension CellInformation {
         CellInformation(nickName: "데이크", instrument: "보컬"),
         CellInformation(nickName: "알로라", instrument: "신디사이저"),
         CellInformation(nickName: "가즈윌", instrument: "바이올린"),
+        CellInformation(nickName: "쏘시지불나방전기뱀장어", instrument: "바이올린")
     ]
 }
 
@@ -126,7 +127,6 @@ extension AddBandMemberViewController: UITableViewDelegate {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: AddBandMemberTableHeaderView.classIdentifier) as! AddBandMemberTableHeaderView
         let inviteMemberButtonAction = UIAction { _ in
             let nextViewController = UserSearchViewController()
-            nextViewController.selectedUsers = []
             nextViewController.completion = { selectedUsers in
                 print("completion Handelr 작동")
                 self.people = selectedUsers

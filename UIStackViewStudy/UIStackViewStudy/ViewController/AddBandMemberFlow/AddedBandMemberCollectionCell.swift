@@ -14,7 +14,7 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell {
     private let backgroundContentView: UIView = {
         let view = UIView()
         view.layer.masksToBounds = true
-        view.backgroundColor = .white
+        view.backgroundColor = .purple
         return view
     }()
     private let itemLabel: UILabel = {
@@ -23,7 +23,6 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell {
         label.textAlignment = .center
         return label
     }()
-    public private(set) var isSelectedCell: Bool = false
 
     // MARK: - init
 
@@ -37,10 +36,8 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    //MARK:  Cell Resue Prepare
     override func prepareForReuse() {
-        backgroundContentView.backgroundColor = .white
-        itemLabel.textColor = .black
-        itemLabel.font = .preferredFont(forTextStyle: .subheadline)
     }
 
     // MARK: - func
@@ -50,19 +47,15 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell {
         backgroundContentView.constraint(to: self)
 
         backgroundContentView.addSubview(itemLabel)
-        let itemConstraints = itemLabel.constraint(leading: self.leadingAnchor,
-                                                   trailing: self.trailingAnchor,
-                                                   centerY: self.centerYAnchor,
-                                                   padding: UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14))
-        itemConstraints[.leading]?.priority = UILayoutPriority(999)
-        itemConstraints[.trailing]?.priority = UILayoutPriority(999)
+        itemLabel.constraint(
+            leading: self.leadingAnchor,
+            trailing: self.trailingAnchor,
+            centerY: self.centerYAnchor,
+            padding: UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14))
     }
 
     private func configUI() {
-        layer.masksToBounds = false
-
-        let cellCornerRadius = (self.bounds.size.width * (self.bounds.size.height / self.bounds.size.width)) / 2
-        backgroundContentView.layer.cornerRadius = cellCornerRadius
+        backgroundContentView.layer.cornerRadius = 10
     }
 
 
