@@ -7,9 +7,10 @@
 
 import UIKit
 
-final class AddedBandMemberCollectionCell: UICollectionViewCell {
+final class AddedBandMemberCollectionCell: UICollectionViewCell, Identifiable {
 
     // MARK: - properties
+    var id: String = ""
 
     private let backgroundContentView: UIView = {
         let view = UIView()
@@ -20,9 +21,23 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell {
     private let itemLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .subheadline)
-        label.textAlignment = .center
+        label.textColor = .white
         return label
     }()
+    
+    lazy var deleteButton: UIButton = {
+        $0.setImage(UIImage(
+            systemName: "xmark.circle.fill",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 20)),
+            for: .normal)
+        $0.contentMode = .scaleAspectFit
+        $0.tintColor = .gray02
+        $0.setContentHuggingPriority(UILayoutPriority(rawValue: 500),
+                                     for: .horizontal)
+        $0.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 760),
+                                                   for: .horizontal)
+        return $0
+    }(UIButton(type: .custom))
 
     // MARK: - init
 
@@ -43,7 +58,7 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell {
     // MARK: - func
 
     private func render() {
-        addSubview(backgroundContentView)
+        contentView.addSubview(backgroundContentView)
         backgroundContentView.constraint(to: self)
 
         backgroundContentView.addSubview(itemLabel)
@@ -51,7 +66,14 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell {
             leading: self.leadingAnchor,
             trailing: self.trailingAnchor,
             centerY: self.centerYAnchor,
-            padding: UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14))
+            padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0))
+        
+        backgroundContentView.addSubview(deleteButton)
+        deleteButton.constraint(.widthAnchor, constant: 25)
+        deleteButton.constraint(.heightAnchor, constant: 25)
+        deleteButton.constraint(trailing: backgroundContentView.trailingAnchor, centerY: backgroundContentView.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 10))
+        
+        
     }
 
     private func configUI() {
@@ -61,5 +83,6 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell {
 
     func configure(data: CellInformation) {
         itemLabel.text = data.nickName
+        self.id = data.id
     }
 }

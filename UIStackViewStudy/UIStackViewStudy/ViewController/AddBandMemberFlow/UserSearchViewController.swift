@@ -100,7 +100,7 @@ class UserSearchViewController: UIViewController {
     }
 }
 
-//MARK: TableView datasource
+//MARK: TableView data configuration
 extension UserSearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -125,6 +125,9 @@ extension UserSearchViewController: UITableViewDelegate {
 
         let selectedCell = tableView.cellForRow(at: indexPath) as! BandMemberSearchTableCell
 
+        // 선택된 tableView의 데이터만 따로 추출
+        // 선택된 셀에 접근할 수 있으나 데이터는 따로 만들어야함
+        // CellInformation만들 때 임의의 id를 만들기 때문에, 만들고나서 선택한 cell의 id를 주입해줘야함
         var data = CellInformation(nickName: selectedCell.titleLabel.text ?? "", instrument: selectedCell.subTitleLabel.text ?? "")
         // 선택될 때 Cell의 아이디 그대로 데이터에 넣기
         data.id = selectedCell.id
@@ -151,7 +154,7 @@ extension UserSearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         //MARK: 동적 셀 크기 배정 코드 추후 추가 필요
-        var cellSize = CGSize(width: 300, height: 50)
+        let cellSize = CGSize(width: 100, height: 50)
         return cellSize
     }
 }
@@ -179,6 +182,15 @@ extension UserSearchViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddedBandMemberCollectionCell.classIdentifier, for: indexPath) as? AddedBandMemberCollectionCell else { return UICollectionViewCell() }
 
             cell.configure(data: person)
+            
+            let deleteAction = UIAction { _ in
+                self.selectedUsers.removeAll { $0.id == cell.id }
+                self.updateSnapShot(with: self.selectedUsers)
+                // 아이디와 동일한 인덱스 패스를 찾아서 거기를 디셀렉트해야하는데...
+                
+            }
+            
+            cell.deleteButton.addAction(deleteAction, for: .touchUpInside)
             
             return cell
         })

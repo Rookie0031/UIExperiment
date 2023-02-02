@@ -46,16 +46,6 @@ final class BandMemberSearchTableCell: UITableViewCell, Identifiable {
         return imageView
     }()
 
-//    private lazy var selectButton: UIButton = {
-//        $0.contentMode = .scaleAspectFit
-//        $0.tintColor = .gray02
-//        $0.setContentHuggingPriority(UILayoutPriority(rawValue: 500),
-//                                     for: .horizontal)
-//        $0.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 760),
-//                                                   for: .horizontal)
-//        return $0
-//    }(UIButton(type: .custom))
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLayout()
