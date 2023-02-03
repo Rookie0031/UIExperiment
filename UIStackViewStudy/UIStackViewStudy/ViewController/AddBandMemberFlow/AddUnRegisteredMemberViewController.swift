@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class AddUnRegisteredMember: UIViewController {
+final class AddUnRegisteredMemberViewController: UIViewController {
 
-    let firstPracticeSongCard = PracticeSongCardView(identifier: UUID().uuidString)
+    let firstPracticeSongCard = UnRegisteredMemberCardView(identifier: UUID().uuidString)
 
     private lazy var contentView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [firstPracticeSongCard])
@@ -32,7 +32,7 @@ final class AddUnRegisteredMember: UIViewController {
         var container = AttributeContainer()
         container.font = UIFont.setFont(.contentBold)
         configuration.baseBackgroundColor = .systemPurple
-        configuration.attributedTitle = AttributedString("합주곡 추가", attributes: container)
+        configuration.attributedTitle = AttributedString("멤버 추가", attributes: container)
         configuration.image = UIImage(systemName: "plus")
         configuration.imagePadding = 10
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 13, leading: 0, bottom: 13, trailing: 0)
@@ -47,7 +47,7 @@ final class AddUnRegisteredMember: UIViewController {
         var container = AttributeContainer()
         container.font = UIFont.setFont(.contentBold)
         configuration.baseBackgroundColor = .systemBlue
-        configuration.attributedTitle = AttributedString("입력 완료", attributes: container)
+        configuration.attributedTitle = AttributedString("추다 완료", attributes: container)
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0)
         let button = UIButton(configuration: configuration, primaryAction: nil)
         button.addTarget(self, action: #selector(didTapAddPracticeSong), for: .touchUpInside)
@@ -90,15 +90,15 @@ final class AddUnRegisteredMember: UIViewController {
     private func applyButtonSnapshot() {
         // StackView에 들어간 하위뷰들은 UIView 타입으로 인식합니다. 그래서 그 안에 cancleButton 프로퍼티에 접근하기 위해 map을 사용합니다.
         if contentView.arrangedSubviews.count == 1 {
-            contentView.arrangedSubviews.map { $0 as! PracticeSongCardView }.forEach { $0.cancelButton.isHidden = true }
+            contentView.arrangedSubviews.map { $0 as! UnRegisteredMemberCardView }.forEach { $0.cancelButton.isHidden = true }
         } else {
-            contentView.arrangedSubviews.map { $0 as! PracticeSongCardView }.forEach { $0.cancelButton.isHidden = false }
+            contentView.arrangedSubviews.map { $0 as! UnRegisteredMemberCardView }.forEach { $0.cancelButton.isHidden = false }
         }
     }
 }
 
 // ScrollView 가로 스크롤 막기
-extension AddUnRegisteredMember: UIScrollViewDelegate {
+extension AddUnRegisteredMemberViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
            if scrollView.contentOffset.x != 0 {
                scrollView.contentOffset.x = 0
@@ -106,9 +106,9 @@ extension AddUnRegisteredMember: UIScrollViewDelegate {
        }
 }
 
-extension AddUnRegisteredMember {
+extension AddUnRegisteredMemberViewController {
     @objc func didTapAddPracticeSong() {
-        let newCard = PracticeSongCardView(identifier: UUID().uuidString)
+        let newCard = UnRegisteredMemberCardView(identifier: UUID().uuidString)
         guard contentView.arrangedSubviews.count < 3 else { return }
         contentView.insertArrangedSubview(newCard, at: contentView.arrangedSubviews.endIndex)
         applyButtonSnapshot()
@@ -116,7 +116,7 @@ extension AddUnRegisteredMember {
 
 //    @objc func removeParticularCard(_ notificaiton: Notification) {
 //        let cardID = notificaiton.object as? String
-//        let removeView = contentView.arrangedSubviews.map({ $0 as! PracticeSongCardView }).first { $0.id == cardID }!
+//        let removeView = contentView.arrangedSubviews.map({ $0 as! UnRegisteredMemberCardView }).first { $0.id == cardID }!
 //        contentView.removeArrangedSubview(removeView)
 //        if contentView.arrangedSubviews.count == 1 { hideCancelButton() }
 //    }

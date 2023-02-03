@@ -34,25 +34,28 @@ final class UnRegisteredMemberCardView: UIStackView, Identifiable {
         return stackView
     }()
 
-    private let artistName = TwoHstackLabel.basicClassLabel(firstLabelText: "포지션", inputType: .required)
+    private let positionLabel = TwoHstackLabel.basicClassLabel(firstLabelText: "포지션", inputType: .required)
 
-    private let artistNameTextField = BasicTextField(placeholder: "아티스트를 입력해주세요")
+    private var positionSelect: SelectCollectionView = {
+        $0.constraint(.heightAnchor, constant: 110)
+        return $0
+    }(SelectCollectionView(widthState: .fixed, items: ["보컬", "기타", "베이스", "드럼", "키보드"], widthSize: 100, itemSpacing: 7))
 
-    private lazy var artistNameVstack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [artistName, artistNameTextField])
+    private lazy var positionSelectVstack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [positionLabel, positionSelect])
         stackView.axis = .vertical
         stackView.spacing = 10
         return stackView
     }()
 
-    private let linkLabel = TwoHstackLabel.basicClassLabel(firstLabelText: "링크", inputType: .optional)
+    private let otherPosition = TwoHstackLabel.basicClassLabel(firstLabelText: "그 외 포지션", inputType: .optional)
 
-    private let linkDescription = BasicLabel(contentText: "* 우리밴드가 해당 곡을 합주한 작업물 링크를 입력해주세요", fontStyle: .content, textColorInfo: .gray02)
+    private let positionDescription = BasicLabel(contentText: "* 그 외 포지션은 공백 포함 10자 이하로 입력가능합니다.", fontStyle: .content, textColorInfo: .gray02)
 
-    private let linkTextField = BasicTextField(placeholder: "합주 영상이나 녹음파일 링크를 입력해주세요")
+    private let otherPositionTextField = BasicTextField(placeholder: "그 외 포지션을 입력해주세요.")
 
-    private lazy var linkVstack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [linkLabel, linkDescription, linkTextField])
+    private lazy var otherPositionVstack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [otherPosition, positionDescription, otherPositionTextField])
         stackView.axis = .vertical
         stackView.spacing = 10
         return stackView
@@ -67,8 +70,8 @@ final class UnRegisteredMemberCardView: UIStackView, Identifiable {
 
     private func setupLayout() {
         self.addArrangedSubview(practiceSongNameVstack)
-        self.addArrangedSubview(artistNameVstack)
-        self.addArrangedSubview(linkVstack)
+        self.addArrangedSubview(positionSelectVstack)
+        self.addArrangedSubview(otherPositionVstack)
         self.axis = .vertical
         self.spacing = 40
         self.layoutMargins = UIEdgeInsets(top: 30, left: 10, bottom: 30, right: 10)

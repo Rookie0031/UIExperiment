@@ -30,7 +30,7 @@ final class AddBandMemberTableHeaderView: UITableViewHeaderFooterView {
     
     let inviteMemberButton = BasicButton(text: "멤버 초대")
     
-    private let inviteUnRegisteredMemberButton = BasicButton(text: "미가입 회원 추가")
+    let inviteUnRegisteredMemberButton = BasicButton(text: "미가입 회원 추가")
     
     private let sectionTitle = BasicLabel(contentText: "밴드 멤버 3인", fontStyle: .content, textColorInfo: .white)
     

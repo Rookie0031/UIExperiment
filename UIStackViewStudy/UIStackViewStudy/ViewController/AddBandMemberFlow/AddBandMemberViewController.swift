@@ -7,45 +7,6 @@
 
 import UIKit
 
-
-enum TableViewSection: String {
-    case main
-    
-    var title: String {
-        switch self {
-        case .main: return "밴드 멤버 (3인)"
-        }
-    }
-}
-
-struct CellInformation: Hashable, Identifiable {
-    var id = UUID().uuidString
-    let nickName: String
-    let instrument: String
-}
-
-extension CellInformation {
-    static var data = [
-        CellInformation(nickName: "구엘", instrument: "드럼"),
-        CellInformation(nickName: "루키", instrument: "베이스"),
-        CellInformation(nickName: "노엘", instrument: "기타"),
-        CellInformation(nickName: "데이크", instrument: "보컬"),
-        CellInformation(nickName: "알로라", instrument: "신디사이저"),
-        CellInformation(nickName: "가즈윌", instrument: "바이올린"),
-        CellInformation(nickName: "쏘시지불나방전기뱀장어", instrument: "바이올린")
-    ]
-}
-
-final class TableViewDataSource: UITableViewDiffableDataSource<TableViewSection, CellInformation> {
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "ddasd"
-    }
-}
-
 final class AddBandMemberViewController: UIViewController {
     
     var people: [CellInformation] = []
@@ -138,6 +99,13 @@ extension AddBandMemberViewController: UITableViewDelegate {
         }
 
         headerView.inviteMemberButton.addAction(inviteMemberButtonAction, for: .touchUpInside)
+
+        let unRegisteredMemberButtonAction = UIAction { _ in
+            let nextVC = AddUnRegisteredMemberViewController()
+            self.present(nextVC, animated: true)
+        }
+
+        headerView.inviteUnRegisteredMemberButton.addAction(unRegisteredMemberButtonAction, for: .touchUpInside)
       return headerView
     }
 }
@@ -150,3 +118,41 @@ extension AddBandMemberViewController: UITableViewDelegate {
 //        return index
 //    }
 //}
+
+enum TableViewSection: String {
+    case main
+
+    var title: String {
+        switch self {
+        case .main: return "밴드 멤버 (3인)"
+        }
+    }
+}
+
+struct CellInformation: Hashable, Identifiable {
+    var id = UUID().uuidString
+    let nickName: String
+    let instrument: String
+}
+
+extension CellInformation {
+    static var data = [
+        CellInformation(nickName: "구엘", instrument: "드럼"),
+        CellInformation(nickName: "루키", instrument: "베이스"),
+        CellInformation(nickName: "노엘", instrument: "기타"),
+        CellInformation(nickName: "데이크", instrument: "보컬"),
+        CellInformation(nickName: "알로라", instrument: "신디사이저"),
+        CellInformation(nickName: "가즈윌", instrument: "바이올린"),
+        CellInformation(nickName: "쏘시지불나방전기뱀장어", instrument: "바이올린")
+    ]
+}
+
+final class TableViewDataSource: UITableViewDiffableDataSource<TableViewSection, CellInformation> {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "ddasd"
+    }
+}

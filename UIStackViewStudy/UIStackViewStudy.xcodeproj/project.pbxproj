@@ -50,8 +50,10 @@
 		A913B8542982BA64001504FB /* SNSBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913B8532982BA64001504FB /* SNSBoxView.swift */; };
 		A913B8562982C3EE001504FB /* HTTPCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913B8552982C3EE001504FB /* HTTPCase.swift */; };
 		A9397BAD298CC9C30041280B /* PageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9397BAC298CC9C30041280B /* PageController.swift */; };
-		A9397BB1298CF1A20041280B /* AddUnRegisteredMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9397BB0298CF1A20041280B /* AddUnRegisteredMember.swift */; };
+		A9397BB1298CF1A20041280B /* AddUnRegisteredMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9397BB0298CF1A20041280B /* AddUnRegisteredMemberViewController.swift */; };
 		A9397BB3298CF2910041280B /* UnRegisteredMemberCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9397BB2298CF2910041280B /* UnRegisteredMemberCardView.swift */; };
+		A9397BB5298CF4FB0041280B /* SelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9397BB4298CF4FB0041280B /* SelectCollectionView.swift */; };
+		A9397BB7298CF51A0041280B /* SelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9397BB6298CF51A0041280B /* SelectCollectionViewCell.swift */; };
 		A9553BFE297C2C93001644DB /* BasicBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFD297C2C93001644DB /* BasicBoxView.swift */; };
 		A9553C00297C30C7001644DB /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFF297C30C7001644DB /* BasicTextField.swift */; };
 		A9553C02297CF382001644DB /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553C01297CF382001644DB /* MapSearchViewController.swift */; };
@@ -105,8 +107,10 @@
 		A913B8532982BA64001504FB /* SNSBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSBoxView.swift; sourceTree = "<group>"; };
 		A913B8552982C3EE001504FB /* HTTPCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCase.swift; sourceTree = "<group>"; };
 		A9397BAC298CC9C30041280B /* PageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageController.swift; sourceTree = "<group>"; };
-		A9397BB0298CF1A20041280B /* AddUnRegisteredMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUnRegisteredMember.swift; sourceTree = "<group>"; };
+		A9397BB0298CF1A20041280B /* AddUnRegisteredMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUnRegisteredMemberViewController.swift; sourceTree = "<group>"; };
 		A9397BB2298CF2910041280B /* UnRegisteredMemberCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnRegisteredMemberCardView.swift; sourceTree = "<group>"; };
+		A9397BB4298CF4FB0041280B /* SelectCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionView.swift; sourceTree = "<group>"; };
+		A9397BB6298CF51A0041280B /* SelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		A9553BFD297C2C93001644DB /* BasicBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBoxView.swift; sourceTree = "<group>"; };
 		A9553BFF297C30C7001644DB /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		A9553C01297CF382001644DB /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 				9AD74E21298013AB00C4D522 /* BasicButton.swift */,
 				A913B8532982BA64001504FB /* SNSBoxView.swift */,
 				A9397BB2298CF2910041280B /* UnRegisteredMemberCardView.swift */,
+				A9397BB4298CF4FB0041280B /* SelectCollectionView.swift */,
+				A9397BB6298CF51A0041280B /* SelectCollectionViewCell.swift */,
 			);
 			path = BasicUIViews;
 			sourceTree = "<group>";
@@ -248,7 +254,7 @@
 				A90075962988B0C300371EC8 /* BandMemberSearchTableCell.swift */,
 				9AF4323F29864CAC00557F9B /* AddBandMemberTableHeaderView.swift */,
 				9A645C0D2989339100BECA84 /* AddedBandMemberCollectionCell.swift */,
-				A9397BB0298CF1A20041280B /* AddUnRegisteredMember.swift */,
+				A9397BB0298CF1A20041280B /* AddUnRegisteredMemberViewController.swift */,
 				A99A29BD298A8D9B000B9CA6 /* TestCategoryScroll */,
 			);
 			path = AddBandMemberFlow;
@@ -346,6 +352,7 @@
 				9A2F6A242978088C00DECE9F /* BandInfomrationSetViewController.swift in Sources */,
 				9A9996E72978D72800C207E0 /* ConstraintExtension.swift in Sources */,
 				9AAD0CCA297F808E008DC808 /* MapSearchResultTableViewCell.swift in Sources */,
+				A9397BB5298CF4FB0041280B /* SelectCollectionView.swift in Sources */,
 				9AB153EC297A77F000AD220A /* GlobalData.swift in Sources */,
 				9AAD0CCC297F97A2008DC808 /* SearchTextField.swift in Sources */,
 				9A645C0E2989339100BECA84 /* AddedBandMemberCollectionCell.swift in Sources */,
@@ -363,11 +370,12 @@
 				A90075972988B0C300371EC8 /* BandMemberSearchTableCell.swift in Sources */,
 				9A32B7AC2983C56200D0C488 /* BnadMemberCollectionViewCell.swift in Sources */,
 				9AF4324029864CAC00557F9B /* AddBandMemberTableHeaderView.swift in Sources */,
-				A9397BB1298CF1A20041280B /* AddUnRegisteredMember.swift in Sources */,
+				A9397BB1298CF1A20041280B /* AddUnRegisteredMemberViewController.swift in Sources */,
 				9A2F6A202978088C00DECE9F /* AppDelegate.swift in Sources */,
 				A9397BAD298CC9C30041280B /* PageController.swift in Sources */,
 				9AF4323E2986486100557F9B /* AddBandMemberViewController.swift in Sources */,
 				9A29E6E4297E0F7900D4A433 /* UIFont+Extensions.swift in Sources */,
+				A9397BB7298CF51A0041280B /* SelectCollectionViewCell.swift in Sources */,
 				9AD0BFB1297BAF43004B8F78 /* TextLimitTextField.swift in Sources */,
 				9AB153EA297A693E00AD220A /* BasicTextView.swift in Sources */,
 				9AD74E22298013AB00C4D522 /* BasicButton.swift in Sources */,
