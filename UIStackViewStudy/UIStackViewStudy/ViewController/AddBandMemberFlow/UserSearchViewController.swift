@@ -132,6 +132,9 @@ extension UserSearchViewController: UITableViewDelegate {
         // 선택될 때 Cell의 아이디 그대로 데이터에 넣기
         data.id = selectedCell.id
 
+        print("This is index Path")
+        print(indexPath)
+
         // collectionView Cell 크기 업데이트하기
         tempWidth = data.nickName.size(withAttributes: [
             .font : UIFont.preferredFont(forTextStyle: .subheadline)
@@ -139,12 +142,14 @@ extension UserSearchViewController: UITableViewDelegate {
 
         //MARK: 이미 배열에 들어가있는 셀 없애기
         selectedUsers.append(data)
+        selectedCell.isChecked = true
         self.updateSnapShot(with: selectedUsers)
     }
 
     //MARK: Deselect Function
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let selectedCell = tableView.cellForRow(at: indexPath) as! BandMemberSearchTableCell
+        selectedCell.isChecked = false
         selectedUsers.removeAll { $0.id == selectedCell.id }
         self.updateSnapShot(with: selectedUsers)
     }
@@ -186,7 +191,14 @@ extension UserSearchViewController {
             let deleteAction = UIAction { _ in
                 self.selectedUsers.removeAll { $0.id == cell.id }
                 self.updateSnapShot(with: self.selectedUsers)
-                // 아이디와 동일한 인덱스 패스를 찾아서 거기를 디셀렉트해야하는데...
+
+                // SerachTableView Cell deselect
+                for index in 0..<CellInformation.data.count {
+                    let searchResultTablecell = self.searchResultTable.cellForRow(at: IndexPath(row: index, section: 0)) as! BandMemberSearchTableCell
+                    if searchResultTablecell.id == cell.id {
+                        searchResultTablecell.isChecked = false
+                    }
+                }
                 
             }
             

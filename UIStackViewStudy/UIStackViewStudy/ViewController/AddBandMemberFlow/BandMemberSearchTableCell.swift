@@ -95,6 +95,7 @@ final class BandMemberSearchTableCell: UITableViewCell, Identifiable {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
+        //MARK: 셀이 select, deselect 될 때 마다 수행되는 함수
          super.setSelected(selected, animated: animated)
          isChecked.toggle()
      }
