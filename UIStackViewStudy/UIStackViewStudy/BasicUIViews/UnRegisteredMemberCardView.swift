@@ -8,27 +8,21 @@ import UIKit
 
 final class UnRegisteredMemberCardView: UIStackView, Identifiable {
 
-    let id: String
+    let id: String = ""
 
     lazy var cancelButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.tintColor = .white
-        let action = UIAction { _ in
-            self.removeFromSuperview()
-            print("class Identifier \(self.id)")
-            NotificationCenter.default.post(name: Notification.Name("UnRegisteredMemberCardView"), object: self.id)
-        }
-        button.addAction(action, for: .touchUpInside)
         return button
     }()
 
     private let bandMemberName = TwoHstackLabel.basicClassLabel(firstLabelText: "닉네임", inputType: .required)
 
-    private let practiceSongTextField = BasicTextField(placeholder: "합주곡 제목을 입력해주세요")
+    let bandMemberNameTextField = BasicTextField(placeholder: "닉네임을 입력해주세요")
 
-    private lazy var practiceSongNameVstack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [bandMemberName, practiceSongTextField])
+    private lazy var bandMemberNameVstack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [bandMemberName, bandMemberNameTextField])
         stackView.axis = .vertical
         stackView.spacing = 10
         return stackView
@@ -52,7 +46,7 @@ final class UnRegisteredMemberCardView: UIStackView, Identifiable {
 
     private let positionDescription = BasicLabel(contentText: "* 그 외 포지션은 공백 포함 10자 이하로 입력가능합니다.", fontStyle: .content, textColorInfo: .gray02)
 
-    private let otherPositionTextField = BasicTextField(placeholder: "그 외 포지션을 입력해주세요.")
+    let otherPositionTextField = BasicTextField(placeholder: "그 외 포지션을 입력해주세요.")
 
     private lazy var otherPositionVstack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [otherPosition, positionDescription, otherPositionTextField])
@@ -61,15 +55,14 @@ final class UnRegisteredMemberCardView: UIStackView, Identifiable {
         return stackView
     }()
 
-    init(identifier: String) {
-        self.id = identifier
+    init() {
         super.init(frame: .zero)
         setupLayout()
         attribute()
     }
 
     private func setupLayout() {
-        self.addArrangedSubview(practiceSongNameVstack)
+        self.addArrangedSubview(bandMemberNameVstack)
         self.addArrangedSubview(positionSelectVstack)
         self.addArrangedSubview(otherPositionVstack)
         self.axis = .vertical

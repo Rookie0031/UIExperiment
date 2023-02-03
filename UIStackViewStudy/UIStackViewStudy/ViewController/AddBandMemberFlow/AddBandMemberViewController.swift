@@ -86,13 +86,15 @@ extension AddBandMemberViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: AddBandMemberTableHeaderView.classIdentifier) as! AddBandMemberTableHeaderView
+        //MARK: 회원 검색 뷰로 이동
         let inviteMemberButtonAction = UIAction { _ in
             let nextViewController = UserSearchViewController()
             nextViewController.completion = { selectedUsers in
-                print("completion Handelr 작동")
-                self.people = selectedUsers
-                print("completion Handelr 작동 후 People")
-                print(self.people)
+                for data in selectedUsers {
+                    if self.people.contains(where: { $0.id == data.id }) == false {
+                        self.people.append(data)
+                    }
+                }
                 self.updateSnapShot(with: self.people)
             }
             self.present(nextViewController, animated: true)
@@ -102,6 +104,10 @@ extension AddBandMemberViewController: UITableViewDelegate {
 
         let unRegisteredMemberButtonAction = UIAction { _ in
             let nextVC = AddUnRegisteredMemberViewController()
+            nextVC.completion = { addedMembers in
+                self.people = self.people + addedMembers
+                self.updateSnapShot(with: self.people)
+            }
             self.present(nextVC, animated: true)
         }
 

@@ -9,7 +9,22 @@ import UIKit
 
 final class AddUnRegisteredMemberViewController: UIViewController {
 
-    let firstPracticeSongCard = UnRegisteredMemberCardView(identifier: UUID().uuidString)
+    var addedMembers: [CellInformation] = []
+
+    var completion: (_ registeredMember: [CellInformation]) -> Void = { addedMembers in }
+
+    lazy var firstData = CellInformation(nickName: firstPracticeSongCard.bandMemberNameTextField.textField.text ?? "", instrument: firstPracticeSongCard.otherPositionTextField.textField.text ?? "")
+
+    lazy var firstPracticeSongCard: UnRegisteredMemberCardView = {
+        let card = UnRegisteredMemberCardView()
+        let action = UIAction { _ in
+            card.removeFromSuperview()
+            self.addedMembers.append(self.firstData)
+            self.addedMembers.removeAll { $0.id == self.firstData.id }
+        }
+        card.cancelButton.addAction(action, for: .touchUpInside)
+        return card
+    }()
 
     private lazy var contentView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [firstPracticeSongCard])
@@ -47,12 +62,22 @@ final class AddUnRegisteredMemberViewController: UIViewController {
         var container = AttributeContainer()
         container.font = UIFont.setFont(.contentBold)
         configuration.baseBackgroundColor = .systemBlue
-        configuration.attributedTitle = AttributedString("추다 완료", attributes: container)
+        configuration.attributedTitle = AttributedString("추가 완료", attributes: container)
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0)
-        let button = UIButton(configuration: configuration, primaryAction: nil)
-        button.addTarget(self, action: #selector(didTapAddPracticeSong), for: .touchUpInside)
+        let button = UIButton(configuration: configuration, primaryAction: finalAction)
         return button
     }()
+
+    private lazy var finalAction = UIAction { _ in
+        for subview in self.contentView.arrangedSubviews {
+            let card = subview as! UnRegisteredMemberCardView
+            let data = CellInformation(nickName: card.bandMemberNameTextField.textField.text ?? "", instrument: card.otherPositionTextField.textField.text ?? "")
+            self.addedMembers.append(data)
+        }
+        self.dismiss(animated: true){
+            self.completion(self.addedMembers)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,17 +133,22 @@ extension AddUnRegisteredMemberViewController: UIScrollViewDelegate {
 
 extension AddUnRegisteredMemberViewController {
     @objc func didTapAddPracticeSong() {
-        let newCard = UnRegisteredMemberCardView(identifier: UUID().uuidString)
+        let newCard = UnRegisteredMemberCardView()
         guard contentView.arrangedSubviews.count < 3 else { return }
+        // UI에 카드뷰 추가 (stackView에 넣는 방식임)
         contentView.insertArrangedSubview(newCard, at: contentView.arrangedSubviews.endIndex)
+
+//        // 전달하려는 배열에 데이터 추가
+//        let data = CellInformation(nickName: newCard.bandMemberNameTextField.textField.text ?? "", instrument: newCard.otherPositionTextField.textField.text ?? "")
+//
+//        let action = UIAction { _ in
+//            newCard.removeFromSuperview()
+//            self.addedMembers.removeAll { $0.id == data.id }
+//        }
+//        newCard.cancelButton.addAction(action, for: .touchUpInside)
+//
+//        addedMembers.append(data)
         applyButtonSnapshot()
     }
-
-//    @objc func removeParticularCard(_ notificaiton: Notification) {
-//        let cardID = notificaiton.object as? String
-//        let removeView = contentView.arrangedSubviews.map({ $0 as! UnRegisteredMemberCardView }).first { $0.id == cardID }!
-//        contentView.removeArrangedSubview(removeView)
-//        if contentView.arrangedSubviews.count == 1 { hideCancelButton() }
-//    }
 }
 
