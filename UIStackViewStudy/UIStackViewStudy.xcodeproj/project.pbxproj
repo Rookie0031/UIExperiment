@@ -49,6 +49,9 @@
 		A90075972988B0C300371EC8 /* BandMemberSearchTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90075962988B0C300371EC8 /* BandMemberSearchTableCell.swift */; };
 		A913B8542982BA64001504FB /* SNSBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913B8532982BA64001504FB /* SNSBoxView.swift */; };
 		A913B8562982C3EE001504FB /* HTTPCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913B8552982C3EE001504FB /* HTTPCase.swift */; };
+		A9397BAD298CC9C30041280B /* PageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9397BAC298CC9C30041280B /* PageController.swift */; };
+		A9397BB1298CF1A20041280B /* AddUnRegisteredMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9397BB0298CF1A20041280B /* AddUnRegisteredMember.swift */; };
+		A9397BB3298CF2910041280B /* UnRegisteredMemberCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9397BB2298CF2910041280B /* UnRegisteredMemberCardView.swift */; };
 		A9553BFE297C2C93001644DB /* BasicBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFD297C2C93001644DB /* BasicBoxView.swift */; };
 		A9553C00297C30C7001644DB /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFF297C30C7001644DB /* BasicTextField.swift */; };
 		A9553C02297CF382001644DB /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553C01297CF382001644DB /* MapSearchViewController.swift */; };
@@ -101,6 +104,9 @@
 		A90075962988B0C300371EC8 /* BandMemberSearchTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandMemberSearchTableCell.swift; sourceTree = "<group>"; };
 		A913B8532982BA64001504FB /* SNSBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSBoxView.swift; sourceTree = "<group>"; };
 		A913B8552982C3EE001504FB /* HTTPCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCase.swift; sourceTree = "<group>"; };
+		A9397BAC298CC9C30041280B /* PageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageController.swift; sourceTree = "<group>"; };
+		A9397BB0298CF1A20041280B /* AddUnRegisteredMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUnRegisteredMember.swift; sourceTree = "<group>"; };
+		A9397BB2298CF2910041280B /* UnRegisteredMemberCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnRegisteredMemberCardView.swift; sourceTree = "<group>"; };
 		A9553BFD297C2C93001644DB /* BasicBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBoxView.swift; sourceTree = "<group>"; };
 		A9553BFF297C30C7001644DB /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		A9553C01297CF382001644DB /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +210,7 @@
 				A9553BFD297C2C93001644DB /* BasicBoxView.swift */,
 				9AD74E21298013AB00C4D522 /* BasicButton.swift */,
 				A913B8532982BA64001504FB /* SNSBoxView.swift */,
+				A9397BB2298CF2910041280B /* UnRegisteredMemberCardView.swift */,
 			);
 			path = BasicUIViews;
 			sourceTree = "<group>";
@@ -225,7 +232,6 @@
 				A9553C01297CF382001644DB /* MapSearchViewController.swift */,
 				9A2F6A232978088C00DECE9F /* BandInfomrationSetViewController.swift */,
 				9AD74E2329801B3400C4D522 /* AddPracticeSongViewController.swift */,
-				9A03B40B2983C830000A10EC /* BandLeaderPositionSelectVC.swift */,
 				9A3F077829881C12009CD500 /* AddBandMemberFlow */,
 			);
 			path = ViewController;
@@ -234,12 +240,15 @@
 		9A3F077829881C12009CD500 /* AddBandMemberFlow */ = {
 			isa = PBXGroup;
 			children = (
+				A9397BAC298CC9C30041280B /* PageController.swift */,
+				9A03B40B2983C830000A10EC /* BandLeaderPositionSelectVC.swift */,
 				9AF4323D2986486100557F9B /* AddBandMemberViewController.swift */,
 				9A3F077929881C25009CD500 /* UserSearchViewController.swift */,
 				9A019B8A29868B6600FAB9D8 /* AddBandMemberTableViewCell.swift */,
 				A90075962988B0C300371EC8 /* BandMemberSearchTableCell.swift */,
 				9AF4323F29864CAC00557F9B /* AddBandMemberTableHeaderView.swift */,
 				9A645C0D2989339100BECA84 /* AddedBandMemberCollectionCell.swift */,
+				A9397BB0298CF1A20041280B /* AddUnRegisteredMember.swift */,
 				A99A29BD298A8D9B000B9CA6 /* TestCategoryScroll */,
 			);
 			path = AddBandMemberFlow;
@@ -342,6 +351,7 @@
 				9A645C0E2989339100BECA84 /* AddedBandMemberCollectionCell.swift in Sources */,
 				9A03B40C2983C830000A10EC /* BandLeaderPositionSelectVC.swift in Sources */,
 				9A019B8B29868B6700FAB9D8 /* AddBandMemberTableViewCell.swift in Sources */,
+				A9397BB3298CF2910041280B /* UnRegisteredMemberCardView.swift in Sources */,
 				9A9996E92978FAE600C207E0 /* TwoHstackLabel.swift in Sources */,
 				9A9996EB2978FD4C00C207E0 /* UIViewExtension.swift in Sources */,
 				9AD74E2429801B3400C4D522 /* AddPracticeSongViewController.swift in Sources */,
@@ -353,7 +363,9 @@
 				A90075972988B0C300371EC8 /* BandMemberSearchTableCell.swift in Sources */,
 				9A32B7AC2983C56200D0C488 /* BnadMemberCollectionViewCell.swift in Sources */,
 				9AF4324029864CAC00557F9B /* AddBandMemberTableHeaderView.swift in Sources */,
+				A9397BB1298CF1A20041280B /* AddUnRegisteredMember.swift in Sources */,
 				9A2F6A202978088C00DECE9F /* AppDelegate.swift in Sources */,
+				A9397BAD298CC9C30041280B /* PageController.swift in Sources */,
 				9AF4323E2986486100557F9B /* AddBandMemberViewController.swift in Sources */,
 				9A29E6E4297E0F7900D4A433 /* UIFont+Extensions.swift in Sources */,
 				9AD0BFB1297BAF43004B8F78 /* TextLimitTextField.swift in Sources */,

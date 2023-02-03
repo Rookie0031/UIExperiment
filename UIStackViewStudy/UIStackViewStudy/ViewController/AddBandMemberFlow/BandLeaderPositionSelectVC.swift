@@ -43,9 +43,18 @@ class BandLeaderPositionSelectVC: UIViewController {
                 .position(PositionType(instrumentName: "기타", instrumentImageName: .guitar, isETC: false)),
                 .position(PositionType(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true)),
                 .position(PositionType(instrumentName: "케스터네츠", instrumentImageName: .etc, isETC: true))
-    ])
+               ])
     // MARK: Button 바꿔야함
-    private let nextButton = BasicButton(text: "다음", widthPadding: 300, heightPadding: 20)
+    private lazy var nextButton = {
+        let button =  BasicButton(text: "다음", widthPadding: 300, heightPadding: 20)
+        let action = UIAction { _ in
+
+            self.navigationController?.pushViewController(AddBandMemberViewController(), animated: true)
+        }
+
+        button.addAction(action, for: .touchUpInside)
+        return button
+    }()
     
     private let bottomView = {
         let UIView = UIView()
@@ -118,15 +127,15 @@ class BandLeaderPositionSelectVC: UIViewController {
 }
 
 extension BandLeaderPositionSelectVC: PositionCollectionViewDelegate {
-   func canSelectPosition(_ collectionView: UICollectionView, indexPath: IndexPath, selectedItemsCount: Int) -> Bool {
-       return true
-   }
+    func canSelectPosition(_ collectionView: UICollectionView, indexPath: IndexPath, selectedItemsCount: Int) -> Bool {
+        return true
+    }
 }
 
 extension BandLeaderPositionSelectVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-           if scrollView.contentOffset.x != 0 {
-               scrollView.contentOffset.x = 0
-           }
-       }
+        if scrollView.contentOffset.x != 0 {
+            scrollView.contentOffset.x = 0
+        }
+    }
 }
