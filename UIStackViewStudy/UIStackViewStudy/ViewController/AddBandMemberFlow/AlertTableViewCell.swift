@@ -9,6 +9,8 @@ import UIKit
 
 final class AlertTableViewCell: UITableViewCell {
 
+    var isInvitation: Bool = false
+
     private let titleLabel = BasicLabel(contentText: "ㅎㅎㅎㅎㅎㅎ", fontStyle: .largeTitle02, textColorInfo: .white)
 
     private let subtitleLabel = BasicLabel(contentText: "ㅎㅎㅎㅎㅎㅎ", fontStyle: .subTitle, textColorInfo: .gray02)
@@ -62,6 +64,7 @@ final class AlertTableViewCell: UITableViewCell {
         self.titleLabel.text = titleLable
         self.subtitleLabel.text = subtitleLabel
         self.uploadTime.text = uploadTime
+        self.isInvitation = isInvitation
         if isInvitation == false {
             buttonHstack.isHidden = true
         }
