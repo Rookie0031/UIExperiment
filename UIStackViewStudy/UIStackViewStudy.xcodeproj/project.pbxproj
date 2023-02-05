@@ -59,6 +59,9 @@
 		A9553C02297CF382001644DB /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553C01297CF382001644DB /* MapSearchViewController.swift */; };
 		A99A29BA298A8C7F000B9CA6 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99A29B9298A8C7F000B9CA6 /* CategoryView.swift */; };
 		A99A29BC298A8C9F000B9CA6 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99A29BB298A8C9F000B9CA6 /* CategoryCollectionViewCell.swift */; };
+		A9BBC3A1298F369B005D80D3 /* AlertListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BBC3A0298F369B005D80D3 /* AlertListViewController.swift */; };
+		A9BBC3A3298F36A8005D80D3 /* AlertListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BBC3A2298F36A8005D80D3 /* AlertListDTO.swift */; };
+		A9BBC3A5298F93EF005D80D3 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BBC3A4298F93EF005D80D3 /* AlertTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +119,9 @@
 		A9553C01297CF382001644DB /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
 		A99A29B9298A8C7F000B9CA6 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		A99A29BB298A8C9F000B9CA6 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9BBC3A0298F369B005D80D3 /* AlertListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertListViewController.swift; sourceTree = "<group>"; };
+		A9BBC3A2298F36A8005D80D3 /* AlertListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertListDTO.swift; sourceTree = "<group>"; };
+		A9BBC3A4298F93EF005D80D3 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +245,8 @@
 				9A2F6A232978088C00DECE9F /* BandInfomrationSetViewController.swift */,
 				9AD74E2329801B3400C4D522 /* AddPracticeSongViewController.swift */,
 				9A3F077829881C12009CD500 /* AddBandMemberFlow */,
+				A9BBC3A0298F369B005D80D3 /* AlertListViewController.swift */,
+				A9BBC3A2298F36A8005D80D3 /* AlertListDTO.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -256,6 +264,7 @@
 				9A645C0D2989339100BECA84 /* AddedBandMemberCollectionCell.swift */,
 				A9397BB0298CF1A20041280B /* AddUnRegisteredMemberViewController.swift */,
 				A99A29BD298A8D9B000B9CA6 /* TestCategoryScroll */,
+				A9BBC3A4298F93EF005D80D3 /* AlertTableViewCell.swift */,
 			);
 			path = AddBandMemberFlow;
 			sourceTree = "<group>";
@@ -375,18 +384,21 @@
 				A9397BAD298CC9C30041280B /* PageController.swift in Sources */,
 				9AF4323E2986486100557F9B /* AddBandMemberViewController.swift in Sources */,
 				9A29E6E4297E0F7900D4A433 /* UIFont+Extensions.swift in Sources */,
+				A9BBC3A3298F36A8005D80D3 /* AlertListDTO.swift in Sources */,
 				A9397BB7298CF51A0041280B /* SelectCollectionViewCell.swift in Sources */,
 				9AD0BFB1297BAF43004B8F78 /* TextLimitTextField.swift in Sources */,
 				9AB153EA297A693E00AD220A /* BasicTextView.swift in Sources */,
 				9AD74E22298013AB00C4D522 /* BasicButton.swift in Sources */,
 				A9553C02297CF382001644DB /* MapSearchViewController.swift in Sources */,
 				9A9996F1297929B000C207E0 /* NetworkError.swift in Sources */,
+				A9BBC3A5298F93EF005D80D3 /* AlertTableViewCell.swift in Sources */,
 				A99A29BA298A8C7F000B9CA6 /* CategoryView.swift in Sources */,
 				9AE796BB29795F50008D6976 /* UITextViewExtension.swift in Sources */,
 				9A9996ED2979202D00C207E0 /* DummyData.swift in Sources */,
 				9A03B40E2983CA11000A10EC /* DataModel.swift in Sources */,
 				9A32B7A82983C4E100D0C488 /* PositionCollectionView.swift in Sources */,
 				9A2F6A222978088C00DECE9F /* SceneDelegate.swift in Sources */,
+				A9BBC3A1298F369B005D80D3 /* AlertListViewController.swift in Sources */,
 				9A3F07772987FC1D009CD500 /* NetworkAPI.swift in Sources */,
 				9A3F077A29881C25009CD500 /* UserSearchViewController.swift in Sources */,
 			);
