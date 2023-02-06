@@ -57,6 +57,7 @@
 		A9553BFE297C2C93001644DB /* BasicBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFD297C2C93001644DB /* BasicBoxView.swift */; };
 		A9553C00297C30C7001644DB /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553BFF297C30C7001644DB /* BasicTextField.swift */; };
 		A9553C02297CF382001644DB /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9553C01297CF382001644DB /* MapSearchViewController.swift */; };
+		A960804F299095E9000C7E8B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A960804E299095E9000C7E8B /* BaseViewController.swift */; };
 		A99A29BA298A8C7F000B9CA6 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99A29B9298A8C7F000B9CA6 /* CategoryView.swift */; };
 		A99A29BC298A8C9F000B9CA6 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99A29BB298A8C9F000B9CA6 /* CategoryCollectionViewCell.swift */; };
 		A9BBC3A1298F369B005D80D3 /* AlertListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BBC3A0298F369B005D80D3 /* AlertListViewController.swift */; };
@@ -117,6 +118,7 @@
 		A9553BFD297C2C93001644DB /* BasicBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBoxView.swift; sourceTree = "<group>"; };
 		A9553BFF297C30C7001644DB /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		A9553C01297CF382001644DB /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
+		A960804E299095E9000C7E8B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A99A29B9298A8C7F000B9CA6 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		A99A29BB298A8C9F000B9CA6 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		A9BBC3A0298F369B005D80D3 /* AlertListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertListViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				9A32B7B02983C58C00D0C488 /* PositionCollectionView */,
 				9A32B7AF2983C58400D0C488 /* Util */,
 				9A03B40D2983CA11000A10EC /* DataModel.swift */,
+				A960804E299095E9000C7E8B /* BaseViewController.swift */,
 			);
 			path = UIStackViewStudy;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				A9397BB5298CF4FB0041280B /* SelectCollectionView.swift in Sources */,
 				9AB153EC297A77F000AD220A /* GlobalData.swift in Sources */,
 				9AAD0CCC297F97A2008DC808 /* SearchTextField.swift in Sources */,
+				A960804F299095E9000C7E8B /* BaseViewController.swift in Sources */,
 				9A645C0E2989339100BECA84 /* AddedBandMemberCollectionCell.swift in Sources */,
 				9A03B40C2983C830000A10EC /* BandLeaderPositionSelectVC.swift in Sources */,
 				9A019B8B29868B6700FAB9D8 /* AddBandMemberTableViewCell.swift in Sources */,

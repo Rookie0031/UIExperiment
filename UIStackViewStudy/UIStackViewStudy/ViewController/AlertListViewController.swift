@@ -73,4 +73,17 @@ extension AlertListViewControlelr {
             self.tableView.reloadData()
         }
     }
+
+    private func rejectInvitation(_ error: Error) {
+        // Comment를 이용해서 localization할 때 각국언어로 바꿀 수 있다고함
+        // 애플 공식 app tutorial에 나오길래 한번써봄
+        let alertTitle = NSLocalizedString("초대 거절", comment: "Invitation reject title")
+        let alertMessage = NSLocalizedString("밴드 ‘로젤리아’의 초대를 거절하시겠습니까?", comment: "Invitation reject message")
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let actionTitle = NSLocalizedString("확인", comment: "Alert OK button title")
+        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { [weak self] _ in
+            self?.dismiss(animated: true)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
 }
