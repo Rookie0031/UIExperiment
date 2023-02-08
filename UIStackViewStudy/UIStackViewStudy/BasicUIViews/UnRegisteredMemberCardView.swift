@@ -12,6 +12,15 @@ final class UnRegisteredMemberCardView: UIStackView, Identifiable {
 
     lazy var cancelButton = {
         let button = UIButton()
+        let removeAction = UIAction { _ in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.alpha = 0.1
+                self.superview?.layoutIfNeeded()
+            }, completion: { _ in
+                self.removeFromSuperview()
+            })
+        }
+        button.addAction(removeAction, for: .touchUpInside)
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.tintColor = .white
         return button

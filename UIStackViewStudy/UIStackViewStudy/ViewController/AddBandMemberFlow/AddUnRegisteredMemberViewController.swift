@@ -18,7 +18,6 @@ final class AddUnRegisteredMemberViewController: UIViewController {
     lazy var firstPracticeSongCard: UnRegisteredMemberCardView = {
         let card = UnRegisteredMemberCardView()
         let action = UIAction { _ in
-            card.removeFromSuperview()
             self.addedMembers.append(self.firstData)
             self.addedMembers.removeAll { $0.id == self.firstData.id }
         }
@@ -125,10 +124,10 @@ final class AddUnRegisteredMemberViewController: UIViewController {
 // ScrollView 가로 스크롤 막기
 extension AddUnRegisteredMemberViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-           if scrollView.contentOffset.x != 0 {
-               scrollView.contentOffset.x = 0
-           }
-       }
+        if scrollView.contentOffset.x != 0 {
+            scrollView.contentOffset.x = 0
+        }
+    }
 }
 
 extension AddUnRegisteredMemberViewController {
@@ -136,18 +135,10 @@ extension AddUnRegisteredMemberViewController {
         let newCard = UnRegisteredMemberCardView()
         guard contentView.arrangedSubviews.count < 3 else { return }
         // UI에 카드뷰 추가 (stackView에 넣는 방식임)
-        contentView.insertArrangedSubview(newCard, at: contentView.arrangedSubviews.endIndex)
+        contentView.insertArrangedSubview(
+            newCard,
+            at: contentView.arrangedSubviews.endIndex)
 
-//        // 전달하려는 배열에 데이터 추가
-//        let data = CellInformation(nickName: newCard.bandMemberNameTextField.textField.text ?? "", instrument: newCard.otherPositionTextField.textField.text ?? "")
-//
-//        let action = UIAction { _ in
-//            newCard.removeFromSuperview()
-//            self.addedMembers.removeAll { $0.id == data.id }
-//        }
-//        newCard.cancelButton.addAction(action, for: .touchUpInside)
-//
-//        addedMembers.append(data)
         applyButtonSnapshot()
     }
 }
