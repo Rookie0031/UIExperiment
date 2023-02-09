@@ -4,13 +4,19 @@
 //
 //  Created by Jisu Jang on 2023/01/22.
 //
+import CoreLocation
 import MapKit
 import UIKit
 
-class MapSearchViewController: UIViewController {
+//MARK: 알로라 피알 참고하여 진행 
+
+final class MapSearchViewController: UIViewController {
     var completion: (_ mapItem: MKMapItem) -> Void = { mapItem in }
 
+    private let locationManager = CLLocationManager()
+    
     private var searchCompleter = MKLocalSearchCompleter()
+    
     private var searchResults = [MKLocalSearchCompletion]()
     
     private lazy var searchBar = {
@@ -30,12 +36,17 @@ class MapSearchViewController: UIViewController {
     }()
     
     //MARK: Google Map으로 현재 위치 바꿔야함...
-    private let currentLocationButton = {
+    private lazy var currentLocationButton = {
         let button = BasicButton(text: "현재 위치", widthPadding: 20, heightPadding: 10)
         button.setImage(UIImage(systemName: "scope"), for: .normal)
         button.backgroundColor = .systemPurple
         button.tintColor = . white
         button.layer.cornerRadius = 8
+        
+        let action = UIAction { _ in
+            self.locationManager.requestWhenInUseAuthorization()
+        }
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
 
@@ -47,6 +58,7 @@ class MapSearchViewController: UIViewController {
         self.addSubViews()
         self.configureConstraints()
         self.configureSearchCompleter()
+        self.setLocationManager()
     }
 
     private func addSubViews() {
@@ -78,6 +90,29 @@ extension MapSearchViewController {
       // 사용자가 search bar 에 입력한 text를 자동완성 대상에 넣는다
         searchCompleter.queryFragment = searchBar.textField.text ?? ""
         }
+    
+    private func setLocationManager() {
+          self.locationManager.delegate = self
+          self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+      }
+}
+
+extension MapSearchViewController: CLLocationManagerDelegate {
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .authorizedAlways, .authorizedWhenInUse:
+            manager.startUpdatingLocation()
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        default:
+            print("위치 서비스를 허용하지 않음")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let currentLocation = locations.first else { return }
+        print("current location is this \(currentLocation)")
+    }
 }
 
 extension MapSearchViewController: MKLocalSearchCompleterDelegate {
