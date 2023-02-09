@@ -128,6 +128,7 @@ class BandLeaderPositionSelectVC: UIViewController {
 
 extension BandLeaderPositionSelectVC: PositionCollectionViewDelegate {
     func canSelectPosition(_ collectionView: UICollectionView, indexPath: IndexPath, selectedItemsCount: Int) -> Bool {
+        if selectedItemsCount > 1 { return false }
         return true
     }
 }
