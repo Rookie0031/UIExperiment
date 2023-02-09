@@ -8,7 +8,7 @@ import CoreLocation
 import MapKit
 import UIKit
 
-//MARK: 알로라 피알 참고하여 진행 
+//MARK: 알로라 피알 참고하여 진행
 
 final class MapSearchViewController: UIViewController {
     var completion: (_ mapItem: MKMapItem) -> Void = { mapItem in }

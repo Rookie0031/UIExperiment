@@ -100,8 +100,15 @@ final class BandInfomrationSetViewController: UIViewController {
         return button
     }()
     
+    private lazy var practiceSongList: UIStackView = {
+        $0.axis = .vertical
+        $0.distribution = .equalSpacing
+        $0.spacing = 20
+        return $0
+    }(UIStackView(arrangedSubviews: [addPracticeSongButton, BasicLabel(contentText: "Test", fontStyle: .headline01, textColorInfo: .white)]))
+    
     private lazy var practiceSongStack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [practiceSongLabel, practiceSongSubLabel, addPracticeSongButton])
+        let stackView = UIStackView(arrangedSubviews: [practiceSongLabel, practiceSongSubLabel, practiceSongList])
         stackView.axis = .vertical
         stackView.spacing = 10
         return stackView
