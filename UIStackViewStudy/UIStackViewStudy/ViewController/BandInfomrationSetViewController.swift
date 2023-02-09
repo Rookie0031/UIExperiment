@@ -9,25 +9,26 @@ import UIKit
 
 final class BandInfomrationSetViewController: UIViewController {
     
-    private let titleLabel: UILabel = {
-        let label = UILabel.makeBasicLabel(labelText: "밴드에 대해\n간단히 알려주세요", textColor: .white, fontStyle: .largeTitle, fontWeight: .heavy, numberOfLines: 2)
-        return label
-    }()
+    private let titleLabel: BasicLabel = {
+        $0.numberOfLines = 2
+        return $0
+    }(BasicLabel(contentText: "밴드에 대해\n간단히 알려주세요", fontStyle: .largeTitle01, textColorInfo: .white))
     
-    private let subTitleLabel: UILabel = {
-        let label = UILabel.makeBasicLabel(labelText: "작성해주신 정보는 내 프로필로 만들어지고\n프로필은 다른 사용자들이 볼 수 있어요", textColor: .white, fontStyle: .title3, fontWeight: .regular, numberOfLines: 2)
-        return label
-    }()
+    private let subTitleLabel: BasicLabel = {
+        $0.numberOfLines = 2
+        return $0
+    }(BasicLabel(contentText: "작성해주신 정보는 내 프로필로 만들어지고\n프로필은 다른 사용자들이 볼 수 있어요", fontStyle: .headline03, textColorInfo: .white))
     
-    private let bandNameLabel = TwoHstackLabel.basicLabel(firstLabelText: "밴드 이름", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .light, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .light)
+    private let bandNameLabel = TwoHstackLabel.informationLabel(guideText: "밴드 이름", inputType: .optional)
     
-    private let bandIntroductionLabel = TwoHstackLabel.basicLabel(firstLabelText: "밴드 소개", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .light, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .light)
+    private let bandIntroductionLabel = TwoHstackLabel.informationLabel(guideText: "밴드 소개", inputType: .optional)
     
     private lazy var bandNamingTextFieldView: UIView = {
         let textField = TextLimitTextField(placeholer: "밴드 이름을 입력해주세요", maxCount: 10, checkCase: .bandName)
         return textField
     }()
     
+    //MARK: Textfield 변경에 따라 삭제 예정
     private lazy var checkLabel: UIStackView = TwoHstackLabel.checkLabel
     
     private let bandIntroTextView = {
@@ -56,6 +57,10 @@ final class BandInfomrationSetViewController: UIViewController {
         return stackView
     }()
     
+    private var practiceLabel = TwoHstackLabel.informationLabel(guideText: "합주실 위치", inputType: .optional)
+    
+    private var practiceSubLabel = BasicLabel(contentText: "* 지도에서 우리밴드가 보여질 위치입니다.", fontStyle: .content, textColorInfo: .white)
+    
     private lazy var practicePlace = {
         let boxView = BasicBoxView(text: "합주실 위치")
         boxView.basicRightView.isHidden = false
@@ -69,10 +74,6 @@ final class BandInfomrationSetViewController: UIViewController {
         return view
     }()
     
-    private var practiceLabel = TwoHstackLabel.basicLabel(firstLabelText: "합주실 위치", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .regular, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .regular)
-    
-    private var practiceSubLabel = BasicLabel(contentText: "* 지도에서 우리밴드가 보여질 위치입니다.", fontStyle: .content, textColorInfo: .white)
-    
     private lazy var practicePlaceStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [practiceLabel, practiceSubLabel, practicePlace, detailPracticePlace])
         stackView.axis = .vertical
@@ -80,9 +81,9 @@ final class BandInfomrationSetViewController: UIViewController {
         return stackView
     }()
     
-    private let practiceSongLabel = TwoHstackLabel.basicLabel(firstLabelText: "합주곡", firstTextColor: .white, firstFontStyle: .title2, firstFontWeight: .regular, secondLabelText: "(선택)", secondTextColor: .white, secondFontStyle: .subheadline, secondFontWeight: .regular)
+    private var practiceSongLabel = TwoHstackLabel.informationLabel(guideText: "합주곡", inputType: .optional)
     
-    private var practiceSongSubLabel = UILabel.makeBasicLabel(labelText: "* 최대 3개까지 등록 가능합니다.", textColor: .white, fontStyle: .footnote, fontWeight: .regular)
+    private var practiceSongSubLabel = BasicLabel(contentText: "* 최대 3개까지 등록 가능합니다.", fontStyle: .content, textColorInfo: .white)
     
     private lazy var addPracticeSongButton = {
         var configuration = UIButton.Configuration.filled()
@@ -106,7 +107,7 @@ final class BandInfomrationSetViewController: UIViewController {
         return stackView
     }()
     
-    private let snsTitleLabel = TwoHstackLabel.basicClassLabel(firstLabelText: "SNS", inputType: .optional)
+    private let snsTitleLabel = TwoHstackLabel.informationLabel(guideText: "SNS", inputType: .optional)
     
     private let snsSubTitleLabel = BasicLabel(contentText: "* 밴드의 SNS 계정을 입력해주세요 ", fontStyle: .content, textColorInfo: .gray02)
     
@@ -171,6 +172,7 @@ final class BandInfomrationSetViewController: UIViewController {
         
     }
     
+    //MARK: 나중에 삭제 가능
     private func setConfiguration() {
         view.backgroundColor = .systemGray
         checkLabel.isHidden = true
@@ -212,10 +214,3 @@ extension BandInfomrationSetViewController: UIScrollViewDelegate {
            }
        }
 }
-
-
-private let contentStackView: UIStackView = {
-    $0.axis = .vertical
-    $0.spacing = 10
-    return $0
-}(UIStackView(frame: .zero))

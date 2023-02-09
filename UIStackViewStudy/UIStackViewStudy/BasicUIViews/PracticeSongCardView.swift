@@ -18,7 +18,7 @@ class PracticeSongCardView: UIStackView, Identifiable {
         return button
     }()
     
-    private let practiceSongName = TwoHstackLabel.basicClassLabel(firstLabelText: "합주곡 제목", inputType: .required)
+    private let practiceSongName = TwoHstackLabel.informationLabel(guideText: "합주곡 제목", inputType: .required)
     
     private let practiceSongTextField = BasicTextField(placeholder: "합주곡 제목을 입력해주세요")
     
@@ -29,7 +29,7 @@ class PracticeSongCardView: UIStackView, Identifiable {
         return stackView
     }()
     
-    private let artistName = TwoHstackLabel.basicClassLabel(firstLabelText: "아티스트", inputType: .required)
+    private let artistName = TwoHstackLabel.informationLabel(guideText: "아티스트", inputType: .required)
     
     private let artistNameTextField = BasicTextField(placeholder: "아티스트를 입력해주세요")
     
@@ -40,7 +40,7 @@ class PracticeSongCardView: UIStackView, Identifiable {
         return stackView
     }()
     
-    private let linkLabel = TwoHstackLabel.basicClassLabel(firstLabelText: "링크", inputType: .optional)
+    private let linkLabel = TwoHstackLabel.informationLabel(guideText: "링크", inputType: .optional)
     
     private let linkDescription = BasicLabel(contentText: "* 우리밴드가 해당 곡을 합주한 작업물 링크를 입력해주세요", fontStyle: .content, textColorInfo: .gray02)
     

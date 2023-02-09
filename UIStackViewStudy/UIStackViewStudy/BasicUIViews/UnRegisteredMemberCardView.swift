@@ -26,7 +26,7 @@ final class UnRegisteredMemberCardView: UIStackView, Identifiable {
         return button
     }()
 
-    private let bandMemberName = TwoHstackLabel.basicClassLabel(firstLabelText: "닉네임", inputType: .required)
+    private let bandMemberName = TwoHstackLabel.informationLabel(guideText: "닉네임", inputType: .required)
 
     let bandMemberNameTextField = BasicTextField(placeholder: "닉네임을 입력해주세요")
 
@@ -37,7 +37,7 @@ final class UnRegisteredMemberCardView: UIStackView, Identifiable {
         return stackView
     }()
 
-    private let positionLabel = TwoHstackLabel.basicClassLabel(firstLabelText: "포지션", inputType: .required)
+    private let positionLabel = TwoHstackLabel.informationLabel(guideText: "포지션", inputType: .required)
 
     private var positionSelect: SelectCollectionView = {
         $0.constraint(.heightAnchor, constant: 110)
@@ -51,7 +51,7 @@ final class UnRegisteredMemberCardView: UIStackView, Identifiable {
         return stackView
     }()
 
-    private let otherPosition = TwoHstackLabel.basicClassLabel(firstLabelText: "그 외 포지션", inputType: .optional)
+    private let otherPosition = TwoHstackLabel.informationLabel(guideText: "그 외 포지션", inputType: .optional)
 
     private let positionDescription = BasicLabel(contentText: "* 그 외 포지션은 공백 포함 10자 이하로 입력가능합니다.", fontStyle: .content, textColorInfo: .gray02)
 

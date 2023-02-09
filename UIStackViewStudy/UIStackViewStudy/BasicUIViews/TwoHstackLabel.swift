@@ -31,8 +31,8 @@ struct TwoHstackLabel {
     
     // 합주곡(선택) 처럼 폰트가 다른 2개의 레이블이 붙어있는 경우
     
-    static func basicClassLabel(firstLabelText: String, inputType: InputType) -> UIStackView {
-        let firstLabel = BasicLabel(contentText: firstLabelText, fontStyle: .headline01, textColorInfo: .white)
+    static func informationLabel(guideText: String, inputType: InputType) -> UIStackView {
+        let firstLabel = BasicLabel(contentText: guideText, fontStyle: .headline01, textColorInfo: .white)
         let secondLabel = BasicLabel(contentText: inputType.rawValue, fontStyle: .content, textColorInfo: .gray02)
         firstLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
         
