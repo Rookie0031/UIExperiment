@@ -8,39 +8,46 @@
 import UIKit
 
 final class AddBandMemberViewController: UIViewController {
-    
+
+    //TODO: 유저 정보로 데이터 타입을 바꿔야함
     var people: [CellInformation] = []
-    
-    let tableView = UITableView(frame: .zero, style: .grouped)
+
+    //MARK: Views
+    private lazy var tableView: UITableView = {
+        $0.register(AddBandMemberTableViewCell.self,
+                    forCellReuseIdentifier: AddBandMemberTableViewCell.classIdentifier)
+        $0.register(AddBandMemberTableHeaderView.self,
+                    forHeaderFooterViewReuseIdentifier: AddBandMemberTableHeaderView.classIdentifier)
+        $0.sectionHeaderHeight = 300
+//        $0.separatorStyle = .none
+        $0.backgroundColor = .dark01
+        $0.delegate = self
+        return $0
+    }(UITableView(frame: .zero, style: .grouped))
     
     lazy var dataSource: UITableViewDiffableDataSource<TableViewSection, CellInformation> = self.makeDataSource()
-    
+
+    //TODO: 밴드 리더 포지션 선택뷰의 버튼으로 바꿔야함
     private let nextButton = BasicButton(text: "다음", widthPadding: 300, heightPadding: 20)
-    
+
+    //MARK: Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.register(AddBandMemberTableViewCell.self, forCellReuseIdentifier: AddBandMemberTableViewCell.classIdentifier)
-        tableView.separatorStyle = .none
-        tableView.delegate = self
-        tableView.sectionHeaderHeight = 300
-        tableView.backgroundColor = .dark01
-        
-        tableView.register(AddBandMemberTableHeaderView.self, forHeaderFooterViewReuseIdentifier: AddBandMemberTableHeaderView.classIdentifier)
-        
-        view.addSubview(tableView)
-        tableView.constraint(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 16, bottom: 100, right: 16))
-        
-        view.backgroundColor = .dark01
-        
-        view.addSubview(nextButton)
-        nextButton.constraint(leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 20))
-        
+
+        setupLayout()
         updateSnapShot(with: people)
     }
+
+    //MARK: Methods
     
     private func setupLayout() {
-        
+        view.addSubview(tableView)
+        tableView.constraint(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 16, bottom: 100, right: 16))
+
+        view.backgroundColor = .dark01
+
+        view.addSubview(nextButton)
+        nextButton.constraint(leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 20))
     }
     
     private func attribute() {
@@ -55,6 +62,7 @@ final class AddBandMemberViewController: UIViewController {
     }
 }
 
+//MARK: Data source + configure cell
 extension AddBandMemberViewController {
     func makeDataSource() -> UITableViewDiffableDataSource<TableViewSection, CellInformation> {
         return UITableViewDiffableDataSource<TableViewSection, CellInformation>(tableView: self.tableView) { tableView, indexPath, person in
@@ -153,12 +161,11 @@ extension CellInformation {
     ]
 }
 
-final class TableViewDataSource: UITableViewDiffableDataSource<TableViewSection, CellInformation> {
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "ddasd"
-    }
-}
+//final class TableViewDataSource: UITableViewDiffableDataSource<TableViewSection, CellInformation> {
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        1
+//    }
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "ddasd"
+//    }
+//}

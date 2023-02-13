@@ -8,7 +8,11 @@
 import UIKit
 
 final class BandInfomrationSetViewController: UIViewController {
-    
+
+    // MARK: - Property
+
+    // MARK: - View
+
     private let titleLabel: BasicLabel = {
         $0.numberOfLines = 2
         return $0
@@ -22,7 +26,8 @@ final class BandInfomrationSetViewController: UIViewController {
     private let bandNameLabel = TwoHstackLabel.informationLabel(guideText: "밴드 이름", inputType: .optional)
     
     private let bandIntroductionLabel = TwoHstackLabel.informationLabel(guideText: "밴드 소개", inputType: .optional)
-    
+
+    //MARK: Textfield 변경에 따라 수정 예정
     private lazy var bandNamingTextFieldView: UIView = {
         let textField = TextLimitTextField(placeholer: "밴드 이름을 입력해주세요", maxCount: 10, checkCase: .bandName)
         return textField
@@ -37,25 +42,22 @@ final class BandInfomrationSetViewController: UIViewController {
     }()
     
     private lazy var titleVstack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        return stackView
-    }()
+        $0.axis = .vertical
+        $0.spacing = 10
+        return $0
+    }(UIStackView(arrangedSubviews: [titleLabel, subTitleLabel]))
     
     private lazy var textFieldVstack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [bandNameLabel, bandNamingTextFieldView, checkLabel])
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        return stackView
-    }()
+        $0.axis = .vertical
+        $0.spacing = 10
+        return $0
+    }(UIStackView(arrangedSubviews: [bandNameLabel, bandNamingTextFieldView, checkLabel]))
     
     private lazy var textViewVstack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [bandIntroductionLabel, bandIntroTextView])
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        return stackView
-    }()
+        $0.axis = .vertical
+        $0.spacing = 10
+        return $0
+    }(UIStackView(arrangedSubviews: [bandIntroductionLabel, bandIntroTextView]))
     
     private var practiceLabel = TwoHstackLabel.informationLabel(guideText: "합주실 위치", inputType: .optional)
     
@@ -69,22 +71,19 @@ final class BandInfomrationSetViewController: UIViewController {
         return boxView
     }()
     
-    private var detailPracticePlace = {
-        let view = BasicTextField(placeholder: "상세 주소를 입력해주세요 (선택)")
-        return view
-    }()
+    private let detailPracticePlace = BasicTextField(placeholder: "상세 주소를 입력해주세요 (선택)")
     
     private lazy var practicePlaceStack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [practiceLabel, practiceSubLabel, practicePlace, detailPracticePlace])
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        return stackView
-    }()
+        $0.axis = .vertical
+        $0.spacing = 10
+        return $0
+    }(UIStackView(arrangedSubviews: [practiceLabel, practiceSubLabel, practicePlace, detailPracticePlace]))
     
     private var practiceSongLabel = TwoHstackLabel.informationLabel(guideText: "합주곡", inputType: .optional)
     
     private var practiceSongSubLabel = BasicLabel(contentText: "* 최대 3개까지 등록 가능합니다.", fontStyle: .content, textColorInfo: .white)
-    
+
+    //MARK: develop에 있는 기본 버튼으로 변경해야함
     private lazy var addPracticeSongButton = {
         var configuration = UIButton.Configuration.filled()
         var container = AttributeContainer()
@@ -108,11 +107,10 @@ final class BandInfomrationSetViewController: UIViewController {
     }(UIStackView(arrangedSubviews: [addPracticeSongButton, BasicLabel(contentText: "Test", fontStyle: .headline01, textColorInfo: .white)]))
     
     private lazy var practiceSongStack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [practiceSongLabel, practiceSongSubLabel, practiceSongList])
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        return stackView
-    }()
+        $0.axis = .vertical
+        $0.spacing = 10
+        return $0
+    }(UIStackView(arrangedSubviews: [practiceSongLabel, practiceSongSubLabel, practiceSongList]))
     
     private let snsTitleLabel = TwoHstackLabel.informationLabel(guideText: "SNS", inputType: .optional)
     
@@ -127,30 +125,34 @@ final class BandInfomrationSetViewController: UIViewController {
     private let soundCloundTextField = SNSBoxView(type: .soundCloud, placeholder: "사용자 계정")
     
     private lazy var snsStack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [snsTitleLabel, snsSubTitleLabel, snsSecondSubTitleLabel, youtubeTextField, instagramTextField, soundCloundTextField])
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        return stackView
-    }()
+        $0.axis = .vertical
+        $0.spacing = 10
+        return $0
+    }(UIStackView(arrangedSubviews: [snsTitleLabel, snsSubTitleLabel, snsSecondSubTitleLabel, youtubeTextField, instagramTextField, soundCloundTextField]))
     
     private lazy var contentView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleVstack, textFieldVstack, practicePlaceStack, practiceSongStack, textViewVstack, snsStack])
-        stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 40
-        stackView.backgroundColor = .dark01
-        stackView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
-        return stackView
-    }()
+        $0.axis = .vertical
+        $0.distribution = .equalSpacing
+        $0.spacing = 40
+        $0.backgroundColor = .dark01
+        $0.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
+        return $0
+    }(UIStackView(arrangedSubviews: [titleVstack,
+                                     textFieldVstack,
+                                     practicePlaceStack,
+                                     practiceSongStack,
+                                     textViewVstack,
+                                     snsStack]))
     
     private lazy var mainScrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.showsVerticalScrollIndicator = true
-        scrollView.backgroundColor = .dark01
-        scrollView.delegate = self
-        return scrollView
-    }()
-    
+        $0.showsVerticalScrollIndicator = true
+        $0.backgroundColor = .dark01
+        $0.delegate = self
+        return $0
+    }(UIScrollView())
+
+    // MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
@@ -158,10 +160,13 @@ final class BandInfomrationSetViewController: UIViewController {
         setConfiguration()
         attribute()
     }
-    
+
+    // MARK: Base ViewCon 상속에 따라 삭제예정
     private func attribute() {
         self.view.backgroundColor = .dark01
     }
+
+    // MARK: - Method
     
     private func addSubviews() {
         view.addSubviews(mainScrollView)
@@ -186,8 +191,11 @@ final class BandInfomrationSetViewController: UIViewController {
     }
 }
 
+    // MARK: Extension
+
 extension BandInfomrationSetViewController {
-    
+
+    //MARK: 나중에 삭제 가능
     private func showDuplicationCheckLabel(with isChecked: Bool) {
         checkLabel.isHidden = false
         let imageView = checkLabel.arrangedSubviews.first! as! UIImageView
@@ -213,7 +221,8 @@ extension BandInfomrationSetViewController {
     }
 }
 
-// ScrollView 가로 스크롤 막기
+    //MARK: ScrollView 가로 스크롤 막기
+
 extension BandInfomrationSetViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
            if scrollView.contentOffset.x != 0 {
