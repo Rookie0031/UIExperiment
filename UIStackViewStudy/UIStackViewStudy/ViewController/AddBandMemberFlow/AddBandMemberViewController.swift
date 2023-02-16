@@ -12,14 +12,13 @@ final class AddBandMemberViewController: UIViewController {
     //TODO: 유저 정보로 데이터 타입을 바꿔야함
     var people: [CellInformation] = []
 
-    //MARK: Views
+    //MARK: - View
     private lazy var tableView: UITableView = {
         $0.register(AddBandMemberTableViewCell.self,
                     forCellReuseIdentifier: AddBandMemberTableViewCell.classIdentifier)
         $0.register(AddBandMemberTableHeaderView.self,
                     forHeaderFooterViewReuseIdentifier: AddBandMemberTableHeaderView.classIdentifier)
         $0.sectionHeaderHeight = 300
-//        $0.separatorStyle = .none
         $0.backgroundColor = .dark01
         $0.delegate = self
         return $0
@@ -30,40 +29,39 @@ final class AddBandMemberViewController: UIViewController {
     //TODO: 밴드 리더 포지션 선택뷰의 버튼으로 바꿔야함
     private let nextButton = BasicButton(text: "다음", widthPadding: 300, heightPadding: 20)
 
-    //MARK: Life Cycles
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        attribute()
         setupLayout()
         updateSnapShot(with: people)
     }
 
-    //MARK: Methods
+    //MARK: - Method
     
     private func setupLayout() {
         view.addSubview(tableView)
         tableView.constraint(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 16, bottom: 100, right: 16))
-
-        view.backgroundColor = .dark01
 
         view.addSubview(nextButton)
         nextButton.constraint(leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 20))
     }
     
     private func attribute() {
-        
+        view.backgroundColor = .dark01
     }
-    
+}
+
+//MARK: DiffableDataSource 관련 메소드
+extension AddBandMemberViewController {
+
     func updateSnapShot(with items: [CellInformation]) {
         var snapShot = NSDiffableDataSourceSnapshot<TableViewSection, CellInformation>()
         snapShot.appendSections([.main])
         snapShot.appendItems(items, toSection: .main)
         self.dataSource.apply(snapShot, animatingDifferences: true)
     }
-}
 
-//MARK: Data source + configure cell
-extension AddBandMemberViewController {
     func makeDataSource() -> UITableViewDiffableDataSource<TableViewSection, CellInformation> {
         return UITableViewDiffableDataSource<TableViewSection, CellInformation>(tableView: self.tableView) { tableView, indexPath, person in
             
@@ -86,7 +84,6 @@ extension AddBandMemberViewController {
     }
 }
 
-//MARK: TableView Delegate
 extension AddBandMemberViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
@@ -124,15 +121,6 @@ extension AddBandMemberViewController: UITableViewDelegate {
     }
 }
 
-//
-////MARK: Identifier에 따른 정수형 index 추출 extension
-//extension Array where Element == CellInformation {
-//    func cellIndex(with id: CellInformation.ID) -> Self.Index {
-//        guard let index = firstIndex(where: { $0.id == id }) else { return 0 }
-//        return index
-//    }
-//}
-
 enum TableViewSection: String {
     case main
 
@@ -161,11 +149,10 @@ extension CellInformation {
     ]
 }
 
-//final class TableViewDataSource: UITableViewDiffableDataSource<TableViewSection, CellInformation> {
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        1
-//    }
-//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return "ddasd"
+//MARK: Identifier에 따른 정수형 index 추출 extension
+//extension Array where Element == CellInformation {
+//    func cellIndex(with id: CellInformation.ID) -> Self.Index {
+//        guard let index = firstIndex(where: { $0.id == id }) else { return 0 }
+//        return index
 //    }
 //}

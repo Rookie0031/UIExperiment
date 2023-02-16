@@ -8,7 +8,7 @@ import UIKit
 
 final class AddBandMemberTableViewCell: UITableViewCell, Identifiable {
     
-    var id: String = ""
+    var id: String = "default"
     
     private let titleLabel: UILabel = {
         let label = UILabel()

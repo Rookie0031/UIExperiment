@@ -8,7 +8,7 @@ import UIKit
 
 final class BandMemberSearchTableCell: UITableViewCell, Identifiable {
     
-    var id: String = ""
+    var id: String = "default"
 
     var isChecked: Bool = false {
           didSet {

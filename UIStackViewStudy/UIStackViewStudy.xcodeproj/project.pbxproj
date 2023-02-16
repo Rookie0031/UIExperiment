@@ -60,6 +60,7 @@
 		A960804F299095E9000C7E8B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A960804E299095E9000C7E8B /* BaseViewController.swift */; };
 		A99A29BA298A8C7F000B9CA6 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99A29B9298A8C7F000B9CA6 /* CategoryView.swift */; };
 		A99A29BC298A8C9F000B9CA6 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99A29BB298A8C9F000B9CA6 /* CategoryCollectionViewCell.swift */; };
+		A9A59364299DEAD700086729 /* MemberDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A59363299DEAD600086729 /* MemberDataDTO.swift */; };
 		A9BBC3A1298F369B005D80D3 /* AlertListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BBC3A0298F369B005D80D3 /* AlertListViewController.swift */; };
 		A9BBC3A3298F36A8005D80D3 /* AlertListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BBC3A2298F36A8005D80D3 /* AlertListDTO.swift */; };
 		A9BBC3A5298F93EF005D80D3 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BBC3A4298F93EF005D80D3 /* AlertTableViewCell.swift */; };
@@ -121,6 +122,7 @@
 		A960804E299095E9000C7E8B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A99A29B9298A8C7F000B9CA6 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		A99A29BB298A8C9F000B9CA6 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9A59363299DEAD600086729 /* MemberDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDataDTO.swift; sourceTree = "<group>"; };
 		A9BBC3A0298F369B005D80D3 /* AlertListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertListViewController.swift; sourceTree = "<group>"; };
 		A9BBC3A2298F36A8005D80D3 /* AlertListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertListDTO.swift; sourceTree = "<group>"; };
 		A9BBC3A4298F93EF005D80D3 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				A913B8552982C3EE001504FB /* HTTPCase.swift */,
 				9A3F07762987FC1D009CD500 /* NetworkAPI.swift */,
 				9A9996EE297927DB00C207E0 /* DuplicationCheckRequest.swift */,
+				A9A59363299DEAD600086729 /* MemberDataDTO.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				9A03B4102983CAC6000A10EC /* NSObject+Extension.swift in Sources */,
 				9A32B7AA2983C4F400D0C488 /* PositionCollectionViewCell.swift in Sources */,
 				A90075972988B0C300371EC8 /* BandMemberSearchTableCell.swift in Sources */,
+				A9A59364299DEAD700086729 /* MemberDataDTO.swift in Sources */,
 				9A32B7AC2983C56200D0C488 /* BnadMemberCollectionViewCell.swift in Sources */,
 				9AF4324029864CAC00557F9B /* AddBandMemberTableHeaderView.swift in Sources */,
 				A9397BB1298CF1A20041280B /* AddUnRegisteredMemberViewController.swift in Sources */,

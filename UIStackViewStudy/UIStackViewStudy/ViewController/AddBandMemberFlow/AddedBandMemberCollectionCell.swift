@@ -10,7 +10,7 @@ import UIKit
 final class AddedBandMemberCollectionCell: UICollectionViewCell, Identifiable {
 
     // MARK: - properties
-    var id: String = ""
+    var id: String = "default"
 
     private let backgroundContentView: UIView = {
         let view = UIView()
