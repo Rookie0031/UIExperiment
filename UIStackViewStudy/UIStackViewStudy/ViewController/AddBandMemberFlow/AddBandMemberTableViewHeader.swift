@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AddBandMemberTableHeaderView: UITableViewHeaderFooterView {
+final class AddBandMemberTableViewHeader: UITableViewHeaderFooterView {
     
     // MARK: 이 뷰를 업로드할 때, 서버에 UID를 날리고 그 UID에 해당하는 닉네임을 업데이트해야함
     private let stepLabel = BasicLabel(contentText: "2/3", fontStyle: .caption, textColorInfo: .gray02)
@@ -51,10 +51,16 @@ final class AddBandMemberTableHeaderView: UITableViewHeaderFooterView {
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        
+        attribute()
+        setupLayout()
+    }
+    
+    private func setupLayout() {
         contentView.addSubview(titleVstack)
         titleVstack.constraint(top: contentView.safeAreaLayoutGuide.topAnchor, leading: contentView.safeAreaLayoutGuide.leadingAnchor, bottom: contentView.safeAreaLayoutGuide.bottomAnchor, trailing: contentView.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0))
-        
+    }
+    
+    private func attribute() {
         contentView.backgroundColor = .dark01
     }
     

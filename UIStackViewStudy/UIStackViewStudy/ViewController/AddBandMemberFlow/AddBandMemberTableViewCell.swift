@@ -26,7 +26,7 @@ final class AddBandMemberTableViewCell: UITableViewCell, Identifiable {
         return label
     }()
     
-    lazy var leftView: UIImageView = {
+    private lazy var leftView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "music.note.list")
         imageView.contentMode = .scaleToFill
@@ -68,26 +68,30 @@ final class AddBandMemberTableViewCell: UITableViewCell, Identifiable {
     }
     
     private func setupLayout() {
-        backgroundColor = .clear
         
         contentView.addSubview(leftView)
         leftView.constraint(.widthAnchor, constant: 35)
         leftView.constraint(.heightAnchor, constant: 35)
-        leftView.constraint(leading: contentView.leadingAnchor, centerY: contentView.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        )
+        leftView.constraint(leading: contentView.leadingAnchor,
+                            centerY: contentView.centerYAnchor,
+                            padding: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0))
         
         contentView.addSubview(titleLabel)
-        titleLabel.constraint(top: leftView.topAnchor, leading: leftView.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0))
+        titleLabel.constraint(top: leftView.topAnchor,
+                              leading: leftView.trailingAnchor,
+                              padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0))
         
         contentView.addSubview(subTitleLabel)
-        subTitleLabel.constraint(top: titleLabel.bottomAnchor, leading: titleLabel.leadingAnchor, padding: UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 20))
+        subTitleLabel.constraint(top: titleLabel.bottomAnchor,
+                                 leading: titleLabel.leadingAnchor,
+                                 padding: UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 20))
         
         contentView.addSubview(deleteButton)
         deleteButton.constraint(.widthAnchor, constant: 25)
         deleteButton.constraint(.heightAnchor, constant: 25)
-        deleteButton.constraint(trailing: contentView.trailingAnchor, centerY: contentView.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 10)
-        )
-    
+        deleteButton.constraint(trailing: contentView.trailingAnchor,
+                                centerY: contentView.centerYAnchor,
+                                padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 10))
     }
     
     func configure(data: MemberList) {

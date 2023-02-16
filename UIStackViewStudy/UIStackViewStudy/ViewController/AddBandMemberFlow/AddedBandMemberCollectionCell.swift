@@ -43,8 +43,8 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell, Identifiable {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        render()
-        configUI()
+        attribute()
+        setupLayout()
     }
 
     required init?(coder: NSCoder) {
@@ -55,12 +55,15 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell, Identifiable {
     override func prepareForReuse() {
     }
 
-    // MARK: - func
+    // MARK: - Methods
+    
+    private func attribute() {
+        backgroundContentView.layer.cornerRadius = 10
+    }
 
-    private func render() {
+    private func setupLayout() {
         contentView.addSubview(backgroundContentView)
         backgroundContentView.constraint(to: self)
-
         backgroundContentView.addSubview(itemLabel)
         itemLabel.constraint(
             leading: self.leadingAnchor,
@@ -71,15 +74,10 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell, Identifiable {
         backgroundContentView.addSubview(deleteButton)
         deleteButton.constraint(.widthAnchor, constant: 25)
         deleteButton.constraint(.heightAnchor, constant: 25)
-        deleteButton.constraint(trailing: backgroundContentView.trailingAnchor, centerY: backgroundContentView.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 10))
-        
-        
+        deleteButton.constraint(trailing: backgroundContentView.trailingAnchor,
+                                centerY: backgroundContentView.centerYAnchor,
+                                padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 10))
     }
-
-    private func configUI() {
-        backgroundContentView.layer.cornerRadius = 10
-    }
-
 
     func configure(data: MemberList) {
         itemLabel.text = data.name

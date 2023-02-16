@@ -9,13 +9,13 @@ import UIKit
 
 final class AddUnRegisteredMemberViewController: UIViewController {
 
-    var addedMembers: [MemberList] = []
+    private var addedMembers: [MemberList] = []
 
     var completion: (_ registeredMember: [MemberList]) -> Void = { addedMembers in }
 
-    lazy var firstData = MemberList(memberId: 0, name: firstPracticeSongCard.bandMemberNameTextField.textField.text ?? "", memberState: "NONE", instrumentList: [InstrumentList(instrumentId: 0, isMain: true, name: firstPracticeSongCard.otherPositionTextField.textField.text ?? "")])
+    private lazy var firstData: MemberList = MemberList(memberId: 0, name: firstPracticeSongCard.bandMemberNameTextField.textField.text ?? "", memberState: "NONE", instrumentList: [InstrumentList(instrumentId: 0, isMain: true, name: firstPracticeSongCard.otherPositionTextField.textField.text ?? "")])
 
-    lazy var firstPracticeSongCard: UnRegisteredMemberCardView = {
+    private lazy var firstPracticeSongCard: UnRegisteredMemberCardView = {
         let card = UnRegisteredMemberCardView()
         let action = UIAction { _ in
             self.addedMembers.append(self.firstData)
@@ -26,22 +26,21 @@ final class AddUnRegisteredMemberViewController: UIViewController {
     }()
 
     private lazy var contentView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [firstPracticeSongCard])
-        stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 40
-        return stackView
-    }()
+        $0.axis = .vertical
+        $0.distribution = .equalSpacing
+        $0.spacing = 40
+        return $0
+    }(UIStackView(arrangedSubviews: [firstPracticeSongCard]))
 
     private lazy var mainScrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.showsVerticalScrollIndicator = true
-        scrollView.backgroundColor = .dark01
-        scrollView.delegate = self
-        return scrollView
-    }()
+        $0.showsVerticalScrollIndicator = true
+        $0.backgroundColor = .dark01
+        $0.delegate = self
+        return $0
+    }(UIScrollView())
 
-    private lazy var addPracticeSongButton = {
+    //TODO: 추후에 defualt 버튼으로 수정해야함
+    private lazy var addPracticeSongButton: UIButton = {
         var configuration = UIButton.Configuration.filled()
         var container = AttributeContainer()
         container.font = UIFont.setFont(.contentBold)
@@ -56,18 +55,19 @@ final class AddUnRegisteredMemberViewController: UIViewController {
         return button
     }()
 
-    private lazy var finalAddButton = {
+    //TODO: 추후에 defualt 버튼으로 수정해야함
+    private lazy var addCompletionButton = {
         var configuration = UIButton.Configuration.filled()
         var container = AttributeContainer()
         container.font = UIFont.setFont(.contentBold)
         configuration.baseBackgroundColor = .systemBlue
         configuration.attributedTitle = AttributedString("추가 완료", attributes: container)
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0)
-        let button = UIButton(configuration: configuration, primaryAction: finalAction)
+        let button = UIButton(configuration: configuration, primaryAction: addCompletionAction)
         return button
     }()
 
-    private lazy var finalAction = UIAction { _ in
+    private lazy var addCompletionAction = UIAction { _ in
         for subview in self.contentView.arrangedSubviews {
             let card = subview as! UnRegisteredMemberCardView
             let data = MemberList(memberId: 0, name: card.bandMemberNameTextField.textField.text ?? "", memberState: "NONE", instrumentList: [InstrumentList(instrumentId: 0, isMain: true, name: card.otherPositionTextField.textField.text ?? "")])
@@ -80,12 +80,12 @@ final class AddUnRegisteredMemberViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLayout()
         attribute()
+        setupLayout()
     }
 
     override func viewDidLayoutSubviews() {
-        applyButtonSnapshot()
+        applySnapshotForDeleteButton()
     }
 
     private func attribute() {
@@ -95,24 +95,19 @@ final class AddUnRegisteredMemberViewController: UIViewController {
     private func setupLayout() {
 
         view.addSubview(mainScrollView)
-
         mainScrollView.constraint(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
 
         mainScrollView.addSubview(contentView)
-
         contentView.constraint(top: mainScrollView.contentLayoutGuide.topAnchor, leading: mainScrollView.contentLayoutGuide.leadingAnchor, bottom: mainScrollView.contentLayoutGuide.bottomAnchor, trailing: mainScrollView.contentLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 10, bottom: 160, right: 20))
 
         mainScrollView.addSubview(addPracticeSongButton)
-
         addPracticeSongButton.constraint(top: contentView.bottomAnchor, leading: contentView.leadingAnchor, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 20))
 
-        mainScrollView.addSubview(finalAddButton)
-
-        finalAddButton.constraint(top: addPracticeSongButton.bottomAnchor,leading: view.safeAreaLayoutGuide.leadingAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 40, left: 20, bottom: 10, right: 20))
+        mainScrollView.addSubview(addCompletionButton)
+        addCompletionButton.constraint(top: addPracticeSongButton.bottomAnchor,leading: view.safeAreaLayoutGuide.leadingAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 40, left: 20, bottom: 10, right: 20))
     }
 
-    private func applyButtonSnapshot() {
-        // StackView에 들어간 하위뷰들은 UIView 타입으로 인식합니다. 그래서 그 안에 cancleButton 프로퍼티에 접근하기 위해 map을 사용합니다.
+    private func applySnapshotForDeleteButton() {
         if contentView.arrangedSubviews.count == 1 {
             contentView.arrangedSubviews.map { $0 as! UnRegisteredMemberCardView }.forEach { $0.cancelButton.isHidden = true }
         } else {
@@ -138,8 +133,7 @@ extension AddUnRegisteredMemberViewController {
         contentView.insertArrangedSubview(
             newCard,
             at: contentView.arrangedSubviews.endIndex)
-
-        applyButtonSnapshot()
+        applySnapshotForDeleteButton()
     }
 }
 

@@ -90,7 +90,7 @@ final class BandMemberSearchTableCell: UITableViewCell, Identifiable {
 
     func configure(data: MemberList) {
         self.titleLabel.text = data.name
-        //TODO: 리스트 형태로 받을 수 있도록 바꿔야함
+        //TODO: 리스트 형태로 받을 수 있도록 바꿔야하
         self.subTitleLabel.text = data.instrumentList.first!.name
         self.id = data.id
     }

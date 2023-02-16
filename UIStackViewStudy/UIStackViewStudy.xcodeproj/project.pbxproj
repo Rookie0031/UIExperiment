@@ -45,7 +45,7 @@
 		9AD74E2429801B3400C4D522 /* AddPracticeSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD74E2329801B3400C4D522 /* AddPracticeSongViewController.swift */; };
 		9AE796BB29795F50008D6976 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE796BA29795F50008D6976 /* UITextViewExtension.swift */; };
 		9AF4323E2986486100557F9B /* AddBandMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4323D2986486100557F9B /* AddBandMemberViewController.swift */; };
-		9AF4324029864CAC00557F9B /* AddBandMemberTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4323F29864CAC00557F9B /* AddBandMemberTableHeaderView.swift */; };
+		9AF4324029864CAC00557F9B /* AddBandMemberTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4323F29864CAC00557F9B /* AddBandMemberTableViewHeader.swift */; };
 		A90075972988B0C300371EC8 /* BandMemberSearchTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90075962988B0C300371EC8 /* BandMemberSearchTableCell.swift */; };
 		A913B8542982BA64001504FB /* SNSBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913B8532982BA64001504FB /* SNSBoxView.swift */; };
 		A913B8562982C3EE001504FB /* HTTPCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913B8552982C3EE001504FB /* HTTPCase.swift */; };
@@ -107,7 +107,7 @@
 		9AD74E2329801B3400C4D522 /* AddPracticeSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPracticeSongViewController.swift; sourceTree = "<group>"; };
 		9AE796BA29795F50008D6976 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		9AF4323D2986486100557F9B /* AddBandMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBandMemberViewController.swift; sourceTree = "<group>"; };
-		9AF4323F29864CAC00557F9B /* AddBandMemberTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBandMemberTableHeaderView.swift; sourceTree = "<group>"; };
+		9AF4323F29864CAC00557F9B /* AddBandMemberTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBandMemberTableViewHeader.swift; sourceTree = "<group>"; };
 		A90075962988B0C300371EC8 /* BandMemberSearchTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandMemberSearchTableCell.swift; sourceTree = "<group>"; };
 		A913B8532982BA64001504FB /* SNSBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSBoxView.swift; sourceTree = "<group>"; };
 		A913B8552982C3EE001504FB /* HTTPCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCase.swift; sourceTree = "<group>"; };
@@ -266,7 +266,7 @@
 				9A3F077929881C25009CD500 /* UserSearchViewController.swift */,
 				9A019B8A29868B6600FAB9D8 /* AddBandMemberTableViewCell.swift */,
 				A90075962988B0C300371EC8 /* BandMemberSearchTableCell.swift */,
-				9AF4323F29864CAC00557F9B /* AddBandMemberTableHeaderView.swift */,
+				9AF4323F29864CAC00557F9B /* AddBandMemberTableViewHeader.swift */,
 				9A645C0D2989339100BECA84 /* AddedBandMemberCollectionCell.swift */,
 				A9397BB0298CF1A20041280B /* AddUnRegisteredMemberViewController.swift */,
 				A99A29BD298A8D9B000B9CA6 /* TestCategoryScroll */,
@@ -386,7 +386,7 @@
 				A90075972988B0C300371EC8 /* BandMemberSearchTableCell.swift in Sources */,
 				A9A59364299DEAD700086729 /* MemberDataDTO.swift in Sources */,
 				9A32B7AC2983C56200D0C488 /* BnadMemberCollectionViewCell.swift in Sources */,
-				9AF4324029864CAC00557F9B /* AddBandMemberTableHeaderView.swift in Sources */,
+				9AF4324029864CAC00557F9B /* AddBandMemberTableViewHeader.swift in Sources */,
 				A9397BB1298CF1A20041280B /* AddUnRegisteredMemberViewController.swift in Sources */,
 				9A2F6A202978088C00DECE9F /* AppDelegate.swift in Sources */,
 				A9397BAD298CC9C30041280B /* PageController.swift in Sources */,
