@@ -6,18 +6,18 @@
 //
 import Foundation
 
-struct MemberDataDTO: Identifiable, Codable {
-    var id: String = UUID().uuidString
+struct MemberDataDTO: Codable {
     let memberList: [MemberList]
 }
 
-struct MemberList: Codable {
+struct MemberList: Hashable, Identifiable, Codable {
+    var id: String = UUID().uuidString
     let memberId: Int
     let name, memberState: String
     let instrumentList: [InstrumentList]
 }
 
-struct InstrumentList: Codable {
+struct InstrumentList: Hashable, Codable {
     let instrumentId: Int
     let isMain: Bool
     let name: String
@@ -29,7 +29,7 @@ enum MemberState {
 
 #if DEBUG
 extension MemberDataDTO {
-    static var testDataSet = [
+    static var testData =
         MemberDataDTO(memberList: [
             MemberList(memberId: 0,
                        name: "루키",
@@ -55,7 +55,7 @@ extension MemberDataDTO {
                        name: "쏘시지불나방전기뱀장어",
                        memberState: "NONE",
                        instrumentList: [InstrumentList(instrumentId: 0, isMain: true, name: "vocal")]),])
-    ]
+    
 }
 #endif
 

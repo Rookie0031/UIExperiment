@@ -10,7 +10,7 @@ import UIKit
 final class AddBandMemberViewController: UIViewController {
 
     //TODO: 유저 정보로 데이터 타입을 바꿔야함
-    var people: [CellInformation] = []
+    var people: [MemberList] = []
 
     //MARK: - View
     private lazy var tableView: UITableView = {
@@ -24,7 +24,7 @@ final class AddBandMemberViewController: UIViewController {
         return $0
     }(UITableView(frame: .zero, style: .grouped))
     
-    lazy var dataSource: UITableViewDiffableDataSource<TableViewSection, CellInformation> = self.makeDataSource()
+    lazy var dataSource: UITableViewDiffableDataSource<TableViewSection, MemberList> = self.makeDataSource()
 
     //TODO: 밴드 리더 포지션 선택뷰의 버튼으로 바꿔야함
     private let nextButton = BasicButton(text: "다음", widthPadding: 300, heightPadding: 20)
@@ -55,15 +55,15 @@ final class AddBandMemberViewController: UIViewController {
 //MARK: DiffableDataSource 관련 메소드
 extension AddBandMemberViewController {
 
-    func updateSnapShot(with items: [CellInformation]) {
-        var snapShot = NSDiffableDataSourceSnapshot<TableViewSection, CellInformation>()
+    func updateSnapShot(with items: [MemberList]) {
+        var snapShot = NSDiffableDataSourceSnapshot<TableViewSection, MemberList>()
         snapShot.appendSections([.main])
         snapShot.appendItems(items, toSection: .main)
         self.dataSource.apply(snapShot, animatingDifferences: true)
     }
 
-    func makeDataSource() -> UITableViewDiffableDataSource<TableViewSection, CellInformation> {
-        return UITableViewDiffableDataSource<TableViewSection, CellInformation>(tableView: self.tableView) { tableView, indexPath, person in
+    func makeDataSource() -> UITableViewDiffableDataSource<TableViewSection, MemberList> {
+        return UITableViewDiffableDataSource<TableViewSection, MemberList>(tableView: self.tableView) { tableView, indexPath, person in
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: AddBandMemberTableViewCell.classIdentifier, for: indexPath) as? AddBandMemberTableViewCell else { return UITableViewCell() }
             print("Person print")
@@ -131,23 +131,23 @@ enum TableViewSection: String {
     }
 }
 
-struct CellInformation: Hashable, Identifiable {
-    var id = UUID().uuidString
-    let nickName: String
-    let instrument: String
-}
-
-extension CellInformation {
-    static var data = [
-        CellInformation(nickName: "구엘", instrument: "드럼"),
-        CellInformation(nickName: "루키", instrument: "베이스"),
-        CellInformation(nickName: "노엘", instrument: "기타"),
-        CellInformation(nickName: "데이크", instrument: "보컬"),
-        CellInformation(nickName: "알로라", instrument: "신디사이저"),
-        CellInformation(nickName: "가즈윌", instrument: "바이올린"),
-        CellInformation(nickName: "쏘시지불나방전기뱀장어", instrument: "바이올린")
-    ]
-}
+//struct MemberList: Hashable, Identifiable {
+//    var id = UUID().uuidString
+//    let nickName: String
+//    let instrument: String
+//}
+//
+//extension MemberList {
+//    static var data = [
+//        MemberList(nickName: "구엘", instrument: "드럼"),
+//        MemberList(nickName: "루키", instrument: "베이스"),
+//        MemberList(nickName: "노엘", instrument: "기타"),
+//        MemberList(nickName: "데이크", instrument: "보컬"),
+//        MemberList(nickName: "알로라", instrument: "신디사이저"),
+//        MemberList(nickName: "가즈윌", instrument: "바이올린"),
+//        MemberList(nickName: "쏘시지불나방전기뱀장어", instrument: "바이올린")
+//    ]
+//}
 
 //MARK: Identifier에 따른 정수형 index 추출 extension
 //extension Array where Element == CellInformation {

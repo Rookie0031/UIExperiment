@@ -20,9 +20,9 @@ class UserSearchViewController: UIViewController {
 
     private var tempWidth: CGFloat = 0
     
-    var completion: (_ selectedUsers: [CellInformation]) -> Void = { selectedUsers in }
+    var completion: (_ selectedUsers: [MemberList]) -> Void = { selectedUsers in }
     
-    var selectedUsers: [CellInformation] = []
+    var selectedUsers: [MemberList] = []
     
     private lazy var searchBar = {
         let searchBar = SearchTextField(placeholder: "닉네임으로 검색")
@@ -71,7 +71,7 @@ class UserSearchViewController: UIViewController {
     }()
 
     //MARK: Bottom CollectionView
-    lazy var bottomScrollViewDataSource: UICollectionViewDiffableDataSource<BottomScrollSection, CellInformation> = self.makeDataSource()
+    lazy var bottomScrollViewDataSource: UICollectionViewDiffableDataSource<BottomScrollSection, MemberList> = self.makeDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,12 +104,12 @@ class UserSearchViewController: UIViewController {
 extension UserSearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        CellInformation.data.count
+        MemberDataDTO.testData.memberList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BandMemberSearchTableCell.classIdentifier, for: indexPath) as? BandMemberSearchTableCell else { return UITableViewCell()}
-        cell.configure(data: CellInformation.data[indexPath.row])
+        cell.configure(data: MemberDataDTO.testData.memberList[indexPath.row])
         cell.selectionStyle = .none
         
         return cell
@@ -128,7 +128,7 @@ extension UserSearchViewController: UITableViewDelegate {
         // 선택된 tableView의 데이터만 따로 추출
         // 선택된 셀에 접근할 수 있으나 데이터는 따로 만들어야함
         // CellInformation만들 때 임의의 id를 만들기 때문에, 만들고나서 선택한 cell의 id를 주입해줘야함
-        var data = CellInformation(nickName: selectedCell.titleLabel.text ?? "", instrument: selectedCell.subTitleLabel.text ?? "")
+        var data = MemberList(memberId: 0, name: selectedCell.titleLabel.text ?? "", memberState: "NONE", instrumentList: [InstrumentList(instrumentId: 0, isMain: true, name: selectedCell.subTitleLabel.text ?? "")])
         // 선택될 때 Cell의 아이디 그대로 데이터에 넣기
         data.id = selectedCell.id
 
@@ -136,9 +136,9 @@ extension UserSearchViewController: UITableViewDelegate {
         print(indexPath)
 
         // collectionView Cell 크기 업데이트하기
-        tempWidth = data.nickName.size(withAttributes: [
-            .font : UIFont.preferredFont(forTextStyle: .subheadline)
-        ]).width + Size.cellContentInset
+//        tempWidth = data.nickName.size(withAttributes: [
+//            .font : UIFont.preferredFont(forTextStyle: .subheadline)
+//        ]).width + Size.cellContentInset
 
         //MARK: 이미 배열에 들어가있는 셀 없애기
         selectedUsers.append(data)
@@ -174,15 +174,15 @@ extension UserSearchViewController: UIScrollViewDelegate {
 //MARK: CollectionView DiffableData Source
 extension UserSearchViewController {
 
-    func updateSnapShot(with items: [CellInformation]) {
-        var snapShot = NSDiffableDataSourceSnapshot<BottomScrollSection, CellInformation>()
+    func updateSnapShot(with items: [MemberList]) {
+        var snapShot = NSDiffableDataSourceSnapshot<BottomScrollSection, MemberList>()
         snapShot.appendSections([.main])
         snapShot.appendItems(items, toSection: .main)
         self.bottomScrollViewDataSource.apply(snapShot, animatingDifferences: true)
     }
 
-    func makeDataSource() -> UICollectionViewDiffableDataSource<BottomScrollSection, CellInformation> {
-        return UICollectionViewDiffableDataSource<BottomScrollSection, CellInformation>(collectionView: self.bottomScrollView, cellProvider: { collectionView, indexPath, person in
+    func makeDataSource() -> UICollectionViewDiffableDataSource<BottomScrollSection, MemberList> {
+        return UICollectionViewDiffableDataSource<BottomScrollSection, MemberList>(collectionView: self.bottomScrollView, cellProvider: { collectionView, indexPath, person in
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddedBandMemberCollectionCell.classIdentifier, for: indexPath) as? AddedBandMemberCollectionCell else { return UICollectionViewCell() }
 
@@ -193,7 +193,7 @@ extension UserSearchViewController {
                 self.updateSnapShot(with: self.selectedUsers)
 
                 // SerachTableView Cell deselect
-                for index in 0..<CellInformation.data.count {
+                for index in 0..<MemberDataDTO.testData.memberList.count {
                     let searchResultTablecell = self.searchResultTable.cellForRow(at: IndexPath(row: index, section: 0)) as! BandMemberSearchTableCell
                     if searchResultTablecell.id == cell.id {
                         searchResultTablecell.isChecked = false

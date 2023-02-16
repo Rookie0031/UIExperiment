@@ -90,9 +90,10 @@ final class AddBandMemberTableViewCell: UITableViewCell, Identifiable {
     
     }
     
-    func configure(data: CellInformation) {
-        self.titleLabel.text = data.nickName
-        self.subTitleLabel.text = data.instrument
+    func configure(data: MemberList) {
+        self.titleLabel.text = data.name
+        //TODO: List로 받을 수 있게 수정해야함
+        self.subTitleLabel.text = data.instrumentList.first!.name
         self.id = data.id
     }
 }

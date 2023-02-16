@@ -88,9 +88,10 @@ final class BandMemberSearchTableCell: UITableViewCell, Identifiable {
 
     }
 
-    func configure(data: CellInformation) {
-        self.titleLabel.text = data.nickName
-        self.subTitleLabel.text = data.instrument
+    func configure(data: MemberList) {
+        self.titleLabel.text = data.name
+        //TODO: 리스트 형태로 받을 수 있도록 바꿔야함
+        self.subTitleLabel.text = data.instrumentList.first!.name
         self.id = data.id
     }
 

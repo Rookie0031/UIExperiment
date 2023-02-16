@@ -81,8 +81,8 @@ final class AddedBandMemberCollectionCell: UICollectionViewCell, Identifiable {
     }
 
 
-    func configure(data: CellInformation) {
-        itemLabel.text = data.nickName
+    func configure(data: MemberList) {
+        itemLabel.text = data.name
         self.id = data.id
     }
 }
